@@ -1,0 +1,1574 @@
+Frontend Prompt: LegalMind AI - Legal Operations Platform
+Project Overview
+Build LegalMind AI, a comprehensive legal operations platform with AI-powered capabilities for legal research, document drafting, precedent search, and compliance tracking. This is a demo application showcasing agentic AI for legal professionals.
+
+Core Objective: Create a professional, intuitive interface where legal teams can research laws, generate legal documents with AI assistance, find court precedents, and track compliance deadlines - all in one integrated platform.
+
+Application Architecture
+Tech Stack
+React 18 + Vite
+Tailwind CSS
+shadcn/ui or similar component library
+React Router v6
+Lucide React icons
+Recharts for charts
+React-datepicker for date inputs
+TipTap or similar rich text editor
+React-hot-toast for notifications
+React-big-calendar for calendar views
+Zustand for state management
+Routing Structure
+
+/ → Dashboard/Home
+/research → Research Co-Pilot (Chat)
+/drafts → Draft List View
+/draft/new → Create New Draft
+/draft/:id → Draft Workspace
+/precedents → Precedent Library
+/precedent/:id → Precedent Detail View
+/tracker → Compliance Tracker Dashboard
+/tracker/order/:id → Order Detail View
+/calendar → Calendar View
+Navigation & Layout
+Main Navigation
+Fixed header across all pages
+Logo/app name on left: "LegalMind AI" with legal icon (scales/gavel)
+Horizontal navigation links: Research | Drafts | Precedents | Tracker | Calendar
+Right side: Notification bell icon (with badge count), User dropdown menu
+Navigation should highlight active route
+Notification System
+Bell icon shows unread count badge
+Clicking opens dropdown panel (positioned below bell)
+Shows last 5 notifications:
+"Reminder: Court order ORDER-2024-001 due tomorrow"
+"New precedent added: Kumar vs Builder (SC 2023)"
+"Draft D-001 approved by Legal Head"
+Each notification shows time ago (e.g., "2 hours ago")
+"Mark all as read" button at top
+"View all notifications" link at bottom
+Types of notifications: reminder, status_update, new_precedent, draft_approved
+User Dropdown
+Profile picture/avatar with name
+Dropdown items:
+Profile Settings
+App Settings
+Help & Documentation
+Sign Out
+Feature 1: Research Co-Pilot (Chat Interface)
+Page: /research
+Purpose: AI-powered legal research chat where users ask questions and get answers with citations from multiple sources (internal documents, graph database, web-scraped court orders).
+
+Initial State (Empty Chat)
+Centered welcome section with:
+Large icon/illustration
+Title: "Welcome to LegalMind AI Research"
+Subtitle explaining capabilities
+Example topics listed:
+RERA Act provisions and penalties
+IRDAI insurance regulations
+Companies Act compliance
+Data privacy under DPDP Act
+Latest court orders and judgments
+3-4 suggestion chips/buttons with example queries:
+"What are RERA penalties for delayed possession?"
+"Find insurance claim rejection precedents"
+"Latest Supreme Court data privacy judgments"
+Clicking a suggestion starts that query
+Chat Interface Layout
+Structure:
+
+Header bar with "Research Co-Pilot" title and "Clear Chat" button
+Scrollable message area (main content)
+Fixed input bar at bottom
+Message Display:
+
+User messages:
+Show user avatar/icon
+Display "You" or user name
+Show timestamp (e.g., "2 minutes ago")
+Message text
+Assistant messages:
+Show AI robot icon
+Display "Assistant" label
+Show timestamp
+Formatted message with markdown support (bold, lists, etc.)
+Citations section (if sources found)
+Action buttons (if applicable)
+Citation Display in Messages:
+When assistant responds with research results:
+
+Show section labeled "📎 Sources (X)"
+List each source with:
+Source title (e.g., "RERA Act 2016 - Section 18")
+Confidence/match score (e.g., "90% match")
+Clickable to view full source
+Display search method used:
+"🔍 Search: Vector (3 docs) | Graph (2 relationships) | Web (1 new)"
+Action Buttons:
+After research response, show contextual buttons:
+
+"Generate Legal Notice" (primary button) - navigates to draft creation with context
+"View All Sources" - opens modal with detailed sources
+"Add to Saved Research" - saves this query/response
+"Share" - copy link or export
+Input Area
+Text input box with placeholder: "Ask about laws, precedents, court orders..."
+Send button (arrow icon or "Send")
+Support for multi-line input (Shift+Enter for new line, Enter to send)
+Loading state while waiting for response:
+Disable input
+Show typing indicator in chat: "AI is researching..." with animated dots
+Source Detail Modal
+When user clicks a source citation:
+
+Modal overlay opens
+Shows full source information:
+Document title
+Document type (Act, Rule, Court Order, etc.)
+Full relevant excerpt/content
+Page number (if applicable)
+Confidence score
+"View Full Document" button
+"Add to Draft" button
+Close button
+Generate Draft Flow
+When user clicks "Generate Legal Notice":
+
+Navigate to /draft/new
+Pre-populate "Topic/Background" with research query
+Automatically select draft type based on context
+Show message: "Using research from your query about [topic]"
+Feature 2: Draft Orchestrator
+Page: /drafts (Draft List)
+Purpose: View all drafts, filter by status, create new drafts.
+
+Layout:
+
+Page title: "Legal Drafts"
+Action button top-right: "+ Create New Draft" (primary button)
+Filter bar below title:
+Status filter dropdown: All | Draft | Under Review | Approved | Rejected
+Search input: "Search drafts by title or case..."
+Sort dropdown: Recent First | Oldest First | By Status
+Draft cards/table showing:
+Draft ID (e.g., "D-2024-001")
+Draft title/type (e.g., "Legal Notice - RERA Delayed Possession")
+Case name (e.g., "Kumar vs ABC Builders")
+Status badge (colored):
+Draft (gray)
+Under Review (blue)
+Approved (green)
+Rejected (red)
+Created date
+Last updated
+Assigned to/Owner
+Actions: View | Edit | Delete (icon buttons)
+Empty state when no drafts: "No drafts yet. Create your first legal draft."
+Page: /draft/new (Create New Draft)
+Purpose: Multi-step wizard to create a new legal draft.
+
+Step 1: Draft Type & Background
+
+Form sections:
+
+Draft Type Selection
+
+Dropdown/radio options:
+Legal Notice - RERA Delayed Possession
+Complaint - Insurance Claim Rejection (IRDAI)
+Consumer Complaint
+Response to Legal Notice
+Each option shows brief description on hover/selection
+Topic / Background (Required)
+
+Large textarea (minimum 50 chars, recommended 100-300)
+Label: "Describe your legal situation"
+Helper text: "This helps our AI research the most relevant laws and precedents for your case."
+Placeholder: "Example: I purchased a flat from ABC Builders in 2021. The agreement promised possession by December 2023, but it's now September 2024 and the project is only 60% complete. Builder is not responding. I need to send a legal notice demanding possession with interest as per RERA provisions."
+Character counter below
+Tips callout box:
+Mention specific laws (RERA, IRDAI, etc.)
+Include timeframes and amounts
+Describe relief you're seeking
+Research Preview (auto-generated based on input)
+
+Box showing: "🔍 What will be researched?"
+List of topics AI will search:
+"RERA Act 2016 - Delayed possession provisions"
+"Interest calculation rules"
+"Recent Supreme Court & High Court orders"
+"RERA authority precedents"
+Shows search sources: "Sources: Internal Database + Legal Graph + Live Web"
+Buttons at bottom:
+
+"Cancel" (left)
+"Next: Fill Details →" (right, primary)
+Step 2: Case Details Form
+
+Dynamic form based on selected draft type.
+
+For RERA Legal Notice:
+
+Organized in collapsible/expandable sections:
+
+Your Details
+
+Full Name (text input, required)
+Address (textarea, required)
+Email (email input, required)
+Phone Number (tel input, required)
+Builder Details
+
+Builder/Developer Name (text, required)
+Builder Address (textarea, required)
+Project Name (text, required)
+RERA Registration Number (text, optional)
+Property & Agreement Details
+
+Unit/Flat Number (text, required)
+Agreement Date (date picker, required)
+Promised Possession Date (date picker, required)
+Total Amount Paid (number input with ₹ symbol, required)
+Payment Schedule/Details (textarea, optional)
+Delay Details
+
+Delay Duration in months (number, auto-calculated from dates, required)
+Current Project Status (dropdown, required):
+Not Started
+Under Construction
+Partially Complete
+Complete but not handed over
+Previous Communication Attempts (textarea, optional)
+Relief Sought
+
+Multi-select checkboxes:
+Interest on delayed possession
+Immediate possession
+Compensation for mental agony
+Return of amount with interest
+Additional Demands (textarea, optional)
+For Insurance Claim Complaint:
+
+Similar structure with different fields:
+
+Policyholder Details
+
+Policyholder Name
+Policy Number
+Address
+Phone
+Email
+Insurance Company Details
+
+Company Name
+Company Address
+Branch Office (optional)
+Policy & Claim Details
+
+Policy Type (dropdown: Health | Life | Motor | Property)
+Policy Start Date
+Premium Paid (₹)
+Claim Amount (₹)
+Claim Filing Date
+Claim Reference Number (optional)
+Rejection Details
+
+Rejection Date
+Reason Given for Rejection (textarea)
+Nature of Claim (textarea)
+Documents Submitted (textarea)
+Grievance Details
+
+Grievance Attempts Made (textarea, optional)
+Relief Sought (multi-select)
+Validation:
+
+Show field-level errors on blur
+Highlight required fields
+Summary error message at top if submit fails
+Buttons:
+
+"← Back" (left)
+"Generate Draft →" (right, primary)
+Step 3: Generation Progress
+
+Full-screen loading state when generating:
+
+Display:
+
+Large title: "Generating Your Legal Notice..."
+Progress indicator with stages:
+✓ Planner Agent: Analyzed your request
+✓ Decision: Fresh query - Full research needed
+✓ Plan: Research → Draft generation
+⏳ Research Agent: Searching...
+✓ Searching internal knowledge base → Found: RERA Act (3 sections)
+✓ Querying legal graph database → Found: Related precedents (5)
+⏳ Scraping latest web sources → Checking Supreme Court website
+Checking RERA authority site
+Found: 2 recent orders (2024)
+✓ Fetching court precedents → Found: Kumar vs Builder (SC 2023)
+Total sources: 12 documents, 7 precedents
+⏳ Draft Agent: Generating draft with citations... (80%)
+Progress bar showing overall percentage
+Estimated time remaining: "15 seconds remaining"
+This shows real-time updates as backend processes the request.
+
+When complete:
+
+Navigate to /draft/:id (Draft Workspace)
+Page: /draft/:id (Draft Workspace)
+Purpose: View, edit, review, and manage a generated legal draft.
+
+Layout: Two-column layout
+
+Left Sidebar (30% width, scrollable):
+
+Sections:
+
+Draft Info
+
+Draft ID
+Status badge with color
+Version number
+Created date
+Word count
+AI Assistance
+
+Buttons:
+"💬 Ask AI" - opens chat to ask questions about draft
+"🔍 Find Similar Cases"
+"📚 Add Section"
+Research Used
+
+Expandable section showing:
+"🧠 Planner Decision"
+Query type: Fresh query
+Action: Full research
+"🔍 Sources Used (12)"
+RERA Act (3)
+Web sources (2)
+Database (7)
+"⚖️ Precedents (7)"
+SC Orders (2)
+HC Orders (3)
+RERA Authority (2)
+"View All Sources" link opens modal
+Discussion (if in review)
+
+Shows message count
+Click opens discussion panel
+Changes Log
+
+Timeline of changes:
+Created (timestamp)
+Status changed to Under Review (timestamp)
+Comment added by Reviewer (timestamp)
+Main Content Area (70% width):
+
+Top Action Bar:
+
+Buttons based on status:
+Draft status:
+"✏️ Edit Draft"
+"🔄 Re-research + Redraft"
+"✅ Submit for Review"
+"📥 Download PDF"
+"📥 Download DOCX"
+Under Review status:
+"💬 Open Discussion"
+"📥 Download" (read-only)
+Approved status:
+"📥 Download PDF"
+"📥 Download DOCX"
+"✅ Create Tracking Entry" (to Feature 4)
+Draft Content Display:
+
+White document-like area with padding
+Shows formatted legal document:
+Title centered: "LEGAL NOTICE"
+To/From sections
+Subject line
+Body content with proper formatting
+Numbered sections
+Legal provisions with citations [1], [2], etc.
+Relief sought section
+Signature area
+Citations footer listing all sources:
+[1] RERA Act 2016, Section 18
+[2] Maharashtra RERA Rules 2017, Rule 15
+[3] Supreme Court Order - Kumar vs Builder (2023)
+Citation Interactions:
+
+Citation numbers [1], [2] are clickable
+Hover shows tooltip with source title
+Click opens source detail modal
+Edit Mode:
+When user clicks "Edit Draft":
+
+Content area becomes rich text editor
+Toolbar with formatting options: Bold, Italic, Lists, Headings
+"Save Changes" and "Cancel" buttons appear
+Auto-save indicator
+Re-research + Redraft Modal:
+When user clicks "Re-research + Redraft":
+
+Modal opens with:
+
+Title: "Re-research & Redraft"
+Shows current draft info:
+Current Draft: Legal Notice - RERA
+Last Research: 10 sources, 30 minutes ago
+Input section:
+"What would you like to add or change?"
+Large textarea
+Placeholder: "Example: Add more recent Supreme Court precedents on interest calculation for RERA delayed possession cases"
+AI Planner section:
+"🧠 AI Planner will analyze if:"
+Bullet points:
+New research is needed
+Existing sources are sufficient
+Only formatting changes required
+Research Options checkboxes:
+Search internal database
+Query legal graph
+Scrape latest web sources
+Find court orders (last 6 months)
+Focus Areas checkboxes:
+Supreme Court orders
+Interest calculation precedents
+RERA authority decisions
+Consumer forum orders
+Buttons:
+"Cancel"
+"Let AI Decide" (recommended)
+"Start Re-research →" (primary)
+After clicking "Let AI Decide" or "Start Re-research":
+
+Show planner decision screen:
+"🧠 Planner Agent Decision"
+Analysis summary:
+Query Type: Follow-up
+Action: Focused research needed
+Reason: Request for specific new precedents
+Plan preview:
+Research Agent → Find SC orders (2023-2024)
+Draft Agent → Integrate new precedents
+Preserve existing content structure
+Estimated time: 20 seconds
+Buttons: "Cancel" | "Execute Plan →"
+Then show progress screen (similar to initial generation)
+When done, refresh draft content with changes highlighted
+Submit for Review Flow:
+
+When user clicks "Submit for Review":
+
+Modal opens:
+
+Title: "Assign Reviewer"
+Form:
+Select Reviewer dropdown (list of users)
+Priority: Radio buttons (High | Medium | Low)
+Due Date: Date picker
+Add Note (optional): Textarea
+Placeholder: "Please review urgently - client deadline is next week."
+Buttons: "Cancel" | "Submit for Review →"
+After submission:
+
+Status changes to "Under Review"
+Success toast: "Draft submitted to [Reviewer Name]"
+Draft becomes read-only for requester
+Discussion panel becomes available
+Discussion Panel:
+
+Opens as slide-over panel from right side or expands in main area:
+
+Layout:
+
+Header: "Discussion Thread (3 messages)"
+Scrollable message thread showing:
+Each message with:
+Avatar/icon
+Name (Legal Head, John Doe, etc.)
+Role badge (Reviewer, Requester)
+Timestamp
+Message text
+System messages in different style:
+"Draft submitted for review by John Doe"
+"Status changed to Under Review"
+Message input at bottom:
+
+Textarea: "Your message..."
+Attach button (for files)
+Send button
+Quick action buttons if reviewer:
+"🔄 Request Changes"
+"✅ Approve"
+"❌ Reject"
+Reviewer-specific view:
+If logged in as reviewer, show additional action bar:
+
+"💬 Add Comment" button (inline commenting)
+"✅ Approve & Finalize" button (primary, green)
+"🔄 Request Changes" button (secondary, orange)
+"❌ Reject Draft" button (secondary, red)
+Inline Commenting:
+
+User can select text in draft
+"💬 Add Comment" button appears on selection
+Click opens comment box attached to that line
+Comments show as markers/highlights in draft
+Sidebar shows all comments list
+Approval/Rejection Actions:
+
+When reviewer clicks "Approve & Finalize":
+
+Modal confirmation:
+"Approve this draft?"
+Optional note textarea
+Checkbox: "Notify requester"
+Buttons: "Cancel" | "Approve"
+After approval:
+Status changes to "Approved"
+Success message
+Draft becomes locked (no editing)
+Requester can download final version
+When reviewer clicks "Request Changes":
+
+Modal:
+"Request Changes"
+Required note: "Please explain what needs to be changed"
+Textarea
+Buttons: "Cancel" | "Submit"
+After submission:
+Status changes back to "Draft"
+Requester notified
+Requester can edit and resubmit
+When reviewer clicks "Reject":
+
+Modal:
+"Reject Draft"
+Required reason: Textarea
+Confirmation checkbox: "I confirm this draft should be rejected"
+Buttons: "Cancel" | "Reject"
+After rejection:
+Status changes to "Rejected"
+Draft archived
+Requester can start new draft
+Download Options:
+When clicking download:
+
+Dropdown menu:
+"Download as PDF" (with preview icon)
+"Download as DOCX" (Word icon)
+"Download with Sources" (includes attached research)
+Click triggers file download
+Success toast: "Draft downloaded successfully"
+Feature 3: Precedent Intelligence Library
+Page: /precedents (Precedent Library)
+Purpose: Search, browse, and manage court orders and legal precedents.
+
+Header Section:
+
+Page title: "Precedent Intelligence Library"
+Subtitle: "Search court orders, judgments, and legal precedents"
+Search Bar (prominent, top of page):
+
+Large search input with icon
+Placeholder: "Search precedents by case name, topic, citation..."
+Search button
+"🔄 Fetch Latest from Web" button (secondary) - triggers web scraping
+"⚙️ Advanced Filters" button - opens filter panel
+Quick Filters Bar (below search):
+
+Horizontal filter chips:
+Court: Dropdown (All Courts | Supreme Court | High Courts | District Courts | RERA Authorities | Consumer Forums)
+Year: Dropdown (All Years | 2024 | 2023 | 2022 | 2020-2024 | Custom range)
+Act/Law: Dropdown (All | RERA Act | IRDAI Act | Companies Act | DPDP Act | Consumer Protection Act)
+Type: Dropdown (All | Judgment | Order | Writ Petition | Civil Appeal)
+"Clear All Filters" link
+Active filters show as removable chips
+Latest Updates Banner (if new precedents available):
+
+Alert/info box: "🆕 3 new court orders added today (auto-scraped)"
+"View New Orders →" button
+Results Section:
+
+Shows count: "📊 Search Results (47 precedents found)"
+Sort dropdown: Relevance | Date (Newest First) | Date (Oldest) | Citation Count
+Export button: "📤 Export Results" (CSV/PDF)
+Precedent Cards (list view):
+
+Each card shows:
+
+Header row:
+Case number/title: "1. Kumar vs ABC Builders Ltd. & Ors."
+Relevance badge: "⭐ 95% Match" (color-coded)
+Metadata row:
+Court: "Supreme Court of India"
+Date: "Feb 15, 2023"
+Citation: "Civil Appeal No. 1234/2023"
+New badge if recently added: "🆕 New (3 days)"
+Summary section:
+Brief 2-3 line summary
+"Read more..." expand link
+Tags row:
+Pills/chips: "RERA" | "Delayed Possession" | "Interest Calculation" | "Section 18"
+Related section:
+"🔗 Related:" with linked items: "RERA Act 2016 | Maharashtra RERA Rules"
+Action buttons:
+"📄 View Full Judgment" (primary)
+"📎 Add to Draft"
+"⭐ Save"
+"🔗 Share"
+Pagination:
+
+Bottom of page
+"Show More Results" button or page numbers
+"Page 1 of 16"
+Empty State:
+
+When no results: "No precedents found matching your criteria"
+Suggestions: "Try different keywords or filters"
+Button: "Clear Filters"
+Advanced Filters Panel
+When clicking "Advanced Filters":
+
+Slide-out panel from right side or modal
+Sections:
+
+Search Parameters
+
+Keywords/Query input
+Search Type radio:
+Semantic Search (AI-powered relevance) [default]
+Exact Phrase Match
+Boolean Search (AND, OR, NOT)
+Court Filters
+
+Court Level checkboxes:
+Supreme Court
+High Courts
+District Courts
+RERA Authorities
+Consumer Forums (NCDRC, State)
+Specific Court dropdown (if High Court selected):
+All High Courts
+Delhi HC
+Mumbai HC
+etc.
+Date Range
+
+From: Date picker
+To: Date picker
+Quick select buttons:
+Last Year
+Last 2 Years
+Last 5 Years
+All Time
+Acts/Laws
+
+Checkboxes:
+RERA Act 2016
+IRDAI Act 1999
+Companies Act 2013
+DPDP Act 2023
+Consumer Protection Act
+Case Type
+
+Checkboxes:
+Civil Appeals
+Writ Petitions
+Consumer Complaints
+Criminal Cases
+Case Status
+
+Checkboxes:
+Good Law (Not overruled)
+Include overruled/distinguished cases
+Citation Count (Importance)
+
+Radio buttons:
+Any
+Cited 5+ times
+Cited 10+ times
+Cited 20+ times
+AI Assist Options
+
+Checkboxes:
+Only show precedents applicable to my case
+Exclude contradictory judgments
+Prioritize recent judgments
+Include related precedents automatically
+Panel Actions:
+
+"Clear All" button
+"Save as Preset" button
+"Cancel" button
+"Apply Filters" button (primary)
+Page: /precedent/:id (Precedent Detail View)
+Purpose: Full view of a single precedent with all details.
+
+Back Navigation:
+
+"← Back to Search" link at top
+Header Section:
+
+Case Title: Large, bold
+Court badge: "Supreme Court of India"
+Status indicator: "✅ Good Law" (green) or "⚠️ Overruled" (red)
+Metadata Grid:
+
+Case Title
+Court
+Citation (copyable)
+Case Number
+Judgment Date
+Bench (Judges names)
+Petitioner
+Respondent
+Acts Involved (as chips)
+Action Bar:
+
+"📎 Add to Current Draft" button
+"⭐ Save to Library" button
+"📥 Download PDF" button
+"🔗 Copy Citation" button
+"📧 Email" button
+"🖨️ Print" button
+AI Analysis Box (highlighted section):
+
+"🎯 Relevance: 95% match to your query"
+"📊 Importance: High precedential value (cited in 23 subsequent cases)"
+"✅ Status: Still good law (not overruled)"
+Key Takeaways (bullet points):
+Interest must be paid at MCLR+2% per annum
+Force majeure not applicable for routine construction delays
+Interest calculation from due date, not notice date
+Related cases:
+"🔗 This case cited:" with links to precedents
+"🔗 Cited by: 23 subsequent cases" with expand link
+Tabs Navigation:
+Horizontal tabs:
+
+Summary (default)
+Full Judgment
+Citations
+Related Cases
+Analysis
+Tab 1: Summary
+
+Section: "Facts"
+Narrative summary of case facts
+Section: "Issues"
+Numbered list of legal issues
+Section: "Held"
+Numbered list of holdings/decisions
+Section: "Key Excerpts"
+Quoted paragraphs from judgment
+Each with [Para X] reference
+Tab 2: Full Judgment
+
+Complete judgment text
+Formatted with paragraph numbers
+Searchable (Ctrl+F highlight)
+"Show Full Text" / "Collapse" toggle
+Scroll spy navigation showing sections
+Tab 3: Citations
+
+Two sections:
+"Cases Cited" (precedents this case referenced)
+"Cited By" (subsequent cases citing this case)
+Each listed with:
+Case name (clickable link)
+Court
+Date
+Relationship type (Followed | Distinguished | Overruled)
+Tab 4: Related Cases
+
+AI-suggested similar cases
+Grid of case cards (similar to search results)
+Relevance score shown
+Tab 5: Analysis
+
+AI-generated analysis:
+Significance of this case
+Impact on legal landscape
+Practical implications
+How to use in legal arguments
+Visualization:
+Citation graph (tree showing case relationships)
+Timeline of related cases
+Auto-Scraping Dashboard
+Access via button "View Auto-Scraping Status" in precedent library or separate route /precedents/updates
+
+Purpose: Monitor automatic web scraping of new court orders.
+
+Header:
+
+Title: "Latest Court Orders - Auto Update Dashboard"
+"🔄 Run Manual Scrape Now" button
+Status Card:
+
+Shows:
+Last Update: "2 hours ago"
+Next Scheduled: "In 4 hours"
+Status: "✅ Active" or "⚠️ Error"
+Sources Monitored table:
+Source | Last Scraped | New Orders | Status
+Supreme Court | 2 hrs ago | 3 new | ✅
+High Courts | 2 hrs ago | 7 new | ✅
+RERA Authorities | 2 hrs ago | 2 new | ✅
+Indian Kanoon | 2 hrs ago | 5 new | ✅
+Action buttons:
+"⚙️ Configure Sources"
+"▶️ Run Now"
+"📊 View Logs"
+New Precedents Section:
+
+Tabs:
+Today (3)
+This Week (23)
+This Month (89)
+For each new precedent card:
+Title with 🆕 badge
+Court and date
+Topic/Summary
+Relevance indicator: "High (matches 5 active drafts in system)"
+Status indicators:
+✅ Indexed in RAG
+✅ Added to Graph
+or ⏳ Processing...
+Actions:
+View
+Add to Drafts
+Mark as Important
+Dismiss
+Analytics Chart:
+
+Bar chart showing "Precedents by Category (Last 30 Days)"
+Categories: RERA Cases, Insurance, Companies Act, Data Privacy, Consumer Rights
+Horizontal bars with counts
+Top Courts Contributing:
+
+List showing:
+Supreme Court - 12 orders
+Delhi HC - 18 orders
+Maharashtra HC - 15 orders
+Settings Panel:
+When clicking "Configure Sources":
+
+Modal/panel with:
+Update Frequency dropdown: Every 6 hours | Every 12 hours | Daily
+Auto-index to RAG: Toggle switch (ON/OFF)
+Auto-add to Graph: Toggle switch
+Notification on new: Toggle switch
+Email notifications: Checkbox
+In-app notifications: Checkbox
+Relevance threshold: Dropdown (High | Medium | Low)
+Save Settings button
+Feature 4: Compliance Tracker (Court Order Tracking)
+Page: /tracker (Compliance Dashboard)
+Purpose: Track court orders, compliance deadlines, and action items.
+
+Header:
+
+Page title: "Compliance Command Center"
+Action buttons:
+"+ New Order" (primary button)
+"📅 Calendar View" (switches to calendar view)
+"📊 Reports" (opens analytics)
+Stats Cards Row (top of page):
+5 cards side-by-side:
+
+Overdue
+Large number: "3"
+Red/warning styling
+Icon: Warning triangle
+Due This Week
+Number: "5"
+Orange styling
+Icon: Clock
+In Progress
+Number: "12"
+Blue styling
+Icon: Spinner/progress
+Completed (30 days)
+Number: "8"
+Green styling
+Icon: Checkmark
+Total Active
+Number: "20"
+Neutral styling
+Icon: List
+Filter Bar:
+
+Filters:
+Status dropdown: All | Overdue | Pending | In Progress | Completed
+Priority dropdown: All | High | Medium | Low
+Owner dropdown: All | Me | Legal Team | etc.
+Court dropdown: All | Supreme Court | High Court | RERA | etc.
+Search input: "🔍 Search orders by case name..."
+Buttons:
+"Clear" (clears all filters)
+"Save View" (saves current filter combination)
+Sections with Collapsible Headers:
+
+1. OVERDUE ACTIONS (red/alert styling)
+
+Shows count in header: "⚠️ OVERDUE ACTIONS (3)"
+"View All →" link on right
+Shows first 3 overdue orders as expanded cards:
+Each overdue order card:
+
+Priority badge: "🔴 High Priority" (colored)
+Order ID: "ORDER-2024-001"
+Case title: "Kumar vs ABC Builders (RERA)"
+Court/Authority: "Maharashtra RERA Authority"
+Order Date: "Aug 15, 2024"
+Divider line
+Next Action: "Submit compliance report"
+Deadline: "Sep 25, 2024" with "⚠️ 5 days overdue" in red
+Owner: Avatar + "Legal Team (John Doe)"
+Status badge: "🟡 In Progress"
+Recent Activity (last 2 items):
+"Sep 28: Reminder sent to owner"
+"Sep 20: Status updated to 'In Progress'"
+Action buttons:
+"View Details"
+"Update Status"
+"Mark Complete"
+"Add Note"
+2. DUE THIS WEEK (orange/warning styling)
+
+Header: "🟡 DUE THIS WEEK (5)"
+"View All →" link
+Shows first 3 as compact cards:
+Order ID + Case title
+Next action + deadline (with "in X days" countdown)
+Owner
+Quick action buttons: "View" | "Update"
+3. IN PROGRESS (blue/active styling)
+
+Header: "⏳ IN PROGRESS (12)"
+"View All →" link
+Shows as table view (more compact):
+Columns: Order ID | Case Name | Next Action | Deadline | Owner | Actions
+Each row clickable to view details
+Action column has icon buttons: View | Update | Complete
+4. RECENTLY COMPLETED (green/success styling)
+
+Header: "✅ COMPLETED (Last 30 Days) - 8"
+Collapsible (collapsed by default)
+Shows list when expanded
+View All Modal/Page:
+When clicking "View All" on any section:
+
+Opens full list view (could be modal or new page state)
+Shows all items in that category
+Full table with sorting and pagination
+Can perform bulk actions (multi-select)
+Page: /tracker/order/:id (Order Detail View)
+Purpose: Complete view and management of a single court order.
+
+Layout: Two-column layout
+
+Left Sidebar (30% width):
+
+Sections (collapsible):
+
+Order Summary
+
+Case Title
+Case Number
+Court/Authority
+Order Date
+Order Type badge
+Priority badge
+Related Draft link (if linked)
+Quick Actions
+
+"📝 Add Note" button
+"📎 Attach Document" button
+"📧 Email Team" button
+"🗓️ Add Event" button
+"🔗 Link Related Order" button
+Attachments (3)
+
+List of attached files:
+Filename with icon
+File size
+Uploaded date
+Download icon
+"+ Add More" button
+Related Items
+
+Related Draft link
+Related Precedents (if linked)
+Related Orders
+Team Members
+
+Owner section:
+Avatar + Name
+Role: "Legal Team"
+Watchers section:
+List of avatars
+Names on hover
+"+ Add Watcher" button
+Progress
+
+Progress bar: "80% complete"
+Text: "Completed: 4/5 actions"
+Text: "Pending: 1/5 actions"
+Main Content Area (70% width):
+
+Header Bar:
+
+Status badge (large): Current status with color
+Priority badge
+Last updated: "Updated 2 hours ago"
+Alert Section (if overdue):
+
+Alert box (red/warning):
+"⚠️ OVERDUE ACTION"
+Next Action: "Submit compliance report"
+Original Due: "Sep 25, 2024"
+Days Overdue: "5 days" (bold, red)
+Assigned To: "Legal Team (John Doe)"
+Action buttons:
+"🔔 Send Reminder"
+"📅 Extend Deadline"
+"👤 Reassign"
+"✅ Mark Complete"
+Tabs:
+
+Details (default)
+Timeline
+Activity Log
+Updates
+Tab 1: Details
+
+Sections:
+
+Order Summary
+
+Expandable text area showing full summary
+Formatted text with paragraphs
+Key Directions/Outcomes
+
+Bulleted list or numbered list
+Each direction formatted clearly
+Actions Required
+
+Table showing all action items:
+Columns: # | Action | Deadline | Assigned To | Status | Progress | Actions
+Each row is an action item
+Status shown as badge
+Progress shown as percentage or bar
+Action buttons: Edit | Complete | Delete
+"+ Add Action" button at bottom
+Tab 2: Timeline
+
+Visual timeline showing:
+
+Vertical timeline with date markers
+Each event as a card/node:
+Checkmark icon if completed
+Clock icon if pending
+Warning icon if overdue
+Event types:
+Order received
+Order reviewed
+Payment initiated
+Possession handover scheduled
+Compliance report draft in progress
+Submit compliance report (overdue)
+Next hearing scheduled (upcoming)
+Each event shows:
+Date/time
+Description
+By whom
+Additional notes
+Attachments (if any)
+Tab 3: Activity Log
+
+Scrollable list of all activities:
+
+Each entry shows:
+Timestamp
+Activity type icon (system/user/comment)
+User avatar (if user action)
+Description
+Additional details (expandable)
+Activity types:
+System notifications
+Status changes
+Comments
+Attachments added
+Assignments changed
+Reminders sent
+Filter dropdown: All Activities | System | User Actions | Comments
+Export button
+Tab 4: Updates
+
+Form area for posting updates:
+
+Update Type dropdown:
+Status Update
+Progress Update
+General Note
+Issue/Blocker
+Text editor for update content
+Current Status dropdown (if status update)
+Progress slider: 0-100% (if progress update)
+Checkboxes:
+Notify team members
+Set reminder for follow-up
+"📎 Attach Files" button
+Action buttons:
+"Cancel"
+"Post Update" (primary)
+Bottom Section: Add Note / Update Box:
+
+Always visible at bottom of main area
+Quick update form:
+Update Type dropdown
+Text area
+New Status dropdown (if changing status)
+Progress slider
+Checkbox: "Notify team members"
+"Post Update" button
+Create New Order Flow
+Page/Modal: /tracker/order/new
+
+Multi-step wizard (3 steps):
+
+Step 1: Order Information
+
+Form sections:
+
+Order Entry Method
+
+Radio button options:
+Manual Entry (default selected)
+Import from Document (PDF/Image) - shows file upload
+Link to Approved Draft - shows draft selector
+Basic Details
+
+Case Title (text input, required)
+Court/Authority (dropdown, required):
+Supreme Court
+High Courts (by state) - sub-dropdown
+District Courts
+RERA Authorities
+Consumer Forums
+Tribunals
+Other
+Case Number (text input)
+Order Date (date picker, required)
+Order Type (dropdown, required):
+Compliance Order
+Hearing Notice
+Judgment
+Interim Order
+Stay Order
+Summons
+Notice
+Priority (radio buttons, required):
+High (red indicator)
+Medium (orange)
+Low (gray)
+Order Summary
+
+Brief Summary (textarea, required)
+Minimum 50 characters
+Placeholder: "Describe the order and its key points..."
+Key Directions/Outcomes (textarea)
+Placeholder: "List the main directions or outcomes (one per line)"
+Buttons:
+
+"Cancel"
+"Next: Actions & Dates →" (primary)
+Step 2: Actions & Deadlines
+
+Dynamic form for adding action items:
+
+Action Item Block (repeatable):
+
+Section header: "Action 1"
+Fields:
+Action Required (text input, required)
+Description (textarea, optional)
+Deadline (date picker, required)
+Reminder Before (multi-select chips):
+1 day
+3 days
+7 days
+15 days
+Custom (shows number input)
+Assigned To (dropdown, required):
+User list with avatars
+Team list
+Status (dropdown):
+Pending (default)
+In Progress
+Completed
+Initial Progress (slider, 0-100%)
+"🗑️ Remove Action" button (if more than one action)
+"+ Add Another Action" button
+
+Important Dates Section:
+
+Next Hearing Date (date picker, optional)
+Hearing Venue (text input)
+Other Key Dates:
+Repeatable date + description fields
+"+ Add Date" button
+Buttons:
+
+"← Back"
+"Next: Attachments & Review →"
+Step 3: Attachments & Review
+
+Attach Documents
+
+File upload area:
+Drag & drop zone
+"Browse Files" button
+Accepted formats: PDF, DOC, DOCX, JPG, PNG (Max 10 MB each)
+Uploaded Files list:
+Filename with icon
+Size
+Remove button
+Link Related Items
+
+Related Draft (searchable dropdown)
+Precedents (multi-select search)
+"+ Link Precedents" button opens search modal
+Team & Notifications
+
+Add Watchers:
+Multi-select dropdown or chip input
+Shows selected users with avatars
+Notification checkboxes:
+Send notification to all assigned members
+Add to shared calendar
+Enable deadline reminders
+Review Summary
+
+Read-only card showing all entered data:
+Case title
+Court
+Order date
+Priority
+Total Actions: X
+Next Deadline: Date (Action name)
+Buttons:
+
+"← Back"
+"Save as Draft" (saves without creating)
+"Create Order & Track →" (primary)
+After creation:
+
+Success message: "Order ORDER-2024-XXX created successfully"
+Navigate to order detail view
+Send notifications to assigned members
+Calendar View
+Page: /calendar
+
+Purpose: Visual calendar showing all compliance deadlines and hearings.
+
+Header:
+
+Title: "Compliance Calendar"
+View switcher buttons: Day | Week | Month | List (Month selected by default)
+Navigation: "← Prev" | "Today" | "Next →"
+Current month/year display: "September 2024"
+Calendar Grid (Month View):
+
+7 columns (Sun - Sat)
+Each date cell shows:
+Date number
+Event indicators (colored dots or mini cards)
+If events present:
+Show first 2-3 events as compact cards
+Each card shows:
+Priority color indicator (left border)
+Action/Event title (truncated)
+Time (if applicable)
+"+X more" link if more events
+Clicking date shows all events for that day
+Event Color Coding:
+
+Red: Overdue
+Orange: Due today
+Yellow: Due this week
+Green: Upcoming
+Blue: Hearings/meetings
+Legend (below calendar):
+
+Color legend showing what each color means
+Selected Date Details Panel:
+When clicking a date:
+
+Panel slides in or expands below calendar
+Shows: "Selected Date: Oct 02, 2024 (Wednesday)"
+"📅 Events on This Day (2)"
+List of all events/actions for that day:
+Time (if set)
+Event type icon
+Title and case name
+Court/authority
+Action description
+Owner
+Buttons: "View Details" | "Mark Complete" | "Add to Calendar"
+Export Options (top right):
+
+Buttons:
+"Export Calendar (iCal)"
+"Sync with Google Calendar"
+"Print"
+Week View:
+
+Shows 7 columns for each day
+Time slots vertically
+Events placed in time slots
+All-day events at top
+Day View:
+
+Single column for selected day
+Hourly time slots
+All events listed
+List View:
+
+No calendar grid
+Shows all upcoming events in chronological order
+Grouped by date
+Searchable and filterable
+Integration: Draft → Tracker
+When a draft is approved in Feature 2:
+
+Modal appears: "Draft Approved - Create Tracking Entry?"
+
+Content:
+
+Success icon
+"✅ Draft #D-2024-001 has been approved"
+Draft info:
+Draft: Legal Notice - RERA Delayed Possession
+Approved by: Legal Head
+Approved on: Sep 30, 2024
+Divider
+"💡 Would you like to create a compliance tracking entry?"
+Explanation:
+"This will help you track:"
+Bullet list:
+When the notice was sent
+Response deadline
+Follow-up actions
+Next steps
+Pre-filled form preview (expandable):
+Case: Kumar vs ABC Builders (from draft)
+Type: Legal Notice
+Actions to Track:
+Checkbox: Notice sent (today)
+Checkbox: Response deadline (15 days)
+Checkbox: Follow-up if no response (20 days)
+Assigned To: Current user (editable)
+Buttons:
+"Skip" (secondary)
+"Customize First" (opens full create order flow with pre-filled data)
+"Create Tracking Entry →" (primary) - creates with defaults
+Common UI Patterns
+Loading States
+Full page loading: Spinner with message
+Inline loading: Skeleton screens for cards/lists
+Button loading: Spinner replaces button text, button disabled
+Progress indicators for multi-step processes
+Empty States
+Centered icon/illustration
+Title: "No [items] yet"
+Description explaining state
+Call-to-action button
+Helpful tips or suggestions
+Error States
+Alert/banner for errors
+Error messages next to form fields
+Toast notifications for action errors
+Retry buttons where applicable
+Help/support links
+Success States
+Toast notifications for successful actions
+Success icons/checkmarks
+Confirmation messages
+Auto-dismiss after 3-5 seconds
+Modals
+Overlay with backdrop (semi-transparent black)
+Centered modal container
+Close button (X) top-right
+Title section
+Content section (scrollable if long)
+Action buttons at bottom (cancel left, primary right)
+Click outside or ESC to close (unless critical action)
+Tooltips
+Show on hover
+Brief explanatory text
+Positioned near element (auto-adjust to stay in viewport)
+Arrow pointing to element
+Badges/Tags
+Small, rounded rectangles
+Color-coded by type/status
+Uppercase or mixed case text
+Used for status, priority, categories
+Cards
+White background (or surface color)
+Subtle shadow
+Rounded corners
+Padding inside
+Hover state (slight shadow increase or border)
+Clickable cards show pointer cursor
+Tables
+Header row with column titles
+Sortable columns (arrow indicators)
+Hover highlight on rows
+Alternating row colors optional
+Action column on right
+Responsive (stack on mobile)
+Forms
+Clear labels above or beside inputs
+Required field indicators (asterisk)
+Helper text below inputs
+Inline validation on blur
+Error messages in red below fields
+Success indicators (green checkmark)
+Group related fields visually
+Notifications/Toasts
+Slide in from top-right or bottom-right
+Auto-dismiss after 3-5 seconds (configurable)
+Manual close button
+Different types: Success (green), Error (red), Warning (orange), Info (blue)
+Stack multiple notifications
+Breadcrumbs
+Show current location in hierarchy
+Clickable previous levels
+Use " > " or "/" separator
+Example: "Home > Drafts > Draft #D-001"
+Pagination
+Show current page and total pages
+Previous/Next buttons
+Page number buttons (with ellipsis for many pages)
+Items per page selector
+"Showing X-Y of Z results" text
+Search
+Debounce input (wait 300ms after typing stops)
+Clear button when text entered
+Show results count
+Highlight matching terms in results
+Recent searches suggestions
+Responsive Design
+Breakpoints:
+
+Desktop: 1024px and above (primary focus)
+Tablet: 768px - 1023px
+Mobile: below 768px
+Mobile Adaptations:
+
+Hamburger menu for navigation
+Stack columns vertically
+Full-width cards
+Larger touch targets (min 44px)
+Simplified tables (stacked view or horizontal scroll)
+Bottom navigation bar for main features
+Floating action button for primary actions
+Accessibility
+All interactive elements keyboard accessible
+Focus indicators visible
+ARIA labels for icons and buttons
+Alt text for images
+Semantic HTML (headings, lists, etc.)
+Color contrast meets WCAG AA standards
+Form labels properly associated
+Error messages announced to screen readers
+Data Display Formats
+Dates: Show as "Sep 30, 2024" or "30 Sep 2024"
+Relative times: "2 hours ago", "3 days ago", "Just now"
+File sizes: "2.3 MB", "500 KB"
+Currency: "₹5,42,000" (Indian format with commas)
+Percentages: "95%", "80% complete"
+Case IDs: "ORDER-2024-001", "D-2024-001"
+Mock Data & Dummy Content
+For demonstration purposes, include:
+
+Users:
+
+John Doe (Legal Team, current user)
+Sarah Smith (Legal Counsel)
+Mike Roberts (Manager)
+Legal Head (Reviewer)
+Operations Team
+Finance Team
+Sample Cases:
+
+Kumar vs ABC Builders Ltd. (RERA delayed possession)
+Insurance Claim Appeal - XYZ Insurance
+Property Dispute - Delhi High Court
+Consumer Complaint - Appliance Defect
+Data Breach - Privacy Violation
+Sample Precedents (5-10 entries):
+
+Kumar vs ABC Builders (SC 2023)
+Residential Buyers vs Promoter XYZ (MH HC 2024)
+Singh vs Real Estate Developers (NCDRC 2024)
+Fortune Infrastructure vs Trevor D'Lima (SC 2018)
+Pioneer Urban Land (SC 2019)
+Sample Drafts (3-5 entries):
+
+Legal Notice - RERA Delayed Possession (Draft)
+Complaint - Insurance Rejection (Under Review)
+Consumer Complaint (Approved)
+Response Letter (Rejected)
+Sample Court Orders (5-10 entries):
+
+ORDER-2024-001: Kumar vs ABC Builders (Overdue)
+ORDER-2024-015: Insurance Claim Appeal (Overdue)
+ORDER-2024-023: Property Dispute Hearing (Due this week)
+ORDER-2024-019: RERA Penalty Payment (Due this week)
+ORDER-2024-024: Builder Case (In Progress)
+Implementation Notes
+State Management:
+
+Use Zustand stores for:
+User state (authentication, profile)
+Draft state (current draft, drafts list)
+Precedent search state (results, filters)
+Tracker state (orders, actions, stats)
+Notification state (unread count, notifications list)
+API Integration Preparation:
+
+Create API service layer with functions for each endpoint
+Use mock data initially
+Structure for easy backend integration later
+Request/response type definitions
+Route Protection:
+
+Assume user is authenticated (demo mode)
+Optional: Add login page for completeness (mock authentication)
+Local Storage:
+
+Save user preferences (theme, view settings)
+Cache recent searches
+Store draft auto-saves
+Performance:
+
+Lazy load routes
+Virtualize long lists (search results, activity logs)
+Debounce search inputs
+Optimize images
+Summary
+Build a comprehensive, professional legal operations platform with four integrated features:
+
+Research Co-Pilot: AI chat interface for legal research with citations
+Draft Orchestrator: Multi-step draft creation with AI assistance, review workflow, and discussion system
+Precedent Intelligence: Searchable library of court precedents with auto-scraping capabilities
+Compliance Tracker: Court order and deadline tracking with calendar views
+Focus on professional design, intuitive user experience, and showcasing the power of AI in legal operations. Create a cohesive platform where all features integrate seamlessly, demonstrating how legal professionals can streamline their workflow from research to draft creation to compliance management.
