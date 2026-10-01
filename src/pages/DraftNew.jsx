@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
-  ArrowRight, ArrowLeft, Check, Search, Sparkles, FileText, X, Info,
+  ArrowRight, ArrowLeft, Check, Search, Sparkles, FileText,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Card } from '../components/ui'
-import { draftTypes, courtOptions } from '../data/mockData'
+import { draftTypes } from '../data/mockData'
 import toast from 'react-hot-toast'
 
 const generationStages = [
@@ -249,7 +249,7 @@ function Step3({ data, onComplete }) {
   const [stage, setStage] = useState(0)
   const [progress, setProgress] = useState(0)
 
-  useState(() => {
+  useEffect(() => {
     let current = 0
     generationStages.forEach((s, i) => {
       setTimeout(() => setStage(i), current)
