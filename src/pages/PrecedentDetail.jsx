@@ -5,7 +5,7 @@ import {
   CheckCircle, AlertTriangle, Gavel, Link2, TrendingUp,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
-import { Button, Card, Badge } from '../components/ui'
+import { Button, Card, Badge, Breadcrumb } from '../components/ui'
 import toast from 'react-hot-toast'
 
 export default function PrecedentDetail() {
@@ -28,6 +28,7 @@ export default function PrecedentDetail() {
 
   return (
     <div className="p-4 lg:p-6 max-w-5xl mx-auto">
+      <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Precedents', path: '/precedents' }, { label: precedent.caseTitle }]} />
       <Link to="/precedents" className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 mb-4">
         <ArrowLeft size={16} /> Back to Search
       </Link>

@@ -11,6 +11,7 @@ import Tracker from './pages/Tracker'
 import OrderDetail from './pages/OrderDetail'
 import Calendar from './pages/Calendar'
 import OrderNew from './pages/OrderNew'
+import ScrapingDashboard from './pages/ScrapingDashboard'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/tracker/order/new" element={<OrderNew />} />
         <Route path="/tracker/order/:id" element={<OrderDetail />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/precedents/updates" element={<ScrapingDashboard />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

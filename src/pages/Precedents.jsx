@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Search, RefreshCw, SlidersHorizontal, Star, Share2, FileText, Paperclip,
-  ChevronDown, ChevronUp, Download, BookOpen, X, TrendingUp,
+  ChevronDown, ChevronUp, Download, BookOpen, X, TrendingUp, BarChart3,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Card, Badge, EmptyState, formatDate } from '../components/ui'
@@ -150,6 +150,7 @@ export default function Precedents() {
           />
         </div>
         <Button variant="secondary" onClick={() => toast.success('Fetching latest court orders from web...')}><RefreshCw size={16} /> Fetch Latest from Web</Button>
+        <Button variant="secondary" onClick={() => navigate('/precedents/updates')}><BarChart3 size={16} /> Auto-Scraping Status</Button>
         <Button variant="secondary" onClick={() => setShowFilters(true)}><SlidersHorizontal size={16} /> Advanced Filters</Button>
       </div>
 

@@ -174,3 +174,20 @@ export function formatDate(dateStr, format = 'short') {
 export function formatCurrency(amount) {
   return '₹' + new Intl.NumberFormat('en-IN').format(amount)
 }
+
+export function Breadcrumb({ items }) {
+  return (
+    <nav className="flex items-center gap-1.5 text-sm mb-4 flex-wrap">
+      {items.map((item, i) => (
+        <span key={i} className="flex items-center gap-1.5">
+          {item.path ? (
+            <a href={item.path} className="text-blue-600 hover:text-blue-700">{item.label}</a>
+          ) : (
+            <span className="text-slate-500">{item.label}</span>
+          )}
+          {i < items.length - 1 && <span className="text-slate-300">/</span>}
+        </span>
+      ))}
+    </nav>
+  )
+}

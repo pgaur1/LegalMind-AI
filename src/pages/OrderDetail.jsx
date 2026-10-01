@@ -6,7 +6,7 @@ import {
   Paperclip, ChevronRight,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
-import { Button, Card, Badge, StatusBadge, PriorityBadge, Avatar, formatDate, timeAgo } from '../components/ui'
+import { Button, Card, Badge, StatusBadge, PriorityBadge, Avatar, formatDate, timeAgo, Breadcrumb } from '../components/ui'
 import toast from 'react-hot-toast'
 
 const activityIcons = {

@@ -6,7 +6,7 @@ import {
   ThumbsUp, ThumbsDown, RotateCcw, List,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
-import { Button, Card, Badge, StatusBadge, Avatar, Modal, formatDate, timeAgo } from '../components/ui'
+import { Button, Card, Badge, StatusBadge, Avatar, Modal, formatDate, timeAgo, Breadcrumb } from '../components/ui'
 import { users } from '../data/mockData'
 import toast from 'react-hot-toast'
 
@@ -193,6 +193,62 @@ function ReResearchModal({ open, onClose, draft }) {
   )
 }
 
+function TrackingEntryModal({ open, onClose, draft, onCreate, onSkip }) {
+  const [actions, setActions] = useState({
+    noticeSent: true,
+    responseDeadline: true,
+    followUp: true,
+  })
+
+  return (
+    <Modal open={open} onClose={onClose} title="Draft Approved - Create Tracking Entry?" maxWidth="max-w-lg">
+      <div className="space-y-4">
+        <div className="text-center py-3">
+          <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <Check size={28} className="text-green-600" />
+          </div>
+          <p className="text-lg font-semibold text-slate-900">Draft #{draft.id} has been approved</p>
+        </div>
+        <div className="bg-slate-50 rounded-lg p-4 space-y-1.5 text-sm">
+          <div className="flex justify-between"><span className="text-slate-500">Draft:</span><span className="text-slate-800 font-medium">{draft.title}</span></div>
+          <div className="flex justify-between"><span className="text-slate-500">Approved by:</span><span className="text-slate-800">Legal Head</span></div>
+          <div className="flex justify-between"><span className="text-slate-500">Approved on:</span><span className="text-slate-800">Sep 30, 2024</span></div>
+        </div>
+        <div className="bg-blue-50 rounded-lg p-4">
+          <p className="text-sm font-medium text-blue-800 mb-2">Would you like to create a compliance tracking entry?</p>
+          <p className="text-xs text-blue-700 mb-2">This will help you track:</p>
+          <ul className="text-xs text-blue-700 space-y-1 ml-4 list-disc">
+            <li>When the notice was sent</li>
+            <li>Response deadline</li>
+            <li>Follow-up actions</li>
+            <li>Next steps</li>
+          </ul>
+        </div>
+        <div className="border border-slate-200 rounded-lg p-4">
+          <p className="text-sm font-medium text-slate-700 mb-2">Pre-filled Tracking Form:</p>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between"><span className="text-slate-500">Case:</span><span className="text-slate-800">{draft.caseName}</span></div>
+            <div className="flex justify-between"><span className="text-slate-500">Type:</span><span className="text-slate-800">{draft.typeName}</span></div>
+            <p className="text-slate-500 mt-2">Actions to Track:</p>
+            <div className="space-y-1.5">
+              <label className="flex items-center gap-2"><input type="checkbox" checked={actions.noticeSent} onChange={e => setActions({ ...actions, noticeSent: e.target.checked })} className="rounded border-slate-300" /><span className="text-sm text-slate-700">Notice sent (today)</span></label>
+              <label className="flex items-center gap-2"><input type="checkbox" checked={actions.responseDeadline} onChange={e => setActions({ ...actions, responseDeadline: e.target.checked })} className="rounded border-slate-300" /><span className="text-sm text-slate-700">Response deadline (15 days)</span></label>
+              <label className="flex items-center gap-2"><input type="checkbox" checked={actions.followUp} onChange={e => setActions({ ...actions, followUp: e.target.checked })} className="rounded border-slate-300" /><span className="text-sm text-slate-700">Follow-up if no response (20 days)</span></label>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between gap-2 pt-2">
+          <Button variant="ghost" onClick={onSkip}>Skip</Button>
+          <div className="flex gap-2">
+            <Button variant="secondary" onClick={() => { onClose(); onCreate('customize') }}>Customize First</Button>
+            <Button variant="primary" onClick={() => { onClose(); onCreate('create') }}>Create Tracking Entry</Button>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  )
+}
+
 export default function DraftWorkspace() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -207,6 +263,7 @@ export default function DraftWorkspace() {
   const [showSources, setShowSources] = useState(false)
   const [sourceModal, setSourceModal] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [showTracking, setShowTracking] = useState(false)
 
   if (!draft) {
     return (
@@ -326,6 +383,7 @@ export default function DraftWorkspace() {
             <div className="flex items-center gap-3">
               <Link to="/drafts" className="p-1.5 hover:bg-slate-100 rounded-lg"><ArrowLeft size={18} className="text-slate-500" /></Link>
               <div>
+                <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Drafts', path: '/drafts' }, { label: `Draft #${draft.id}` }]} />
                 <h1 className="font-semibold text-slate-900">{draft.title}</h1>
                 <p className="text-xs text-slate-500">{draft.caseName}</p>
               </div>
@@ -350,7 +408,7 @@ export default function DraftWorkspace() {
                 </Button>
               )}
               {draft.status === 'approved' && (
-                <Button variant="success" size="sm" onClick={() => toast.success('Tracking entry created')}><Check size={14} /> Create Tracking Entry</Button>
+                <Button variant="success" size="sm" onClick={() => setShowTracking(true)}><Check size={14} /> Create Tracking Entry</Button>
               )}
               <div className="relative group">
                 <Button variant="secondary" size="sm"><Download size={14} /> Download</Button>
@@ -446,6 +504,21 @@ export default function DraftWorkspace() {
           </div>
         )}
       </Modal>
+
+      <TrackingEntryModal
+        open={showTracking}
+        onClose={() => setShowTracking(false)}
+        draft={draft}
+        onSkip={() => { setShowTracking(false); toast('Tracking entry skipped') }}
+        onCreate={(mode) => {
+          if (mode === 'create') {
+            toast.success('Tracking entry created with defaults')
+            navigate('/tracker')
+          } else {
+            navigate('/tracker/order/new')
+          }
+        }}
+      />
     </div>
   )
 }
