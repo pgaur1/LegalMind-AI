@@ -1,0 +1,1011 @@
+{
+  "sections": [
+    {
+      "entity_id": "section_001",
+      "section_number": "Section 3",
+      "act": "IRDAI Act",
+      "act_year": "1999",
+      "title": "ESTABLISHMENT",
+      "description": "Insurance Regulatory and Development Authority of India (IRDAI) established as statutory body.\n\nCOMPOSITION:\n- Chairperson (appointed by Central Government)\n- 10 Members:\n  * 5 full-time members\n  * 4 part-time members (Government nominees)\n  * 1 member from SEBI\n\nHEADQUARTERS: Hyderabad\n\nFUNCTIONS OF IRDAI (",
+      "key_provisions": [
+        "Chairperson (appointed by Central Government)",
+        "4 part-time members (Government nominees)"
+      ]
+    },
+    {
+      "entity_id": "section_002",
+      "section_number": "Section 14",
+      "act": "IRDAI Act",
+      "act_year": "1999",
+      "title": ")",
+      "description": "1. REGULATORY FUNCTIONS:\n✓ Issue licenses to insurers, intermediaries\n✓ Renew, suspend, cancel licenses\n✓ Regulate premium rates\n✓ Regulate investment of funds\n✓ Regulate maintenance of solvency margins\n✓ Regulate insurance agents training\n\n2. DEVELOPMENTAL FUNCTIONS:\n✓ Promote growth of insurance industry\n✓ Encourage insurance penetration\n✓ Protect policyholders' interests\n✓ Establish grievance redressal machinery\n✓ Promote professional organizations\n\n3. MONITORING FUNCTIONS:\n✓ Conduct inspecti",
+      "key_provisions": [
+        "Issue licenses to insurers, intermediaries",
+        "Renew, suspend, cancel licenses",
+        "Regulate premium rates",
+        "Regulate investment of funds",
+        "Regulate maintenance of solvency margins"
+      ]
+    },
+    {
+      "entity_id": "section_003",
+      "section_number": "Section 2",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "DEFINITIONS",
+      "description": "- Insurance business\n- Life insurance\n- General insurance\n- Insurer, insured, policyholder\n- Premium, policy, sum insured\n\nPART II - BUSINESS OF INSURANCE (Sections 3-16)",
+      "key_provisions": [
+        "Insurer, insured, policyholder",
+        "Premium, policy, sum insured"
+      ]
+    },
+    {
+      "entity_id": "section_004",
+      "section_number": "Section 3",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "PROHIBITION OF INSURANCE BUSINESS",
+      "description": "- No person shall carry on insurance business in India unless:\n  * Registered under Companies Act\n  * Holds certificate from IRDAI\n- Penalty: Imprisonment up to 3 years + fine",
+      "key_provisions": [
+        "No person shall carry on insurance business in India unless:",
+        "Registered under Companies Act",
+        "Holds certificate from IRDAI",
+        "Penalty: Imprisonment up to 3 years + fine"
+      ]
+    },
+    {
+      "entity_id": "section_005",
+      "section_number": "Section 5",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "DEPOSIT WITH CENTRAL GOVERNMENT",
+      "description": "- Life insurer: Rs. 5 crores\n- General insurer: Rs. 10 crores",
+      "key_provisions": [
+        "Life insurer: Rs. 5 crores",
+        "General insurer: Rs. 10 crores"
+      ]
+    },
+    {
+      "entity_id": "section_006",
+      "section_number": "Section 6",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "CAPITAL REQUIREMENTS",
+      "description": "- Minimum paid-up capital:\n  * Life insurance: Rs. 100 crores\n  * General insurance: Rs. 100 crores\n  * Reinsurance: Rs. 200 crores",
+      "key_provisions": [
+        "Minimum paid-up capital:",
+        "Life insurance: Rs. 100 crores",
+        "General insurance: Rs. 100 crores",
+        "Reinsurance: Rs. 200 crores"
+      ]
+    },
+    {
+      "entity_id": "section_007",
+      "section_number": "Section 10",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "SHARE TRANSFER RESTRICTIONS",
+      "description": "- Prior approval required for transfer of shares exceeding 5%",
+      "key_provisions": [
+        "Prior approval required for transfer of shares exceeding 5%"
+      ]
+    },
+    {
+      "entity_id": "section_008",
+      "section_number": "Section 11",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "CHANGE IN MANAGEMENT",
+      "description": "- Prior approval from IRDAI required for:\n  * Appointment/removal of CEO, MD, Directors\n  * Change in shareholding pattern",
+      "key_provisions": [
+        "Prior approval from IRDAI required for:",
+        "Appointment/removal of CEO, MD, Directors",
+        "Change in shareholding pattern"
+      ]
+    },
+    {
+      "entity_id": "section_009",
+      "section_number": "Section 14",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "POLICY TO SPECIFY MATTERS",
+      "description": "Insurance policy must clearly state:\n- Names of parties\n- Premium amount and payment terms\n- Sum insured\n- Events covered/excluded\n- Terms and conditions\n- Nomination facility\n\nPART III - MANAGEMENT (Sections 17-29)",
+      "key_provisions": [
+        "Premium amount and payment terms",
+        "Events covered/excluded"
+      ]
+    },
+    {
+      "entity_id": "section_010",
+      "section_number": "Section 17",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "BOARD OF DIRECTORS",
+      "description": "- At least 50% directors with professional experience\n- Independent directors (as per Companies Act)",
+      "key_provisions": [
+        "At least 50% directors with professional experience",
+        "Independent directors (as per Companies Act)"
+      ]
+    },
+    {
+      "entity_id": "section_011",
+      "section_number": "Section 27A",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "CHIEF EXECUTIVE OFFICER",
+      "description": "- Appointment, removal, remuneration subject to IRDAI approval\n\nPART IV - INVESTMENTS (Sections 27AA-29)",
+      "key_provisions": [
+        "Appointment, removal, remuneration subject to IRDAI approval"
+      ]
+    },
+    {
+      "entity_id": "section_012",
+      "section_number": "Section 27",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "A",
+      "description": "INVESTMENT REGULATIONS:\n- Minimum % in approved securities:\n  * Government securities\n  * Government guaranteed bonds\n  * Infrastructure bonds\n- Maximum exposure limits per investee",
+      "key_provisions": [
+        "Minimum % in approved securities:",
+        "Government securities",
+        "Government guaranteed bonds",
+        "Maximum exposure limits per investee"
+      ]
+    },
+    {
+      "entity_id": "section_013",
+      "section_number": "Section 27",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "B",
+      "description": "MAINTENANCE OF ASSETS:\n- Adequate assets to meet liabilities\n- Solvency margin requirements\n\nPART V - MISCELLANEOUS PROVISIONS (Sections 30-114)",
+      "key_provisions": [
+        "Adequate assets to meet liabilities",
+        "Solvency margin requirements"
+      ]
+    },
+    {
+      "entity_id": "section_014",
+      "section_number": "Section 38",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "ASSIGNMENT AND NOMINATION",
+      "description": "- Policyholder can assign policy rights\n- Nomination facility in life insurance\n- Assignment takes precedence over nomination",
+      "key_provisions": [
+        "Policyholder can assign policy rights",
+        "Nomination facility in life insurance",
+        "Assignment takes precedence over nomination"
+      ]
+    },
+    {
+      "entity_id": "section_015",
+      "section_number": "Section 39",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "NOMINATION",
+      "description": "- Life insurance only\n- Can nominate one or more persons\n- Nomination can be changed anytime\n- Nominee rights vs legal heirs rights",
+      "key_provisions": [
+        "Can nominate one or more persons",
+        "Nomination can be changed anytime",
+        "Nominee rights vs legal heirs rights"
+      ]
+    },
+    {
+      "entity_id": "section_016",
+      "section_number": "Section 40",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "LIMIT ON INSURANCE PREMIUM",
+      "description": "- Payment through cash limited to Rs. 50,000\n- Higher premiums via cheque/electronic mode only",
+      "key_provisions": [
+        "Payment through cash limited to Rs. 50,000",
+        "Higher premiums via cheque/electronic mode only"
+      ]
+    },
+    {
+      "entity_id": "section_017",
+      "section_number": "Section 41",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "PROHIBITION OF INDUCEMENT",
+      "description": "- No person shall offer rebate/incentive beyond policy terms\n- Penalty: Rs. 10 lakhs + cancellation of license",
+      "key_provisions": [
+        "No person shall offer rebate/incentive beyond policy terms",
+        "Penalty: Rs. 10 lakhs + cancellation of license"
+      ]
+    },
+    {
+      "entity_id": "section_018",
+      "section_number": "Section 42",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "COMMENCEMENT OF RISK",
+      "description": "- Risk commences from date of policy issuance\n- Premium must be paid before commencement",
+      "key_provisions": [
+        "Risk commences from date of policy issuance",
+        "Premium must be paid before commencement"
+      ]
+    },
+    {
+      "entity_id": "section_019",
+      "section_number": "Section 45",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "POLICY NOT TO BE CALLED IN QUESTION",
+      "description": "MOST IMPORTANT PROVISION FOR POLICYHOLDERS\n\n\"No policy of life insurance shall be called in question on any ground whatsoever after the expiry of three years from:\n(a) the date of the policy, or\n(b) the date of commencement of risk, or\n(c) the date of revival of the policy, or\n(d) the date of the rider, whichever is later\"\n\nKEY POINTS:\n- Policy becomes incontestable after 3 years\n- Insurer cannot reject claim on ground of non-disclosure\n- Exceptions: Fraud proven with clear evidence\n- Burden of ",
+      "key_provisions": [
+        "Policy becomes incontestable after 3 years"
+      ]
+    },
+    {
+      "entity_id": "section_020",
+      "section_number": "Section 47",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "INSURABLE INTEREST",
+      "description": "Life Insurance:\n- Insurable interest required at inception\n- Not required at claim stage\n\nGeneral Insurance:\n- Insurable interest required at inception and claim stage",
+      "key_provisions": [
+        "Insurable interest required at inception",
+        "Not required at claim stage",
+        "Insurable interest required at inception and claim stage"
+      ]
+    },
+    {
+      "entity_id": "section_021",
+      "section_number": "Section 54",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "INSURER TO FURNISH INFORMATION",
+      "description": "- Policyholders entitled to policy documents\n- Information about premium allocation\n- Fund performance (in ULIP/investment plans)",
+      "key_provisions": [
+        "Policyholders entitled to policy documents",
+        "Information about premium allocation",
+        "Fund performance (in ULIP/investment plans)"
+      ]
+    },
+    {
+      "entity_id": "section_022",
+      "section_number": "Section 64VB",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "INSURANCE OMBUDSMAN",
+      "description": "- Free grievance redressal mechanism\n- Awards up to Rs. 50 lakhs (now Rs. 1 crore from 2024)\n- Binding on insurer (not on policyholder)",
+      "key_provisions": [
+        "Free grievance redressal mechanism",
+        "Awards up to Rs. 50 lakhs (now Rs. 1 crore from 2024)",
+        "Binding on insurer (not on policyholder)"
+      ]
+    },
+    {
+      "entity_id": "section_023",
+      "section_number": "Section 64UM",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "CLAIM SETTLEMENT",
+      "description": "- Claims must be settled/repudiated within 30 days\n- Delay requires intimation to policyholder with reasons\n- Interest payable on delayed settlements",
+      "key_provisions": [
+        "Claims must be settled/repudiated within 30 days",
+        "Delay requires intimation to policyholder with reasons",
+        "Interest payable on delayed settlements"
+      ]
+    },
+    {
+      "entity_id": "section_024",
+      "section_number": "Section 101",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "CONTROLLER OF INSURANCE ACCOUNT",
+      "description": "- Government appoints Controller\n- Oversees accounts and financial health",
+      "key_provisions": [
+        "Government appoints Controller",
+        "Oversees accounts and financial health"
+      ]
+    },
+    {
+      "entity_id": "section_025",
+      "section_number": "Section 102",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "RETURNS",
+      "description": "- Annual returns to IRDAI\n- Balance sheet, profit & loss account\n- Actuarial reports",
+      "key_provisions": [
+        "Annual returns to IRDAI",
+        "Balance sheet, profit & loss account"
+      ]
+    },
+    {
+      "entity_id": "section_026",
+      "section_number": "Section 110",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "PENALTIES",
+      "description": "- Violation of Act: Up to Rs. 10 lakhs\n- Repeat violation: Cancellation of license\n- Imprisonment for major violations",
+      "key_provisions": [
+        "Violation of Act: Up to Rs. 10 lakhs",
+        "Repeat violation: Cancellation of license",
+        "Imprisonment for major violations"
+      ]
+    },
+    {
+      "entity_id": "section_027",
+      "section_number": "Section 110A",
+      "act": "Insurance Act",
+      "act_year": "1938",
+      "title": "WINDING UP",
+      "description": "- Only court can wind up insurance company\n- Policyholders' interests protected first\n\nKEY AMENDMENTS:\n\n2015 AMENDMENT:\n✓ Increased FDI limit to 49% (now 74% from 2021)\n✓ Raised capital requirements\n✓ Strengthened",
+      "key_provisions": [
+        "Only court can wind up insurance company",
+        "Policyholders' interests protected first",
+        "Increased FDI limit to 49% (now 74% from 2021)",
+        "Raised capital requirements"
+      ]
+    },
+    {
+      "entity_id": "section_028",
+      "section_number": "Section 2(d)",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "ALLOTTEE",
+      "description": "Person who purchases apartment/plot",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_029",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(zn) - REAL ESTATE PROJECT",
+      "description": "Development of buildings with >8 apartments",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_030",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(zm) - PROMOTER",
+      "description": "Person who develops/constructs real estate project",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_031",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(zt) - REAL ESTATE AGENT",
+      "description": "Person facilitating transactions\n\nREGISTRATION & COMPLIANCE:",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_032",
+      "section_number": "Section 3",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "REGISTRATION MANDATORY",
+      "description": "- All projects must register with RERA\n- Details: land status, approvals, layout, completion timeline\n- Penalty for non-registration: Up to 10% of project cost",
+      "key_provisions": [
+        "All projects must register with RERA",
+        "Details: land status, approvals, layout, completion timeline",
+        "Penalty for non-registration: Up to 10% of project cost"
+      ]
+    },
+    {
+      "entity_id": "section_033",
+      "section_number": "Section 4",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "REGISTRATION VALIDITY",
+      "description": "- Valid till completion certificate issued\n- Can be extended on application",
+      "key_provisions": [
+        "Valid till completion certificate issued",
+        "Can be extended on application"
+      ]
+    },
+    {
+      "entity_id": "section_034",
+      "section_number": "Section 11",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "PROMOTER'S OBLIGATIONS",
+      "description": "(4)(a) Complete project as per sanctioned plans\n(4)(b) Deposit 70% of amounts in separate bank account\n(4)(c) Get completion/occupancy certificate\n(4)(d) Transfer land title, common areas to association",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_035",
+      "section_number": "Section 13",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "ALTERATION/MODIFICATION",
+      "description": "- Only with consent of 2/3 allottees + Authority approval\n- Minor alterations with Authority approval only\n\nALLOTTEES' RIGHTS:",
+      "key_provisions": [
+        "Only with consent of 2/3 allottees + Authority approval",
+        "Minor alterations with Authority approval only"
+      ]
+    },
+    {
+      "entity_id": "section_036",
+      "section_number": "Section 18",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "DELAYED POSSESSION REMEDIES",
+      "description": "If promoter fails to give possession:\n(a) Withdraw & claim refund with interest\n(b) Wait and claim interest till possession\n(c) Seek compensation from promoter",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_037",
+      "section_number": "Section 19",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "INTEREST RATE",
+      "description": "- Same rate for promoter's delay and allottee's default\n- Prescribed by state rules (typically MCLR + 2%)",
+      "key_provisions": [
+        "Same rate for promoter's delay and allottee's default",
+        "Prescribed by state rules (typically MCLR + 2%)"
+      ]
+    },
+    {
+      "entity_id": "section_038",
+      "section_number": "Section 14",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "ADHERENCE TO SANCTIONED PLANS",
+      "description": "- Promoter must follow approved plans\n- Changes only with authority permission\n\nPENALTIES & ENFORCEMENT:",
+      "key_provisions": [
+        "Promoter must follow approved plans",
+        "Changes only with authority permission"
+      ]
+    },
+    {
+      "entity_id": "section_039",
+      "section_number": "Section 59",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "PENALTY FOR PROMOTER",
+      "description": "- Non-compliance: Up to 5% of project cost\n- Repeat offense: Imprisonment up to 3 years",
+      "key_provisions": [
+        "Non-compliance: Up to 5% of project cost",
+        "Repeat offense: Imprisonment up to 3 years"
+      ]
+    },
+    {
+      "entity_id": "section_040",
+      "section_number": "Section 61",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "PENALTY FOR AGENT",
+      "description": "- Rs. 10,000 per day (max Rs. 5 lakhs)",
+      "key_provisions": [
+        "Rs. 10,000 per day (max Rs. 5 lakhs)"
+      ]
+    },
+    {
+      "entity_id": "section_041",
+      "section_number": "Section 64",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "PENALTY FOR ALLOTTEE",
+      "description": "- Interest on delayed payments as per agreement",
+      "key_provisions": [
+        "Interest on delayed payments as per agreement"
+      ]
+    },
+    {
+      "entity_id": "section_042",
+      "section_number": "Section 69",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "OFFENCES BY COMPANIES",
+      "description": "- Company + every officer in default liable",
+      "key_provisions": [
+        "Company + every officer in default liable"
+      ]
+    },
+    {
+      "entity_id": "section_043",
+      "section_number": "Section 71",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "ADJUDICATING OFFICER",
+      "description": "- Power to adjudicate compensation\n- Up to Rs. 1 crore per complaint\n\nAUTHORITIES ESTABLISHED:\n\n1. REAL ESTATE REGULATORY AUTHORITY (RERA):\n- Registration of projects\n- Registration of agents\n- Complaints against promoters\n- Monitoring compliance\n\n2. REAL ESTATE APPELLATE TRIBUNAL:\n- Appeals from RERA orders\n- 60-day timeline for orders",
+      "key_provisions": [
+        "Power to adjudicate compensation",
+        "Up to Rs. 1 crore per complaint",
+        "Registration of projects",
+        "Registration of agents",
+        "Complaints against promoters"
+      ]
+    },
+    {
+      "entity_id": "section_044",
+      "section_number": "Section 43",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "APPEAL TO TRIBUNAL",
+      "description": "- Within 60 days of RERA order\n- Deposit as may be directed",
+      "key_provisions": [
+        "Within 60 days of RERA order",
+        "Deposit as may be directed"
+      ]
+    },
+    {
+      "entity_id": "section_045",
+      "section_number": "Section 44",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "APPEAL TO HIGH COURT",
+      "description": "- Only on substantial question of law\n- As per",
+      "key_provisions": [
+        "Only on substantial question of law"
+      ]
+    },
+    {
+      "entity_id": "section_046",
+      "section_number": "Section 11",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": ")",
+      "description": "Promoter must disclose:\n- Project registration number\n- Quarterly updates on project status\n- Website with project details\n- Carpet area (not super area)\n- All approvals obtained\n- Completion schedule\n\nFINANCIAL DISCIPLINE:",
+      "key_provisions": [
+        "Project registration number",
+        "Quarterly updates on project status",
+        "Website with project details",
+        "Carpet area (not super area)",
+        "All approvals obtained"
+      ]
+    },
+    {
+      "entity_id": "section_047",
+      "section_number": "Section 4(2)(l)",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(D) - 70% ACCOUNT",
+      "description": "- 70% of amounts received to be deposited\n- Separate account for each project\n- Withdrawals only for:\n  * Land cost\n  * Construction cost\n  * Proportionate to % completion\n- Certified by CA/Engineer + promoter\n\nPENALTIES FOR VIOLATIONS:\n\nNature | Penalty\n-------|--------\nNon-registration | 10% of project cost\nViolation of orders | 5% of project cost\nPer day penalty | Up to Rs. 5 crores\nFalse information | 5% of project cost\nAgent violation | Rs. 10,000/day (max Rs. 5L)\nObstruction | 3 months imp",
+      "key_provisions": [
+        "70% of amounts received to be deposited",
+        "Separate account for each project",
+        "Withdrawals only for:",
+        "Proportionate to % completion",
+        "Certified by CA/Engineer + promoter"
+      ]
+    },
+    {
+      "entity_id": "section_048",
+      "section_number": "Section 3",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": ")",
+      "description": "Not applicable to:\n- Renovation/repair without re-allotment\n- Government projects\n- Industrial/commercial projects (some states)\n- Projects with completion certificate\n\nIMPACT:\n\n✓ Transparency in real estate sector\n✓ Accountability of promoters\n✓ Time-bound project completion\n✓ Standardized carpet area definition\n✓ Reduced buyer grievances\n✓ Escrow account protection\n\nCHALLENGES:\n\n✗ Many states delayed rules framing\n✗ Pending cases backlog\n✗ Some builders avoiding registration\n✗ Limited RERA Aut",
+      "key_provisions": [
+        "Renovation/repair without re-allotment",
+        "Industrial/commercial projects (some states)",
+        "Projects with completion certificate",
+        "Transparency in real estate sector",
+        "Accountability of promoters"
+      ]
+    },
+    {
+      "entity_id": "section_049",
+      "section_number": "Section 1",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "8",
+      "description": "(a) Failure to give possession as per agreement terms/date\n(b) Discontinuance of business due to registration revocation\n\n2. TWO OPTIONS FOR ALLOTTEE:\n\nOPTION A: WITHDRAW FROM PROJECT\n- Claim full refund of amount paid\n- Plus interest at prescribed rate\n- Plus compensation for losses\n- Terminates agreement\n- No further obligations\n\nOPTION B: CONTINUE WITH PROJECT\n- Don't withdraw\n- Claim interest for delay period\n- Interest till possession given\n- Agreement continues\n- Right to possession mainta",
+      "key_provisions": [
+        "Claim full refund of amount paid",
+        "Plus interest at prescribed rate",
+        "Plus compensation for losses"
+      ]
+    },
+    {
+      "entity_id": "section_050",
+      "section_number": "Section 18",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": ", compensation includes",
+      "description": "- Actual financial loss\n- Rent paid due to delayed possession\n- Increased property prices (opportunity loss)\n- Mental agony (as per consumer law precedents)\n\nClaimed separately under Sections 71-72 before Adjudicating Officer.\n\n8. ENFORCEMENT:\n\nIf promoter doesn't comply:\n- Recovery as arrears of land revenue\n- Attachment of property\n- Prosecution under",
+      "key_provisions": [
+        "Actual financial loss",
+        "Rent paid due to delayed possession",
+        "Increased property prices (opportunity loss)",
+        "Mental agony (as per consumer law precedents)"
+      ]
+    },
+    {
+      "entity_id": "section_051",
+      "section_number": "Section 19(4)",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "SYMMETRY",
+      "description": "\"The promoter shall be liable to pay such interest for every month of delay, till the handing over of the possession, which shall be at the same rate as the promoter shall be liable to the allottee, in case of default.\"\n\nMeaning: Same interest rate applies to:\n- Promoter's delay in giving possession\n- Allottee's delay in paying installments\n\nPRACTICAL APPLICATION:\n\nScenario 1: WITHDRAWAL\n- Agreement date: 2020\n- Due possession: 2022\n- Amount paid: Rs. 50 lakhs\n- Delay: 2 years\n- Interest @ 10.85",
+      "key_provisions": [
+        "Promoter's delay in giving possession",
+        "Allottee's delay in paying installments"
+      ]
+    },
+    {
+      "entity_id": "section_052",
+      "section_number": "Section 18",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "& 19)",
+      "description": "UNIFORM FORMULA: State Bank of India MCLR + X%\n\nState | Rate\n------|------\nMaharashtra | MCLR + 2%\nKarnataka | MCLR + 2%\nUttar Pradesh | MCLR + 1%\nHaryana | MCLR + 2%\nRajasthan | MCLR + 2%\nGujarat | MCLR + 2%\nTamil Nadu | MCLR + 2%\nDelhi | MCLR + 2%\nTelangana | MCLR + 2%\nMadhya Pradesh | MCLR + 2%\n\nCurrent MCLR ~8.85%, so typical rate: 10.85% per annum\n\n4. 70% BANK ACCOUNT RULE:\nAll states implement",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_053",
+      "section_number": "Section 4(2)(l)",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(D)",
+      "description": "- 70% of collections in separate account\n- Project-wise accounts\n- Withdrawals certified by CA/Engineer\n- Proportionate to completion\n\n5. CARPET AREA DEFINITION:\nCentral Definition (Uniform):\n\"Net usable floor area of an apartment, excluding area covered by external walls, areas under services shafts, exclusive balcony or verandah area and exclusive open terrace area, but includes areas covered by internal partition walls\"\n\nKey: Balcony NOT included in carpet area.\n\n6. QUARTERLY PROGRESS REPORT:",
+      "key_provisions": [
+        "70% of collections in separate account",
+        "Project-wise accounts",
+        "Withdrawals certified by CA/Engineer",
+        "Proportionate to completion"
+      ]
+    },
+    {
+      "entity_id": "section_054",
+      "section_number": "Section 55",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "CONTRACT ACT APPLICATION",
+      "description": "\"if the party chooses to remain silent, he forfeits his right to contend that he did not agree to the revised date.\" Notice of intention to claim compensation required at time of accepting delayed performance.\n\n3. FORCE MAJEURE: COVID-19 circular dated 18th May, 2020 provided six-month moratorium (1st February to 30th June, 2020) to be excluded from interest calculation.\n\nRespondents' Submissions:\n\n1. UNILATERAL EXTENSION INVALID: \"unilateral extension of revised date of possession by the promot",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_055",
+      "section_number": "Section 18",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "RERA - NATURE OF RIGHT",
+      "description": "\"Plain reading of",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_056",
+      "section_number": "Section 55",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "CONTRACT ACT vs SECTION 18 RERA",
+      "description": "\"",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_057",
+      "section_number": "Section 18",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "RERA (Return of amount and compensation)",
+      "description": "\"(1) If the promoter fails to complete or is unable to give possession of an apartment...\n(a) in accordance with the terms of the agreement for sale or...by the date specified therein...\nProvided that where an allottee does not intend to withdraw from the project, he shall be paid,\nby the promoter, interest for every month of delay, till the handing over of the possession,\nat such rate as may be prescribed.\"",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_058",
+      "section_number": "Section 55",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "Indian Contract Act",
+      "description": "Effect of failure to perform at fixed time; acceptance of delayed performance",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_059",
+      "section_number": "Section 88",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "RERA",
+      "description": "RERA provisions in addition to other enactments",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_060",
+      "section_number": "Section 89",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "RERA",
+      "description": "Overriding effect over inconsistent laws\n\n================================================================================\nJUDICIAL ANALYSIS & FINDINGS\n================================================================================\n\n1.",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_061",
+      "section_number": "Section 18",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "RERA - NATURE OF RIGHT",
+      "description": "The Court held: \"",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_062",
+      "section_number": "Section 3",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "Inconsistency identified",
+      "description": "",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_063",
+      "section_number": "Section 89",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "effect",
+      "description": "RERA has \"overriding effect over anything inconsistent with the other laws\"\n- Contractual terms subordinate: Supreme Court in Newtech \"negated the contention of the contractual terms having an overriding effect\"\n\n3. FORCE MAJEURE:\n\n- COVID-19 irrelevant: Pandemic occurred after June 2017 due date and December 2019 RERA date\n- Precedent binding: M/s Pragatej Builders decision holds possession due before COVID cannot claim relief for pandemic\n\n4. MAINTAINABILITY OF APPEAL:\n\n- No express waiver of ",
+      "key_provisions": [
+        "Contractual terms subordinate: Supreme Court in Newtech \"negated the contention of the contractual terms having an overriding effect\"",
+        "COVID-19 irrelevant: Pandemic occurred after June 2017 due date and December 2019 RERA date",
+        "Precedent binding: M/s Pragatej Builders decision holds possession due before COVID cannot claim relief for pandemic"
+      ]
+    },
+    {
+      "entity_id": "section_064",
+      "section_number": "Section 34",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "REVIEW",
+      "description": "Post-2015 amendment, scope under",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_065",
+      "section_number": "Section 55",
+      "act": "Indian Contract Act",
+      "act_year": "1872",
+      "title": "DEFENSE",
+      "description": "Factual premise underlying",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_066",
+      "section_number": "Section 166",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "DUTIES OF DIRECTORS",
+      "description": "(1) Act in accordance with articles\n(2) Act in good faith\n(3) Promote company objects\n(4) Exercise due care, skill, diligence\n(5) Avoid conflict of interest\n(6) Not achieve undue gain\n(7) Not assign office\nBREACH = Criminal liability + Penalty",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_067",
+      "section_number": "Section 149",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "INDEPENDENT DIRECTORS",
+      "description": "- 1/3 board must be independent (listed companies)\n- Max 2 consecutive 5-year terms",
+      "key_provisions": [
+        "1/3 board must be independent (listed companies)",
+        "Max 2 consecutive 5-year terms"
+      ]
+    },
+    {
+      "entity_id": "section_068",
+      "section_number": "Section 167",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "DISQUALIFICATIONS",
+      "description": "- Undischarged insolvent\n- Convicted of moral turpitude offense\n- Failed to pay share calls\n\nTYPES OF LIABILITIES:\n\nA. CIVIL:\n- Breach of fiduciary duty\n- Negligence\n- Ultra vires acts\n\nB. CRIMINAL:\n-",
+      "key_provisions": [
+        "Undischarged insolvent",
+        "Convicted of moral turpitude offense",
+        "Failed to pay share calls",
+        "Breach of fiduciary duty"
+      ]
+    },
+    {
+      "entity_id": "section_069",
+      "section_number": "Section 44",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "7",
+      "description": "Fraud (up to 10 years + fine)\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_070",
+      "section_number": "Section 44",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "8",
+      "description": "False statements (2 years)\n\nC. PERSONAL:\n- Corporate veil lifting\n- Fraudulent trading\n- Insider trading (SEBI Act)\n\nNCLT JURISDICTION:\n- Oppression/mismanagement (S.241-246)\n- Class actions (S.245)\n- Winding up\n- IBC proceedings\n\nPROTECTION:\n-",
+      "key_provisions": [
+        "Corporate veil lifting",
+        "Insider trading (SEBI Act)",
+        "Oppression/mismanagement (S.241-246)",
+        "Class actions (S.245)"
+      ]
+    },
+    {
+      "entity_id": "section_071",
+      "section_number": "Section 46",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "3",
+      "description": "Indemnification for good faith acts\n- D&O Insurance coverage\n- Business Judgment Rule\n\nPENALTIES:\n- Minor defaults: Up to Rs. 25,000\n- General: Rs. 25,000 - Rs. 5 lakhs\n- Major: Rs. 5 lakhs - Rs. 25 lakhs\n- Fraud: 3x amount or Rs. 50 lakhs minimum\n\nIBC 2016 IMPACT:\n- Director liable as corporate debtor\n-",
+      "key_provisions": [
+        "D&O Insurance coverage",
+        "Business Judgment Rule",
+        "Minor defaults: Up to Rs. 25,000",
+        "General: Rs. 25,000 - Rs. 5 lakhs",
+        "Major: Rs. 5 lakhs - Rs. 25 lakhs"
+      ]
+    },
+    {
+      "entity_id": "section_072",
+      "section_number": "Section 6",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "6",
+      "description": "Fraudulent trading\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_073",
+      "section_number": "Section 6",
+      "act": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "act_year": "2013",
+      "title": "9",
+      "description": "Transactions defrauding creditors\n\nSource: Companies Act 2013 Compilation",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_074",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(q)",
+      "description": "Definition of \"completion certificate\"\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_075",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(zf)",
+      "description": "Definition of \"occupancy certificate\"\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_076",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(zn)",
+      "description": "Definition of \"real estate project\"\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_077",
+      "section_number": "Section 1",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "2",
+      "description": "Obligations of promoters\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_078",
+      "section_number": "Section 1",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "4",
+      "description": "Adherence to sanctioned plans\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_079",
+      "section_number": "Section 18",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(1)",
+      "description": "Remedies for delayed possession - \"If the promoter fails to complete...he shall be liable...to return the amount...with interest\"\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_080",
+      "section_number": "Section 4",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "4",
+      "description": "Appeals to Appellate Tribunal\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_081",
+      "section_number": "Section 5",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "8",
+      "description": "Appeals to High Court on substantial questions of law per",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_082",
+      "section_number": "Section 7",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "1",
+      "description": "Adjudicating Officer's jurisdiction for compensation\n-",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_083",
+      "section_number": "Section 7",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "2",
+      "description": "Factors for determining compensation\n\n================================================================================\nKEY LEGAL PRINCIPLES ESTABLISHED\n================================================================================\n\n1. ONGOING PROJECT STATUS:\nApplying M/s. Newtech Promoters vs. State of UP (Civil Appeal 6745-6749/2021), Court held:\n- Act applies to projects where completion certificate not issued before commencement\n- Completion certificate issued 20.12.2018, post-RERA enactmen",
+      "key_provisions": [
+        "Act applies to projects where completion certificate not issued before commencement",
+        "Completion certificate issued 20.12.2018, post-RERA enactment"
+      ]
+    },
+    {
+      "entity_id": "section_084",
+      "section_number": "Section 18",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "Return of amount and compensation",
+      "description": "\"If the promoter fails to complete or is unable to give possession...in accordance with the terms of the agreement...he shall be liable...the allottee shall be paid, by the promoter, interest for every month of delay, till the handing over of the possession.\"",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_085",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "(za) - Interest",
+      "description": "\"the rate of interest chargeable from the allottee by the promoter, in case of default, shall be equal to the rate of interest which the promoter shall be liable to pay.\"",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_086",
+      "section_number": "Section 58",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "Appeal to High Court",
+      "description": "Appeals maintainable only on substantial questions of law as per",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_087",
+      "section_number": "Section 2",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "3",
+      "description": "Contracts opposed to public policy are void.",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_088",
+      "section_number": "Section 3",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "2",
+      "description": "Contingent contracts on uncertain future events.",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_089",
+      "section_number": "Section 5",
+      "act": "RERA Act",
+      "act_year": "2016",
+      "title": "6",
+      "description": "Agreements becoming impossible or unlawful after contract formation.\n\n================================================================================\nISSUES FRAMED\n================================================================================\n\n1. Whether delay in project completion can be attributed to promoter when licence renewal delayed for over three years.\n\n2. Whether authorities wrongly ignored contractual interest rate on delayed possession.\n\n===========================================",
+      "key_provisions": []
+    },
+    {
+      "entity_id": "section_090",
+      "section_number": "Section 138",
+      "act": "SUBJECT: Legal Notice under Section 138 of Negotiable Instruments Act",
+      "act_year": "1881",
+      "title": "of Negotiable Instruments Act, 1881 which provides",
+      "description": "- Imprisonment up to 2 years, OR\n   - Fine up to twice the cheque amount, OR\n   - Both\n\n4. DEMAND:\n   Pay Rs. [Amount] plus interest within 15 days from receipt of this notice.\n\n5. CONSEQUENCES:\n   Failure to pay will result in criminal complaint under",
+      "key_provisions": [
+        "Imprisonment up to 2 years, OR",
+        "Fine up to twice the cheque amount, OR"
+      ]
+    }
+  ]
+}

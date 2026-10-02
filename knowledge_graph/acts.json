@@ -1,0 +1,235 @@
+{
+  "acts": [
+    {
+      "entity_id": "act_001",
+      "name": "IRDAI Act",
+      "full_name": "INSURANCE REGULATORY AND DEVELOPMENT AUTHORITY ACT, 1999",
+      "year": "1999",
+      "aliases": [
+        "IRDA Act",
+        "Insurance Regulatory Act",
+        "IRDAI"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Finance"
+    },
+    {
+      "entity_id": "act_002",
+      "name": "Insurance Act",
+      "full_name": "INSURANCE ACT, 1938",
+      "year": "1938",
+      "aliases": [
+        "Insurance Act 1938"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Finance"
+    },
+    {
+      "entity_id": "act_003",
+      "name": "RERA Act",
+      "full_name": "THE REAL ESTATE (REGULATION AND DEVELOPMENT) ACT, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_004",
+      "name": "RERA Act",
+      "full_name": "SECTION 18 - RERA ACT, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_005",
+      "name": "RERA Act",
+      "full_name": "- Act means RERA Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_006",
+      "name": "RERA Act",
+      "full_name": "BASED ON: RERA Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_007",
+      "name": "Indian Contract Act",
+      "full_name": "1. Whether acceptance of delayed performance under Section 55 of the Indian Contract Act, 1872",
+      "year": "1872",
+      "aliases": [
+        "Contract Act",
+        "Contract Act 1872"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Law and Justice"
+    },
+    {
+      "entity_id": "act_008",
+      "name": "Indian Contract Act",
+      "full_name": "(i) Whether acceptance of delayed performance under Section 55 of Indian Contract Act, 1872",
+      "year": "1872",
+      "aliases": [
+        "Contract Act",
+        "Contract Act 1872"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Law and Justice"
+    },
+    {
+      "entity_id": "act_009",
+      "name": "Indian Contract Act",
+      "full_name": "2. Addendum provided for assured returns contemplating delay. Clause 26(e) stipulated compensation of Rs. 10 per sq. ft. per month for delay, excluding termination rights. Reliance on Section 55, Indian Contract Act, 1872",
+      "year": "1872",
+      "aliases": [
+        "Contract Act",
+        "Contract Act 1872"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Law and Justice"
+    },
+    {
+      "entity_id": "act_010",
+      "name": "Insurance Act",
+      "full_name": "- Insurance Act, 1938",
+      "year": "1938",
+      "aliases": [
+        "Insurance Act 1938"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Finance"
+    },
+    {
+      "entity_id": "act_011",
+      "name": "RERA Act",
+      "full_name": "APPLICABLE: Section 18 RERA Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_012",
+      "name": "DOCUMENT: Directors' Liabilities under Companies Act",
+      "full_name": "DOCUMENT: Directors' Liabilities under Companies Act, 2013",
+      "year": "2013",
+      "aliases": [
+        "DOCUMENT: Directors' Liabilities under Companies Act"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Government of India"
+    },
+    {
+      "entity_id": "act_013",
+      "name": "- Section 13 of the Commercial Courts Act",
+      "full_name": "- Section 13 of the Commercial Courts Act, 2015",
+      "year": "2015",
+      "aliases": [
+        "- Section 13 of the Commercial Courts Act"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Government of India"
+    },
+    {
+      "entity_id": "act_014",
+      "name": "RERA Act",
+      "full_name": "RERA Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_015",
+      "name": "RERA Act",
+      "full_name": "Real Estate (Regulation and Development) Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    },
+    {
+      "entity_id": "act_016",
+      "name": "Consumer Protection Act",
+      "full_name": "COMPLAINT UNDER SECTION 35 OF CONSUMER PROTECTION ACT, 2019",
+      "year": "2019",
+      "aliases": [
+        "CP Act",
+        "Consumer Act 2019"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Consumer Affairs"
+    },
+    {
+      "entity_id": "act_017",
+      "name": "SUBJECT: Legal Notice under Section 138 of Negotiable Instruments Act",
+      "full_name": "SUBJECT: Legal Notice under Section 138 of Negotiable Instruments Act, 1881",
+      "year": "1881",
+      "aliases": [
+        "SUBJECT: Legal Notice under Section 138 of Negotiable Instruments Act"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Government of India"
+    },
+    {
+      "entity_id": "act_018",
+      "name": "Insurance Act",
+      "full_name": "- Violates Insurance Act, 1938",
+      "year": "1938",
+      "aliases": [
+        "Insurance Act 1938"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Finance"
+    },
+    {
+      "entity_id": "act_019",
+      "name": "RERA Act",
+      "full_name": "SUBJECT: Legal Notice for Delayed Possession under RERA Act, 2016",
+      "year": "2016",
+      "aliases": [
+        "Real Estate Act",
+        "RERA",
+        "RERA 2016"
+      ],
+      "jurisdiction": "India",
+      "ministry": "Ministry of Housing and Urban Affairs"
+    }
+  ]
+}

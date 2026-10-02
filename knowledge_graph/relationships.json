@@ -1,0 +1,814 @@
+{
+  "relationships": [
+    {
+      "source": "section_001",
+      "target": "act_001",
+      "relationship": "part_of",
+      "context": "Section 3 is part of IRDAI Act 1999"
+    },
+    {
+      "source": "section_002",
+      "target": "act_001",
+      "relationship": "part_of",
+      "context": "Section 14 is part of IRDAI Act 1999"
+    },
+    {
+      "source": "section_003",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 2 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_004",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 3 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_005",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 5 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_006",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 6 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_007",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 10 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_008",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 11 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_009",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 14 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_010",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 17 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_011",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 27A is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_012",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 27 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_013",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 27 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_014",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 38 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_015",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 39 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_016",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 40 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_017",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 41 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_018",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 42 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_019",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 45 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_020",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 47 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_021",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 54 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_022",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 64VB is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_023",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 64UM is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_024",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 101 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_025",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 102 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_026",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 110 is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_027",
+      "target": "act_002",
+      "relationship": "part_of",
+      "context": "Section 110A is part of Insurance Act 1938"
+    },
+    {
+      "source": "section_028",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 2(d) is part of RERA Act 2016"
+    },
+    {
+      "source": "section_029",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_030",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_031",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_032",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 3 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_033",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 4 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_034",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 11 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_035",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 13 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_036",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 18 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_037",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 19 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_038",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 14 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_039",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 59 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_040",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 61 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_041",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 64 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_042",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 69 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_043",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 71 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_044",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 43 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_045",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 44 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_046",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 11 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_047",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 4(2)(l) is part of RERA Act 2016"
+    },
+    {
+      "source": "section_048",
+      "target": "act_003",
+      "relationship": "part_of",
+      "context": "Section 3 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_049",
+      "target": "act_004",
+      "relationship": "part_of",
+      "context": "Section 1 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_050",
+      "target": "act_004",
+      "relationship": "part_of",
+      "context": "Section 18 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_051",
+      "target": "act_004",
+      "relationship": "part_of",
+      "context": "Section 19(4) is part of RERA Act 2016"
+    },
+    {
+      "source": "section_052",
+      "target": "act_006",
+      "relationship": "part_of",
+      "context": "Section 18 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_053",
+      "target": "act_006",
+      "relationship": "part_of",
+      "context": "Section 4(2)(l) is part of RERA Act 2016"
+    },
+    {
+      "source": "case_002",
+      "target": "act_006",
+      "relationship": "cites_act",
+      "context": "Sunil Kumar Sengar & Anr. vs M/S. Unitech Ltd. cites RERA Act"
+    },
+    {
+      "source": "section_054",
+      "target": "act_007",
+      "relationship": "part_of",
+      "context": "Section 55 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_055",
+      "target": "act_007",
+      "relationship": "part_of",
+      "context": "Section 18 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_056",
+      "target": "act_007",
+      "relationship": "part_of",
+      "context": "Section 55 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_057",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 18 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_058",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 55 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_059",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 88 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_060",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 89 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_061",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 18 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_062",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 3 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_063",
+      "target": "act_008",
+      "relationship": "part_of",
+      "context": "Section 89 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "case_004",
+      "target": "act_006",
+      "relationship": "cites_act",
+      "context": "Macrotech Developers Ltd. vs Suryakant Yashwant Jadhav & Ors cites RERA Act"
+    },
+    {
+      "source": "case_004",
+      "target": "section_052",
+      "relationship": "cites_section",
+      "context": "Macrotech Developers Ltd. vs Suryakant Yashwant Jadhav & Ors cites Section 18 of RERA Act"
+    },
+    {
+      "source": "section_064",
+      "target": "act_009",
+      "relationship": "part_of",
+      "context": "Section 34 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_065",
+      "target": "act_009",
+      "relationship": "part_of",
+      "context": "Section 55 is part of Indian Contract Act 1872"
+    },
+    {
+      "source": "section_066",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 166 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_067",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 149 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_068",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 167 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_069",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 44 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_070",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 44 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_071",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 46 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_072",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 6 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "section_073",
+      "target": "act_012",
+      "relationship": "part_of",
+      "context": "Section 6 is part of DOCUMENT: Directors' Liabilities under Companies Act 2013"
+    },
+    {
+      "source": "case_011",
+      "target": "act_010",
+      "relationship": "cites_act",
+      "context": "- Burden on insurer to prove cites Insurance Act"
+    },
+    {
+      "source": "case_011",
+      "target": "section_023",
+      "relationship": "cites_section",
+      "context": "- Burden on insurer to prove cites Section 64UM of Insurance Act"
+    },
+    {
+      "source": "case_011",
+      "target": "section_019",
+      "relationship": "cites_section",
+      "context": "- Burden on insurer to prove cites Section 45 of Insurance Act"
+    },
+    {
+      "source": "section_074",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_075",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_076",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_077",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 1 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_078",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 1 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_079",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 18 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_080",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 4 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_081",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 5 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_082",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 7 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_083",
+      "target": "act_014",
+      "relationship": "part_of",
+      "context": "Section 7 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_084",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 18 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_085",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_086",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 58 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_087",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 2 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_088",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 3 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_089",
+      "target": "act_015",
+      "relationship": "part_of",
+      "context": "Section 5 is part of RERA Act 2016"
+    },
+    {
+      "source": "section_090",
+      "target": "act_017",
+      "relationship": "part_of",
+      "context": "Section 138 is part of SUBJECT: Legal Notice under Section 138 of Negotiable Instruments Act 1881"
+    },
+    {
+      "source": "case_014",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Pioneer Urban Land and Infrastructure vs Govindan Raghavan cites RERA Act"
+    },
+    {
+      "source": "case_014",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Pioneer Urban Land and Infrastructure vs Govindan Raghavan interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_014",
+      "target": "section_037",
+      "relationship": "cites_section",
+      "context": "Pioneer Urban Land and Infrastructure vs Govindan Raghavan interprets Section 19 of RERA Act"
+    },
+    {
+      "source": "case_015",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Ireo Grace Realtech Pvt. Ltd. vs Abhishek Khanna & Ors cites RERA Act"
+    },
+    {
+      "source": "case_015",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Ireo Grace Realtech Pvt. Ltd. vs Abhishek Khanna & Ors interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_016",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Newtech Promoters vs State of UP & Ors cites RERA Act"
+    },
+    {
+      "source": "case_016",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Newtech Promoters vs State of UP & Ors interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_016",
+      "target": "section_037",
+      "relationship": "cites_section",
+      "context": "Newtech Promoters vs State of UP & Ors interprets Section 19 of RERA Act"
+    },
+    {
+      "source": "case_017",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "M/S Imperia Structures Ltd. vs Anil Patni & Anr cites RERA Act"
+    },
+    {
+      "source": "case_017",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "M/S Imperia Structures Ltd. vs Anil Patni & Anr interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_018",
+      "target": "act_002",
+      "relationship": "cites_act",
+      "context": "United India Insurance Co. Ltd. vs Harchand Rai Chandan Lal cites Insurance Act"
+    },
+    {
+      "source": "case_018",
+      "target": "section_009",
+      "relationship": "cites_section",
+      "context": "United India Insurance Co. Ltd. vs Harchand Rai Chandan Lal interprets Section 14 of Insurance Act"
+    },
+    {
+      "source": "case_018",
+      "target": "section_022",
+      "relationship": "cites_section",
+      "context": "United India Insurance Co. Ltd. vs Harchand Rai Chandan Lal interprets Section 64VB of Insurance Act"
+    },
+    {
+      "source": "case_019",
+      "target": "act_002",
+      "relationship": "cites_act",
+      "context": "National Insurance Company Ltd. vs Pranay Sethi cites Insurance Act"
+    },
+    {
+      "source": "case_019",
+      "target": "act_001",
+      "relationship": "cites_act",
+      "context": "National Insurance Company Ltd. vs Pranay Sethi cites IRDAI Act"
+    },
+    {
+      "source": "case_020",
+      "target": "act_002",
+      "relationship": "cites_act",
+      "context": "Oriental Insurance Co. Ltd. vs Meena Variyal cites Insurance Act"
+    },
+    {
+      "source": "case_020",
+      "target": "section_009",
+      "relationship": "cites_section",
+      "context": "Oriental Insurance Co. Ltd. vs Meena Variyal interprets Section 14 of Insurance Act"
+    },
+    {
+      "source": "case_021",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "Spring Meadows Hospital vs Harjol Ahluwalia cites Consumer Protection Act"
+    },
+    {
+      "source": "case_022",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "Indian Medical Association vs V.P. Shantha cites Consumer Protection Act"
+    },
+    {
+      "source": "case_023",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "Lucknow Development Authority vs M.K. Gupta cites Consumer Protection Act"
+    },
+    {
+      "source": "case_024",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "Avtar Singh vs Union of India cites Consumer Protection Act"
+    },
+    {
+      "source": "case_025",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "DLF Homes Panchkula Pvt. Ltd. vs D.S. Dhanda cites RERA Act"
+    },
+    {
+      "source": "case_025",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "DLF Homes Panchkula Pvt. Ltd. vs D.S. Dhanda cites Consumer Protection Act"
+    },
+    {
+      "source": "case_025",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "DLF Homes Panchkula Pvt. Ltd. vs D.S. Dhanda interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_014",
+      "target": "case_015",
+      "relationship": "follows",
+      "context": "Later case follows precedent set by earlier judgment"
+    },
+    {
+      "source": "case_015",
+      "target": "case_016",
+      "relationship": "follows",
+      "context": "Later case follows precedent set by earlier judgment"
+    },
+    {
+      "source": "case_017",
+      "target": "case_018",
+      "relationship": "follows",
+      "context": "Later case follows precedent set by earlier judgment"
+    },
+    {
+      "source": "case_018",
+      "target": "case_019",
+      "relationship": "follows",
+      "context": "Later case follows precedent set by earlier judgment"
+    },
+    {
+      "source": "case_030",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Fortune Infrastructure vs Trevor D Lima & Ors cites RERA Act"
+    },
+    {
+      "source": "case_030",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Fortune Infrastructure vs Trevor D Lima & Ors interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_031",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Kolkata West International City vs Devasis Rudra cites RERA Act"
+    },
+    {
+      "source": "case_031",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Kolkata West International City vs Devasis Rudra interprets Section 18 of RERA Act"
+    },
+    {
+      "source": "case_031",
+      "target": "section_037",
+      "relationship": "cites_section",
+      "context": "Kolkata West International City vs Devasis Rudra interprets Section 19 of RERA Act"
+    },
+    {
+      "source": "case_032",
+      "target": "act_002",
+      "relationship": "cites_act",
+      "context": "Sushila Singhania vs Birla Corporation Ltd cites Insurance Act"
+    },
+    {
+      "source": "case_032",
+      "target": "section_019",
+      "relationship": "cites_section",
+      "context": "Sushila Singhania vs Birla Corporation Ltd interprets Section 45 of Insurance Act"
+    },
+    {
+      "source": "case_033",
+      "target": "act_016",
+      "relationship": "cites_act",
+      "context": "LIC of India vs Consumer Education & Research Centre cites Consumer Protection Act"
+    },
+    {
+      "source": "case_033",
+      "target": "act_002",
+      "relationship": "cites_act",
+      "context": "LIC of India vs Consumer Education & Research Centre cites Insurance Act"
+    },
+    {
+      "source": "case_034",
+      "target": "act_003",
+      "relationship": "cites_act",
+      "context": "Dharti Developers vs Dharmendra Patel cites RERA Act"
+    },
+    {
+      "source": "case_034",
+      "target": "section_036",
+      "relationship": "cites_section",
+      "context": "Dharti Developers vs Dharmendra Patel interprets Section 18 of RERA Act"
+    }
+  ]
+}

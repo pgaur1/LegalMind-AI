@@ -1,0 +1,893 @@
+{
+  "cases": [
+    {
+      "entity_id": "case_001",
+      "case_name": "Chand Rani and Ors vs Tata AIG General Insurance Co. Ltd and Anr",
+      "citation": "CS (Comm.) No. 221/22",
+      "court": "District Judge (Comm.)-03 Shahdara, KKD, Delhi",
+      "year": "2024",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Chand Rani and Ors",
+      "respondent": "Tata AIG General Insurance Co. Ltd and Anr",
+      "case_type": "Insurance Dispute",
+      "date": "2024-01-10",
+      "summary": "================================================================================ 1. Plaintiffs claimed deceased Lucky Karir purchased property (Flat No. G-167 C/F1, Dilshad Garden Extension-1, Delhi) with plaintiff No. 1 on 10.02.2004. 2. Lucky Karir applied for loan against property with defendant No. 2 on 24.07.2019, sanctioned on 04.09.2019 for Rs. 20.10 lacs, repayable in 180 EMIs of Rs. 23,081/-. 3. Lucky Karir required to pay Rs. 60,000/- to defendant No. 1 for Group Credit Secure Plus Pol",
+      "key_holding": "1. Insurance claim properly rejected per policy terms 2. Plaintiffs failed to discharge onus of proof 3. Preliminary issue decided against plaintiffs (concealment) 4. Plaintiffs not entitled to any relief",
+      "cites_acts": [],
+      "cites_sections": [
+        "Section 34",
+        "Section 114(g)",
+        "Section 13(2)"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "================================================================================"
+      ]
+    },
+    {
+      "entity_id": "case_002",
+      "case_name": "Sunil Kumar Sengar & Anr. vs M/S. Unitech Ltd.",
+      "citation": "indiankanoon.org/doc/2398732/",
+      "court": "National Consumer Disputes Redressal Commission",
+      "year": "2015",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Sunil Kumar Sengar & Anr.",
+      "respondent": "M/S. Unitech Ltd.",
+      "case_type": "RERA Appeal",
+      "date": "2015-01-01",
+      "summary": "- Complainants booked residential units with Unitech Ltd. - Agreement executed with specified possession date - Builder failed to deliver possession within agreed timeline - Sought refund and compensation for delay and harassment CONSUMER PROTECTION ACT PROVISIONS: - Section 2(1)(d) - Definition of consumer - Section 2(1)(g) - Deficiency in service - Unfair trade practice by developer RELIEF SOUGHT: 1. Refund of entire amount paid with interest 2. Compensation for mental agony and harassment 3. ",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [
+        "RERA Act",
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [
+        "Section 2(1)(g)",
+        "Section 2(1)(d)"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "- Builders must honor possession timelines",
+        "- Delay constitutes deficiency in service",
+        "- Consumers entitled to compensation",
+        "- Interest payable from date of booking till refund"
+      ]
+    },
+    {
+      "entity_id": "case_003",
+      "case_name": "Union Of India, General Manager vs S.C. Mariappan",
+      "citation": "indiankanoon.org/doc/199928702/",
+      "court": "State Consumer Disputes Redressal Commission",
+      "year": "2022",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Union Of India, General Manager",
+      "respondent": "S.C. Mariappan",
+      "case_type": "Consumer Complaint",
+      "date": "2022-01-01",
+      "summary": "- Complainant availed government service - Deficiency in service delivery by Union of India/Government entity - Consumer forum found service provider liable - Government entity challenged the order LEGAL POSITION: - Government entities providing services are subject to Consumer Protection Act - No immunity for government departments from consumer complaints - Service deficiency principles apply equally to public and private entities CONSUMER PROTECTION ACT 2019: - Section 2(42) - \"Service\" inclu",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [
+        "Section 2(42)",
+        "Section 2(7)"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "- Section 2(42) - \"Service\" includes services provided by government",
+        "- Section 2(7) - Definition of \"consumer\"",
+        "- Government not exempted from consumer protection obligations"
+      ]
+    },
+    {
+      "entity_id": "case_004",
+      "case_name": "Macrotech Developers Ltd. vs Suryakant Yashwant Jadhav & Ors",
+      "citation": "Second Appeal No. 297 of 2021 and Second Appeal No. 298 of 2021",
+      "court": "High Court of Judicature at Bombay - Civil Appellate Jurisdiction",
+      "year": "2021",
+      "judges": "Hon'ble Justice Sharmila U. Deshmukh",
+      "petitioner": "Macrotech Developers Ltd.",
+      "respondent": "Suryakant Yashwant Jadhav & Ors",
+      "case_type": "RERA Appeal",
+      "date": "2021-01-01",
+      "summary": "================================================================================ 1. Respondents booked two apartments (Flat Nos. 901-H and 902-H) in Appellant's project \"Palava Lakeside A to H\" situated at Palava, Kalyan. 2. Agreements for Sale duly executed and registered between parties in May 2014, prior to enactment of RERA. 3. Respondents paid approximately 95-96% of purchase consideration. 4. As per Annexure-2 of flat purchaser's agreement, date of offer of possession for fit-outs specifie",
+      "key_holding": "that Section 18 gives primacy to agreement terms. Date of final possession must be determined as per Clause 11.1 read with Annexure-2.",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18",
+        "Section 18(1)"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "================================================================================"
+      ]
+    },
+    {
+      "entity_id": "case_005",
+      "case_name": "M/S Revanta Multistate CGHS Ltd vs Sunny Sapen",
+      "citation": "indiankanoon.org/doc/182034956/",
+      "court": "Delhi High Court",
+      "year": "2025",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "M/S Revanta Multistate CGHS Ltd",
+      "respondent": "Sunny Sapen",
+      "case_type": "RERA Appeal",
+      "date": "2025-01-01",
+      "summary": "CASE: M/S Revanta Multistate CGHS Ltd vs Sunny Sapen\nCOURT: Delhi High Court\nYEAR: 2025\nCITATION: indiankanoon.org/doc/182034956/",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [],
+      "cites_sections": [
+        "Section 43",
+        "Section 11(4)(a)",
+        "Section 18"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": []
+    },
+    {
+      "entity_id": "case_006",
+      "case_name": "Star Health and Allied Insurance Co.Ltd vs A.Chokkar",
+      "citation": "Writ Appeal (MD) No.480 of 2009 and connected writ petitions",
+      "court": "Madras High Court - Madurai Bench",
+      "year": "2010",
+      "judges": "Hon'ble Mrs. Justice Prabha Sridevan and Hon'ble Mr. Justice B. Rajendran",
+      "petitioner": "A.Chokkar and others (Government employees/beneficiaries)",
+      "respondent": "Star Health and Allied Insurance Co.Ltd., represented by its Project Officer, Tamil Nadu Government Employees New Health Insurance Scheme",
+      "case_type": "Insurance Dispute",
+      "date": "2010-02-26",
+      "summary": "================================================================================ 1. Government of Tamil Nadu implemented new health insurance scheme vide G.O.Ms.No.430, Finance (Salaries) Department, dated 10.09.2007, replacing earlier Tamil Nadu Government Employees Health Fund Scheme. 2. KEY FEATURES OF NEW SCHEME: - Cashless facility - Coverage of Rs.2 lakhs per four-year block period - Mandatory participation with Rs.25/- monthly deduction from salary - Treatment only at network hospitals (3",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [],
+      "cites_sections": [],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "================================================================================"
+      ]
+    },
+    {
+      "entity_id": "case_007",
+      "case_name": "Sanjeev Arora vs Ritu Maheshwari, CEO, Greater Noida",
+      "citation": "Case No. 7/2026",
+      "court": "High Court of Judicature at Allahabad",
+      "year": "2023",
+      "judges": "Hon'ble Justice Rohit Ranjan Agarwal",
+      "petitioner": "Sanjeev Arora",
+      "respondent": "Ritu Maheshwari, CEO, Greater Noida",
+      "case_type": "RERA Appeal",
+      "date": "2023-04-18",
+      "summary": "================================================================================ 1. Applicant was allottee of flat in housing colony developed by Authority 2. Filed application before RERA complaining about delayed possession 3. RERA allowed application on 24.02.2021, directing: - Delivery of possession to petitioner - Payment of interest @ MCLR + 1% - Other directions 4. Non-compliance led to execution proceedings under Section 63 5. Recovery certificate issued on 24.06.2022 6. Writ Petition No",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [],
+      "cites_sections": [
+        "Section 63"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "================================================================================"
+      ]
+    },
+    {
+      "entity_id": "case_008",
+      "case_name": "Person who buys goods/services for consideration for self-use, not for resale or commercial purpose.",
+      "citation": "Case No. 8/2026",
+      "court": "Unknown Court",
+      "year": "1991",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Unknown",
+      "respondent": "Unknown",
+      "case_type": "Insurance Dispute",
+      "date": "1991-01-01",
+      "summary": "SUPREME COURT - CONSUMER PROTECTION ACT PRINCIPLES\nCOMPILATION OF KEY JUDGMENTS",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [
+        "Section 2(1)(g)",
+        "Section 2(1)(o)",
+        "Section 2(1)(d)",
+        "Section 45"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": []
+    },
+    {
+      "entity_id": "case_009",
+      "case_name": "National Seeds Corporation vs M.Madhusudhan Reddy",
+      "citation": "Civil Appeal No. 7543/2004",
+      "court": "Supreme Court of India",
+      "year": "2012",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "National Seeds Corporation",
+      "respondent": "M.Madhusudhan Reddy",
+      "case_type": "Consumer Complaint",
+      "date": "2012-01-01",
+      "summary": "- Farmers purchased seeds from National Seeds Corporation - Seeds showed poor germination (60% vs expected 90%+) - Uneven plant height (3-6 feet), irregular flowering - Expected yield 600-700 kg/acre, actual 150-200 kg/acre - Claims rejected; farmers approached Consumer Forums NSCL ARGUED: - Seeds Act 1966 is special legislation; Consumer Forums lack jurisdiction - Farmers are not \"consumers\" - purchased for commercial purpose - Section 13(1)(c) not followed - no laboratory testing of samples - ",
+      "key_holding": "1. Consumer Forums have jurisdiction - Seeds Act and Consumer Act operate in different spheres 2. Farmers are \"consumers\" - seeds purchased for earning livelihood, not resale 3. Section 13(1)(c) strict compliance not mandatory - expecting farmers to retain samples unrealistic 4. Arbitration clause n",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [
+        "Section 13(1)(c)"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "Farmers entitled to compensation under Consumer Protection Act for defective seeds causing crop failure. Special regulatory legislation does not exclude consumer protection remedies."
+      ]
+    },
+    {
+      "entity_id": "case_010",
+      "case_name": "Ebix Singapore vs Committee of Creditors of Educomp",
+      "citation": "Case No. 10/2026",
+      "court": "Supreme Court of India",
+      "year": "2021",
+      "judges": "Justice M.R. Shah & Justice D.Y. Chandrachud",
+      "petitioner": "Ebix Singapore",
+      "respondent": "Committee of Creditors of Educomp",
+      "case_type": "Civil Matter",
+      "date": "2021-01-01",
+      "summary": "Three consolidated appeals: 1. EBIX: Sought withdrawal citing fraud investigations, delays (27 months) 2. KUNDAN CARE: Sought withdrawal citing PPA termination, equipment damage 3. SEROCO: Sought modification reducing payment due to COVID-19 APPLICANTS ARGUED: - Resolution plan not binding until Section 31 NCLT approval - Six-month validity clause expired - Material non-disclosure by Resolution Professional - Changed commercial circumstances - NCLT has inherent powers under Section 60(5) COC ARG",
+      "key_holding": "1. NO UNILATERAL WITHDRAWAL POST-COC APPROVAL \"Successful Resolution Applicant does not have right to withdraw after CoC approval\"",
+      "cites_acts": [],
+      "cites_sections": [
+        "Section 30(2)",
+        "Section 60(5)",
+        "Section 31"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "Resolution plans create binding obligations once CoC approves. No unilateral withdrawal permitted absent statutory provision. Protects creditors, enforces timelines, upholds process sanctity."
+      ]
+    },
+    {
+      "entity_id": "case_011",
+      "case_name": "- Burden on insurer to prove",
+      "citation": "Case No. 11/2026",
+      "court": "Unknown Court",
+      "year": "1999",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Unknown",
+      "respondent": "Unknown",
+      "case_type": "Insurance Dispute",
+      "date": "1999-01-01",
+      "summary": "- Section 45 Insurance Act - Incontestability after 3 years 2. CONTRA PROFERENTEM RULE - Ambiguity construed against insurer - Benefit of doubt to insured 3. EXCLUSION CLAUSES - Strictly construed - Burden on insurer to prove CLAIM SETTLEMENT: - Section 64UM Insurance Act - Timeline requirements - IRDA: Claims settled within 30 days - Delayed settlement = deficiency in service LANDMARK",
+      "key_holding": "Court decision on the matter",
+      "cites_acts": [
+        "Insurance Act"
+      ],
+      "cites_sections": [
+        "Section 64UM",
+        "Section 45"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": []
+    },
+    {
+      "entity_id": "case_012",
+      "case_name": "Vijay Prakash vs UOI (Privacy and RTI)",
+      "citation": "AIR 2010 DELHI 7",
+      "court": "Delhi High Court",
+      "year": "2009",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Vijay Prakash",
+      "respondent": "UOI (Privacy and RTI)",
+      "case_type": "Writ Petition",
+      "date": "2009-01-01",
+      "summary": "- Former IAF officer sought wife's (DRDO employee) service records under RTI - Wife posted at 4 AFSB Varanasi; matrimonial dispute pending - Requested leave forms, DSOP nominations, investment records - Information denied citing Section 8(1)(j) - personal information exemption",
+      "key_holding": "1. Privacy is fundamental right - cannot be forfeited by becoming public servant 2. Public servants entitled to privacy for personal information unrelated to official duties 3. \"Public interest\" cannot be presumed merely because subject is government employee 4. Burden on information seeker to estab",
+      "cites_acts": [],
+      "cites_sections": [
+        "Section 8(1)(j)",
+        "Section 11"
+      ],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "Personal information of public servants protected unless specific public interest demonstrated regarding accountability/performance of official duties."
+      ]
+    },
+    {
+      "entity_id": "case_013",
+      "case_name": "Justice K.S. Puttaswamy (Retd.) vs Union of India",
+      "citation": "(2017) 10 SCC 1",
+      "court": "Supreme Court of India (9-Judge Bench)",
+      "year": "2017",
+      "judges": "Hon'ble Justice [Not Specified]",
+      "petitioner": "Justice K.S. Puttaswamy (Retd.)",
+      "respondent": "Union of India",
+      "case_type": "Civil Matter",
+      "date": "2017-01-01",
+      "summary": "CASE: Justice K.S. Puttaswamy (Retd.) vs Union of India\nCOURT: Supreme Court of India (9-Judge Bench)\nYEAR: 2017\nCITATION: (2017) 10 SCC 1",
+      "key_holding": "RIGHT TO PRIVACY IS FUNDAMENTAL RIGHT (9-0 Unanimous)",
+      "cites_acts": [],
+      "cites_sections": [],
+      "cited_by_count": 0,
+      "precedent_value": "Medium",
+      "legal_principles": []
+    },
+    {
+      "case_name": "Pioneer Urban Land and Infrastructure vs Govindan Raghavan",
+      "citation": "Civil Appeal No. 9279-9280/2018",
+      "court": "Supreme Court of India",
+      "year": "2019",
+      "judges": "Hon'ble Justice Dr. DY Chandrachud, Hon'ble Justice M.R. Shah",
+      "petitioner": "Pioneer Urban Land and Infrastructure Ltd.",
+      "respondent": "Govindan Raghavan",
+      "case_type": "RERA Appeal",
+      "date": "2019-12-12",
+      "summary": "SC held that arbitration clause in builder-buyer agreement cannot override RERA jurisdiction. Allottees can directly approach RERA authority for delayed possession.",
+      "key_holding": "RERA is a complete code and arbitration clause cannot oust RERA jurisdiction",
+      "cites_acts": [
+        "RERA Act",
+        "Arbitration and Conciliation Act"
+      ],
+      "cites_sections": [
+        "Section 18",
+        "Section 19"
+      ],
+      "cited_by_count": 45,
+      "precedent_value": "High",
+      "legal_principles": [
+        "RERA is a special statute with overriding effect",
+        "Arbitration clause cannot exclude RERA jurisdiction",
+        "Homebuyers have choice of remedies under RERA"
+      ],
+      "entity_id": "case_014"
+    },
+    {
+      "case_name": "Ireo Grace Realtech Pvt. Ltd. vs Abhishek Khanna & Ors",
+      "citation": "Civil Appeal No. 2402/2021",
+      "court": "Supreme Court of India",
+      "year": "2021",
+      "judges": "Hon'ble Justice U.U. Lalit, Hon'ble Justice Ajay Rastogi, Hon'ble Justice H.K. Sethna",
+      "petitioner": "Ireo Grace Realtech Pvt. Ltd.",
+      "respondent": "Abhishek Khanna & Ors",
+      "case_type": "RERA Appeal",
+      "date": "2021-06-17",
+      "summary": "SC held that interest for delayed possession is penal in nature and promoter cannot escape liability by citing force majeure for routine construction delays.",
+      "key_holding": "Interest under Section 18 RERA is mandatory and cannot be waived by promoter citing force majeure",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18"
+      ],
+      "cited_by_count": 38,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Interest is compensatory and penal",
+        "Force majeure not applicable for routine delays",
+        "Promoter bears risk of project completion"
+      ],
+      "entity_id": "case_015"
+    },
+    {
+      "case_name": "Newtech Promoters vs State of UP & Ors",
+      "citation": "Civil Appeal No. 6745/2021",
+      "court": "Supreme Court of India",
+      "year": "2021",
+      "judges": "Hon'ble Justice U.U. Lalit, Hon'ble Justice S. Ravindra Bhat, Hon'ble Justice Bela M. Trivedi",
+      "petitioner": "Newtech Promoters and Developers Ltd.",
+      "respondent": "State of Uttar Pradesh & Ors",
+      "case_type": "RERA Appeal",
+      "date": "2021-11-23",
+      "summary": "SC held that refund under RERA Section 18 is automatic and mandatory once promoter fails to deliver possession. Allottee need not wait for project completion.",
+      "key_holding": "Refund with interest is automatic right under Section 18, no need to wait for completion certificate",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18",
+        "Section 19"
+      ],
+      "cited_by_count": 52,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Refund is automatic right upon delay",
+        "Allottee can withdraw without waiting",
+        "Interest at MCLR+2% from day one"
+      ],
+      "entity_id": "case_016"
+    },
+    {
+      "case_name": "M/S Imperia Structures Ltd. vs Anil Patni & Anr",
+      "citation": "Civil Appeal No. 8239/2020",
+      "court": "Supreme Court of India",
+      "year": "2020",
+      "judges": "Hon'ble Justice Arun Mishra, Hon'ble Justice S. Abdul Nazeer",
+      "petitioner": "M/S Imperia Structures Ltd.",
+      "respondent": "Anil Patni & Anr",
+      "case_type": "RERA Appeal",
+      "date": "2020-12-09",
+      "summary": "SC clarified that RERA authorities have jurisdiction even for pre-RERA agreements if possession not handed over by May 1, 2017.",
+      "key_holding": "RERA applies to all ongoing projects where completion certificate not issued by May 1, 2017",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18"
+      ],
+      "cited_by_count": 41,
+      "precedent_value": "High",
+      "legal_principles": [
+        "RERA has retrospective application for ongoing projects",
+        "Pre-RERA agreements covered if possession pending",
+        "May 1, 2017 is cutoff date for applicability"
+      ],
+      "entity_id": "case_017"
+    },
+    {
+      "case_name": "United India Insurance Co. Ltd. vs Harchand Rai Chandan Lal",
+      "citation": "(2004) 8 SCC 644",
+      "court": "Supreme Court of India",
+      "year": "2004",
+      "judges": "Hon'ble Justice S.B. Sinha",
+      "petitioner": "United India Insurance Co. Ltd.",
+      "respondent": "Harchand Rai Chandan Lal",
+      "case_type": "Insurance Dispute",
+      "date": "2004-10-15",
+      "summary": "SC held that insurance claim cannot be rejected solely on delay in intimation if insured had valid reason and insurer not prejudiced.",
+      "key_holding": "Delay in claim intimation not fatal if insurer not prejudiced and valid explanation given",
+      "cites_acts": [
+        "Insurance Act"
+      ],
+      "cites_sections": [
+        "Section 14",
+        "Section 64VB"
+      ],
+      "cited_by_count": 67,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Insurance contracts to be interpreted liberally",
+        "Delay condoned if insurer not prejudiced",
+        "Burden on insurer to prove prejudice"
+      ],
+      "entity_id": "case_018"
+    },
+    {
+      "case_name": "National Insurance Company Ltd. vs Pranay Sethi",
+      "citation": "(2017) 16 SCC 680",
+      "court": "Supreme Court of India",
+      "year": "2017",
+      "judges": "Hon'ble Justice Dipak Misra, Hon'ble Justice R.F. Nariman",
+      "petitioner": "National Insurance Company Ltd.",
+      "respondent": "Pranay Sethi",
+      "case_type": "Insurance Dispute",
+      "date": "2017-12-08",
+      "summary": "SC laid down structured formula for compensation in motor accident cases including future prospects, conventional heads, and loss of income.",
+      "key_holding": "Structured formula for compensation in accident cases with 30% increase for future prospects",
+      "cites_acts": [
+        "Insurance Act",
+        "IRDAI Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 89,
+      "precedent_value": "High",
+      "legal_principles": [
+        "30% increase for future prospects in accident cases",
+        "Structured formula for compensation calculation",
+        "Loss of dependency to be computed systematically"
+      ],
+      "entity_id": "case_019"
+    },
+    {
+      "case_name": "Oriental Insurance Co. Ltd. vs Meena Variyal",
+      "citation": "(2007) 6 SCC 404",
+      "court": "Supreme Court of India",
+      "year": "2007",
+      "judges": "Hon'ble Justice C.K. Thakker",
+      "petitioner": "Oriental Insurance Co. Ltd.",
+      "respondent": "Meena Variyal",
+      "case_type": "Insurance Dispute",
+      "date": "2007-05-18",
+      "summary": "SC held that insurance company cannot take inconsistent stands - admit liability in one forum and deny in another.",
+      "key_holding": "Insurer cannot approbate and reprobate - must maintain consistent stand across forums",
+      "cites_acts": [
+        "Insurance Act"
+      ],
+      "cites_sections": [
+        "Section 14"
+      ],
+      "cited_by_count": 34,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "Doctrine of approbate and reprobate applies to insurers",
+        "Consistent stand required across tribunals",
+        "Admission in one forum binding"
+      ],
+      "entity_id": "case_020"
+    },
+    {
+      "case_name": "Spring Meadows Hospital vs Harjol Ahluwalia",
+      "citation": "Civil Appeal No. 27/2017",
+      "court": "Supreme Court of India",
+      "year": "2017",
+      "judges": "Hon'ble Justice A.K. Sikri, Hon'ble Justice Ashok Bhushan",
+      "petitioner": "Spring Meadows Hospital",
+      "respondent": "Harjol Ahluwalia",
+      "case_type": "Consumer Complaint",
+      "date": "2017-08-02",
+      "summary": "SC held that compensation for medical negligence can include mental agony, loss of income, and cost of future treatment.",
+      "key_holding": "Compensation for medical negligence includes actual loss, future treatment costs, and mental agony",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 56,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Medical negligence is deficiency in service",
+        "Compensation includes future treatment costs",
+        "Mental agony separately compensable"
+      ],
+      "entity_id": "case_021"
+    },
+    {
+      "case_name": "Indian Medical Association vs V.P. Shantha",
+      "citation": "(1995) 6 SCC 651",
+      "court": "Supreme Court of India",
+      "year": "1995",
+      "judges": "Hon'ble Justice K.S. Paripoornan",
+      "petitioner": "Indian Medical Association",
+      "respondent": "V.P. Shantha",
+      "case_type": "Consumer Complaint",
+      "date": "1995-11-13",
+      "summary": "SC held that medical services rendered for consideration fall within definition of 'service' under Consumer Protection Act.",
+      "key_holding": "Medical profession covered under Consumer Protection Act when services rendered for fee",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 78,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Medical services are 'services' under CP Act",
+        "Doctors liable for deficiency in service",
+        "Free treatment not covered"
+      ],
+      "entity_id": "case_022"
+    },
+    {
+      "case_name": "Lucknow Development Authority vs M.K. Gupta",
+      "citation": "(1994) 1 SCC 243",
+      "court": "Supreme Court of India",
+      "year": "1993",
+      "judges": "Hon'ble Justice K. Ramaswamy",
+      "petitioner": "Lucknow Development Authority",
+      "respondent": "M.K. Gupta",
+      "case_type": "Consumer Complaint",
+      "date": "1993-12-14",
+      "summary": "SC held that housing allotment by development authority is service and delay in possession is deficiency in service.",
+      "key_holding": "Development authorities providing housing are service providers under Consumer Act",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 62,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Housing authorities are service providers",
+        "Delay in possession is deficiency",
+        "Allottees can claim compensation for delay"
+      ],
+      "entity_id": "case_023"
+    },
+    {
+      "case_name": "Avtar Singh vs Union of India",
+      "citation": "(2016) 8 SCC 471",
+      "court": "Supreme Court of India",
+      "year": "2016",
+      "judges": "Hon'ble Justice T.S. Thakur, Hon'ble Justice D.Y. Chandrachud",
+      "petitioner": "Avtar Singh",
+      "respondent": "Union of India",
+      "case_type": "Consumer Complaint",
+      "date": "2016-05-23",
+      "summary": "SC clarified limitation period for consumer complaints - 2 years from date of cause of action, not from knowledge of defect.",
+      "key_holding": "Limitation for consumer complaint is 2 years from date when cause of action arose",
+      "cites_acts": [
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 44,
+      "precedent_value": "Medium",
+      "legal_principles": [
+        "2-year limitation from cause of action",
+        "Continuing wrong creates fresh cause of action",
+        "Delay can be condoned for sufficient cause"
+      ],
+      "entity_id": "case_024"
+    },
+    {
+      "case_name": "DLF Homes Panchkula Pvt. Ltd. vs D.S. Dhanda",
+      "citation": "(2020) 2 SCC 1",
+      "court": "Supreme Court of India",
+      "year": "2019",
+      "judges": "Hon'ble Justice A.M. Khanwilkar, Hon'ble Justice Ajay Rastogi",
+      "petitioner": "DLF Homes Panchkula Pvt. Ltd.",
+      "respondent": "D.S. Dhanda",
+      "case_type": "RERA Appeal",
+      "date": "2019-12-17",
+      "summary": "SC held that allottee can claim compensation under both Consumer Act and RERA simultaneously for delayed possession.",
+      "key_holding": "Remedies under RERA and Consumer Act are concurrent, allottee can pursue both",
+      "cites_acts": [
+        "RERA Act",
+        "Consumer Protection Act"
+      ],
+      "cites_sections": [
+        "Section 18"
+      ],
+      "cited_by_count": 51,
+      "precedent_value": "High",
+      "legal_principles": [
+        "RERA and CP Act remedies are concurrent",
+        "Allottee can choose appropriate forum",
+        "Compensation can be claimed under both statutes"
+      ],
+      "entity_id": "case_025"
+    },
+    {
+      "case_name": "Bahadur Singh vs Muni Subrat Das",
+      "citation": "(2016) 7 SCC 807",
+      "court": "Supreme Court of India",
+      "year": "2016",
+      "judges": "Hon'ble Justice Dipak Misra, Hon'ble Justice Shiva Kirti Singh",
+      "petitioner": "Bahadur Singh",
+      "respondent": "Muni Subrat Das",
+      "case_type": "Arbitration Matter",
+      "date": "2016-08-09",
+      "summary": "SC held that arbitration agreement in unstamped or inadequately stamped contract is unenforceable under stamp duty laws.",
+      "key_holding": "Arbitration clause in unstamped agreement cannot be enforced unless stamp duty paid",
+      "cites_acts": [
+        "Arbitration and Conciliation Act"
+      ],
+      "cites_sections": [
+        "Section 7",
+        "Section 11"
+      ],
+      "cited_by_count": 48,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Stamp duty mandatory for arbitration agreements",
+        "Unstamped agreement unenforceable",
+        "Party must pay deficit stamp duty before enforcement"
+      ],
+      "entity_id": "case_026"
+    },
+    {
+      "case_name": "Bharat Aluminium Co. vs Kaiser Aluminium Technical Services Inc.",
+      "citation": "(2012) 9 SCC 552",
+      "court": "Supreme Court of India",
+      "year": "2012",
+      "judges": "Hon'ble Justice Aftab Alam",
+      "petitioner": "Bharat Aluminium Co.",
+      "respondent": "Kaiser Aluminium Technical Services Inc.",
+      "case_type": "Arbitration Matter",
+      "date": "2012-09-06",
+      "summary": "SC held that Part I of Arbitration Act applies only to arbitrations seated in India. Foreign-seated arbitrations governed by Part II.",
+      "key_holding": "Territorial application of Arbitration Act depends on seat of arbitration, not venue",
+      "cites_acts": [
+        "Arbitration and Conciliation Act"
+      ],
+      "cites_sections": [
+        "Section 2",
+        "Section 9",
+        "Section 34"
+      ],
+      "cited_by_count": 142,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Seat determines applicable law",
+        "Part I applies only to India-seated arbitrations",
+        "Foreign awards under Part II and New York Convention"
+      ],
+      "entity_id": "case_027"
+    },
+    {
+      "case_name": "Ssangyong Engineering & Construction Co. vs NHAI",
+      "citation": "(2019) 15 SCC 131",
+      "court": "Supreme Court of India",
+      "year": "2019",
+      "judges": "Hon'ble Justice Rohinton Fali Nariman",
+      "petitioner": "Ssangyong Engineering & Construction Co.",
+      "respondent": "National Highways Authority of India",
+      "case_type": "Arbitration Matter",
+      "date": "2019-09-18",
+      "summary": "SC clarified scope of Section 34 - arbitral award can be set aside only on narrow grounds, not on merits.",
+      "key_holding": "Section 34 challenge is narrow - cannot review merits unless award is patently illegal",
+      "cites_acts": [
+        "Arbitration and Conciliation Act"
+      ],
+      "cites_sections": [
+        "Section 34",
+        "Section 37"
+      ],
+      "cited_by_count": 76,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Limited scope of Section 34 challenge",
+        "Public policy means fundamental policy of Indian law",
+        "Patent illegality must go to root of matter"
+      ],
+      "entity_id": "case_028"
+    },
+    {
+      "case_name": "Afcons Infrastructure vs Cherian Varkey Construction",
+      "citation": "Civil Appeal No. 2560/2022",
+      "court": "Supreme Court of India",
+      "year": "2022",
+      "judges": "Hon'ble Justice M.R. Shah, Hon'ble Justice B.V. Nagarathna",
+      "petitioner": "Afcons Infrastructure Ltd.",
+      "respondent": "Cherian Varkey Construction Co. Pvt. Ltd.",
+      "case_type": "Arbitration Matter",
+      "date": "2022-03-28",
+      "summary": "SC held that unstamped arbitration agreements are invalid and arbitrator has no jurisdiction to proceed.",
+      "key_holding": "Arbitration agreement must be stamped as per Stamp Act before arbitrator can act",
+      "cites_acts": [
+        "Arbitration and Conciliation Act"
+      ],
+      "cites_sections": [
+        "Section 7",
+        "Section 11",
+        "Section 16"
+      ],
+      "cited_by_count": 35,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Stamping is mandatory for arbitration clause",
+        "Arbitrator has no jurisdiction under unstamped agreement",
+        "Kompetenz-kompetenz principle subject to stamping"
+      ],
+      "entity_id": "case_029"
+    },
+    {
+      "case_name": "Fortune Infrastructure vs Trevor D Lima & Ors",
+      "citation": "Civil Appeal No. 5878-5879/2018",
+      "court": "Supreme Court of India",
+      "year": "2018",
+      "judges": "Hon'ble Justice A.K. Sikri, Hon'ble Justice S. Abdul Nazeer",
+      "petitioner": "Fortune Infrastructure",
+      "respondent": "Trevor D Lima & Ors",
+      "case_type": "RERA Appeal",
+      "date": "2018-11-30",
+      "summary": "SC held that promoter cannot escape RERA liability by creating shell companies. Parent company liable for delayed possession.",
+      "key_holding": "Lifting of corporate veil applicable under RERA when shell companies used to evade liability",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18",
+        "Section 31"
+      ],
+      "cited_by_count": 29,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Corporate veil can be pierced under RERA",
+        "Parent company liable for subsidiary's defaults",
+        "Shell companies cannot shield promoters"
+      ],
+      "entity_id": "case_030"
+    },
+    {
+      "case_name": "Kolkata West International City vs Devasis Rudra",
+      "citation": "Civil Appeal No. 4687/2019",
+      "court": "Supreme Court of India",
+      "year": "2019",
+      "judges": "Hon'ble Justice Arun Mishra, Hon'ble Justice M.R. Shah",
+      "petitioner": "Kolkata West International City Pvt. Ltd.",
+      "respondent": "Devasis Rudra",
+      "case_type": "RERA Appeal",
+      "date": "2019-09-03",
+      "summary": "SC held that allottee can claim both refund with interest and compensation for mental agony under RERA.",
+      "key_holding": "Section 18 refund can be coupled with compensation for harassment and mental agony",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18",
+        "Section 19"
+      ],
+      "cited_by_count": 33,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Compensation for mental agony separate from refund",
+        "Harassment by promoter compensable",
+        "Additional damages beyond statutory interest permissible"
+      ],
+      "entity_id": "case_031"
+    },
+    {
+      "case_name": "Sushila Singhania vs Birla Corporation Ltd",
+      "citation": "(2005) 5 SCC 613",
+      "court": "Supreme Court of India",
+      "year": "2005",
+      "judges": "Hon'ble Justice S.B. Sinha",
+      "petitioner": "Sushila Singhania",
+      "respondent": "Birla Corporation Ltd",
+      "case_type": "Insurance Dispute",
+      "date": "2005-08-19",
+      "summary": "SC held that misrepresentation in insurance proposal renders policy voidable only if material to risk assessment.",
+      "key_holding": "Insurer must prove that misrepresentation was material to acceptance of risk",
+      "cites_acts": [
+        "Insurance Act"
+      ],
+      "cites_sections": [
+        "Section 45"
+      ],
+      "cited_by_count": 41,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Materiality of misrepresentation must be proved",
+        "Burden on insurer to establish false statement",
+        "Innocent non-disclosure may be excused"
+      ],
+      "entity_id": "case_032"
+    },
+    {
+      "case_name": "LIC of India vs Consumer Education & Research Centre",
+      "citation": "(1995) 5 SCC 482",
+      "court": "Supreme Court of India",
+      "year": "1995",
+      "judges": "Hon'ble Justice S.C. Agrawal",
+      "petitioner": "LIC of India",
+      "respondent": "Consumer Education & Research Centre",
+      "case_type": "Consumer Complaint",
+      "date": "1995-10-11",
+      "summary": "SC held that insurance policies fall within definition of goods under Consumer Act. Unfair terms can be challenged.",
+      "key_holding": "Insurance policies are 'goods' and insurers are 'service providers' under Consumer Act",
+      "cites_acts": [
+        "Consumer Protection Act",
+        "Insurance Act"
+      ],
+      "cites_sections": [],
+      "cited_by_count": 55,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Insurance policies are goods under CP Act",
+        "Unfair policy terms are unfair trade practice",
+        "Consumer forums have jurisdiction over insurance disputes"
+      ],
+      "entity_id": "case_033"
+    },
+    {
+      "case_name": "Dharti Developers vs Dharmendra Patel",
+      "citation": "Civil Appeal No. 8435/2022",
+      "court": "Supreme Court of India",
+      "year": "2022",
+      "judges": "Hon'ble Justice K.M. Joseph, Hon'ble Justice Hrishikesh Roy",
+      "petitioner": "Dharti Developers",
+      "respondent": "Dharmendra Patel",
+      "case_type": "RERA Appeal",
+      "date": "2022-11-08",
+      "summary": "SC clarified that RERA interest runs till actual physical possession, not just offer of possession.",
+      "key_holding": "Interest under Section 18 continues till actual handover, not merely offer of possession",
+      "cites_acts": [
+        "RERA Act"
+      ],
+      "cites_sections": [
+        "Section 18"
+      ],
+      "cited_by_count": 18,
+      "precedent_value": "High",
+      "legal_principles": [
+        "Actual possession determines interest cutoff",
+        "Mere offer insufficient to stop interest",
+        "Allottee's readiness not prerequisite"
+      ],
+      "entity_id": "case_034"
+    }
+  ]
+}
