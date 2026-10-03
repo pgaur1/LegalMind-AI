@@ -192,9 +192,10 @@ async def api_status():
             "tracking": True,
         },
         "llm": {
-            "model": "AWS Claude Sonnet 4.5",
-            "context_length": settings.LLM_CONTEXT_LENGTH,
-            "max_tokens": settings.LLM_MAX_TOKENS,
+            "provider": settings.LLM_PROVIDER,
+            "model": settings.HF_MODEL,
+            "max_tokens": settings.HF_MAX_TOKENS,
+            "temperature": settings.HF_TEMPERATURE,
         },
     }
 

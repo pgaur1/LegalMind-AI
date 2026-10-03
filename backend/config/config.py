@@ -62,17 +62,30 @@ class Settings(BaseSettings):
     DATABASE_ECHO: bool = True  # Set False in production
 
     # ========================================================================
-    # LLM SETTINGS (Phi-3)
+    # LLM SETTINGS (HuggingFace)
     # ========================================================================
-    LLM_MODEL_PATH: str = r"C:\Users\prgaur\OneDrive - Capgemini\PMI CA\Codebase\llm_models\phi-3-mini-128k-instruct-q6_k.gguf"
-    LLM_CONTEXT_LENGTH: int = 131072  # 128K context
-    LLM_MAX_TOKENS: int = 2048  # Max tokens per response
-    LLM_TEMPERATURE: float = 0.7
-    LLM_TOP_P: float = 0.9
-    LLM_TOP_K: int = 40
-    LLM_N_GPU_LAYERS: int = 0  # 0 = CPU only, -1 = use GPU if available
-    LLM_N_THREADS: int = 8  # CPU threads
-    LLM_VERBOSE: bool = False
+    # Provider configuration (only 'huggingface' supported)
+    LLM_PROVIDER: str = os.getenv('LLM_PROVIDER', 'huggingface')
+
+    # HuggingFace Inference API settings
+    HF_TOKEN: str = os.getenv('HF_TOKEN', '')  # Required!
+    HF_MODEL: str = os.getenv('HF_MODEL', 'zai-org/GLM-5.2')
+    HF_API_URL: str = os.getenv(
+        'HF_API_URL',
+        'https://router.huggingface.co/v1/chat/completions'
+    )
+
+    # Request configuration
+    HF_REQUEST_TIMEOUT_SECONDS: int = int(os.getenv('HF_REQUEST_TIMEOUT_SECONDS', '120'))
+    HF_MAX_RETRIES: int = int(os.getenv('HF_MAX_RETRIES', '3'))
+
+    # Generation parameters (defaults, can be overridden per request)
+    HF_MAX_TOKENS: int = int(os.getenv('HF_MAX_TOKENS', '1000'))
+    HF_TEMPERATURE: float = float(os.getenv('HF_TEMPERATURE', '0.1'))
+
+    # Legacy settings (for backward compatibility with existing code)
+    LLM_MAX_TOKENS: int = HF_MAX_TOKENS
+    LLM_TEMPERATURE: float = HF_TEMPERATURE
 
     # ========================================================================
     # EMBEDDING SETTINGS
