@@ -88,13 +88,16 @@ def test_legal_response_requests_renderable_markdown():
 @pytest.mark.parametrize(
     ("generated", "expected"),
     [
-        ("Short answer\n\nUnder RERA...", "Under RERA..."),
-        ("## Short answer\nUnder RERA...", "Under RERA..."),
-        ("Short answerUnder RERA...", "Under RERA..."),
-        ("Short answer is that buyers may claim interest.", "Short answer is that buyers may claim interest."),
+        ("Short answer\n\nUnder RERA...", "## What are the remedies\n\nUnder RERA..."),
+        ("## Short answer\nUnder RERA...", "## What are the remedies\n\nUnder RERA..."),
+        ("Short answerUnder RERA...", "## What are the remedies\n\nUnder RERA..."),
+        (
+            "Short answer is that buyers may claim interest.",
+            "## What are the remedies\n\nShort answer is that buyers may claim interest.",
+        ),
     ],
 )
-def test_legal_response_removes_only_a_leading_short_answer_label(generated, expected):
+def test_legal_response_removes_short_answer_label_and_adds_query_heading(generated, expected):
     service = LLMService()
     service.generate = Mock(return_value=generated)
 
