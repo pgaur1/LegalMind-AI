@@ -305,6 +305,7 @@ export default function Research() {
   const [sourceModal, setSourceModal] = useState(null)
   const [allSourcesModal, setAllSourcesModal] = useState(null)
   const scrollRef = useRef(null)
+  const latestMessageRef = useRef(null)
 
   const waitForFinalStage = () => {
     if (finalStageReachedRef.current) return Promise.resolve()
@@ -318,8 +319,17 @@ export default function Research() {
   }
 
   useEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-  }, [chatMessages, isResearching])
+    const container = scrollRef.current
+    const latestMessage = latestMessageRef.current
+    if (!container) return
+
+    if (chatMessages.at(-1)?.role === 'assistant' && latestMessage) {
+      container.scrollTop +=
+        latestMessage.getBoundingClientRect().top - container.getBoundingClientRect().top
+    } else {
+      container.scrollTop = container.scrollHeight
+    }
+  }, [chatMessages])
 
   const handleSend = async (text) => {
     const query = text || input.trim()
@@ -531,7 +541,11 @@ export default function Research() {
         ) : (
           <div className="max-w-3xl mx-auto space-y-6">
             {chatMessages.map((msg, i) => (
-              <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+              <div
+                key={i}
+                ref={i === chatMessages.length - 1 ? latestMessageRef : null}
+                className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+              >
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${
                   msg.role === 'user' ? 'bg-slate-200' : 'bg-blue-600'
                 }`}>
