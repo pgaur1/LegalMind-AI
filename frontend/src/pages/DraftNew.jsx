@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
   ArrowRight, ArrowLeft, Check, Search, Sparkles, FileText,
@@ -278,6 +278,8 @@ function Step3({ data, onComplete, onBack, progressiveText }) {
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState('')
   const [isGenerating, setIsGenerating] = useState(true)
+  const finalStageReachedRef = useRef(false)
+  const finalStageWaitersRef = useRef([])
 
   // Progress steps matching actual generation time
   const steps = [
@@ -290,9 +292,21 @@ function Step3({ data, onComplete, onBack, progressiveText }) {
     { label: 'Completing all sections...', duration: 2500, icon: '📎' },
   ]
 
+  const waitForFinalStage = () => {
+    if (finalStageReachedRef.current) return Promise.resolve()
+    return new Promise(resolve => finalStageWaitersRef.current.push(resolve))
+  }
+
+  const handleFinalStage = () => {
+    finalStageReachedRef.current = true
+    setProgress(100)
+    finalStageWaitersRef.current.forEach(resolve => resolve())
+    finalStageWaitersRef.current = []
+  }
+
   useEffect(() => {
     let isMounted = true
-    onComplete().catch((generationError) => {
+    onComplete(waitForFinalStage).catch((generationError) => {
       if (isMounted) {
         setError(generationError.message)
         setIsGenerating(false)
@@ -306,29 +320,36 @@ function Step3({ data, onComplete, onBack, progressiveText }) {
   useEffect(() => {
     if (error) return undefined
     let isMounted = true
-    // Same step progression as Research
     let stepIndex = 0
     let progressValue = 0
+    let stepTimeout
 
-    const stepInterval = setInterval(() => {
-      if (isMounted && stepIndex < steps.length) {
-        setCurrentStep(stepIndex)
-        stepIndex++
+    const advanceStep = () => {
+      if (!isMounted) return
+      const step = steps[stepIndex]
+      setCurrentStep(stepIndex)
+      stepIndex++
+      if (stepIndex === steps.length) {
+        handleFinalStage()
+        return
       }
-    }, steps[stepIndex]?.duration || 2000)
+      stepTimeout = setTimeout(advanceStep, step.duration)
+    }
+
+    advanceStep()
 
     const progressInterval = setInterval(() => {
-      if (isMounted) {
+      if (isMounted && !finalStageReachedRef.current) {
         progressValue += 2
-        if (progressValue <= 95) {
-          setProgress(progressValue)
-        }
+        setProgress(Math.min(progressValue, 95))
+      } else {
+        clearInterval(progressInterval)
       }
     }, 250)
 
     return () => {
       isMounted = false
-      clearInterval(stepInterval)
+      clearTimeout(stepTimeout)
       clearInterval(progressInterval)
     }
   }, [error])
@@ -422,7 +443,9 @@ function Step3({ data, onComplete, onBack, progressiveText }) {
                 setIsGenerating(true)
                 setProgress(0)
                 setCurrentStep(0)
-                onComplete().catch((generationError) => {
+                finalStageReachedRef.current = false
+                finalStageWaitersRef.current = []
+                onComplete(waitForFinalStage).catch((generationError) => {
                   setError(generationError.message)
                   setIsGenerating(false)
                 })
@@ -546,7 +569,7 @@ export default function DraftNew() {
     setStep(3)
   }
 
-  const handleComplete = async () => {
+  const handleComplete = async (waitForFinalStage = () => Promise.resolve()) => {
     try {
       console.log('[Draft] Starting API call...');
       const startTime = Date.now();
@@ -579,6 +602,7 @@ export default function DraftNew() {
         console.log(`[Draft] Word count: ${result.data.word_count || 0} words`);
         console.log(`[Draft] Sources: ${result.data.sources?.length || 0}`);
 
+        await waitForFinalStage()
         await revealMarkdownLines(result.data.content, setProgressiveDraft)
 
         const newDraft = addDraft({

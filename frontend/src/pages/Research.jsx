@@ -37,9 +37,11 @@ function SourceModal({ source, open, onClose }) {
 }
 
 // AI Research Progress Tracker
-function AIResearchProgress() {
+function AIResearchProgress({ onFinalStage }) {
   const [currentStep, setCurrentStep] = useState(0)
   const [progress, setProgress] = useState(0)
+  const onFinalStageRef = useRef(onFinalStage)
+  onFinalStageRef.current = onFinalStage
 
   const steps = [
     { label: 'Analyzing your legal query...', duration: 1500, icon: '🔍' },
@@ -54,13 +56,23 @@ function AIResearchProgress() {
   useEffect(() => {
     let stepIndex = 0
     let progressValue = 0
+    let stepTimeout
+    let isMounted = true
 
-    const stepInterval = setInterval(() => {
-      if (stepIndex < steps.length) {
-        setCurrentStep(stepIndex)
-        stepIndex++
+    const advanceStep = () => {
+      if (!isMounted) return
+      const step = steps[stepIndex]
+      setCurrentStep(stepIndex)
+      stepIndex++
+      if (stepIndex === steps.length) {
+        setProgress(100)
+        onFinalStageRef.current()
+        return
       }
-    }, steps[stepIndex]?.duration || 2000)
+      stepTimeout = setTimeout(advanceStep, step.duration)
+    }
+
+    advanceStep()
 
     const progressInterval = setInterval(() => {
       progressValue += 2
@@ -70,7 +82,8 @@ function AIResearchProgress() {
     }, 250)
 
     return () => {
-      clearInterval(stepInterval)
+      isMounted = false
+      clearTimeout(stepTimeout)
       clearInterval(progressInterval)
     }
   }, [])
@@ -287,9 +300,22 @@ export default function Research() {
   const { chatMessages, isResearching, addChatMessage, setResearching, clearChat, saveResearch, user } = useAppStore()
   const [input, setInput] = useState('')
   const [progressiveText, setProgressiveText] = useState('')
+  const finalStageReachedRef = useRef(false)
+  const finalStageWaitersRef = useRef([])
   const [sourceModal, setSourceModal] = useState(null)
   const [allSourcesModal, setAllSourcesModal] = useState(null)
   const scrollRef = useRef(null)
+
+  const waitForFinalStage = () => {
+    if (finalStageReachedRef.current) return Promise.resolve()
+    return new Promise(resolve => finalStageWaitersRef.current.push(resolve))
+  }
+
+  const handleFinalStage = () => {
+    finalStageReachedRef.current = true
+    finalStageWaitersRef.current.forEach(resolve => resolve())
+    finalStageWaitersRef.current = []
+  }
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight
@@ -302,13 +328,14 @@ export default function Research() {
     addChatMessage({ role: 'user', text: query, timestamp: new Date().toISOString() })
     setInput('')
     setResearching(true)
+    setProgressiveText('')
+    finalStageReachedRef.current = false
 
     // Track processing time
     const startTime = Date.now()
 
     try {
       // Call the REAL backend API
-      setProgressiveText('')
       const result = await researchAPI.chat(query, [], user?.id || 'user_001')
 
       // Calculate processing time
@@ -388,8 +415,6 @@ export default function Research() {
           enhancedText = enhancedText.replace(pattern2, `($1 ${citationNumber} - ${src.match}%)`);
         });
 
-        await revealMarkdownLines(enhancedText, setProgressiveText)
-
         // Count sources by type
         const ragCount = sources.filter(s => s.source_type === 'rag').length;
         const graphCount = sources.filter(s => s.source_type === 'graph').length;
@@ -401,6 +426,9 @@ export default function Research() {
         if (webCount > 0) searchInfoParts.push(`Web (${webCount})`);
         const searchInfo = searchInfoParts.join(' + ') || 'Hybrid Search';
 
+        await waitForFinalStage()
+        await revealMarkdownLines(enhancedText, setProgressiveText)
+
         addChatMessage({
           role: 'assistant',
           text: enhancedText,
@@ -411,6 +439,7 @@ export default function Research() {
           query,
         })
         setProgressiveText('')
+        setResearching(false)
       } else {
         // Error handling
         setProgressiveText('')
@@ -422,6 +451,7 @@ export default function Research() {
           query,
         })
         toast.error('Backend API error')
+        setResearching(false)
       }
     } catch (error) {
       console.error('Research error:', error)
@@ -434,7 +464,6 @@ export default function Research() {
         query,
       })
       toast.error('Failed to fetch research')
-    } finally {
       setResearching(false)
     }
   }
@@ -596,9 +625,10 @@ export default function Research() {
                 </div>
                 <div className="flex-1 max-w-[85%]">
                   <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm p-4">
-                    {progressiveText
-                      ? <MarkdownContent content={progressiveText} className="text-slate-700" />
-                      : <AIResearchProgress />}
+                    <AIResearchProgress onFinalStage={handleFinalStage} />
+                    {progressiveText && (
+                      <MarkdownContent content={progressiveText} className="mt-4 text-slate-700" />
+                    )}
                   </div>
                 </div>
               </div>
