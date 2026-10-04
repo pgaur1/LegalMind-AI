@@ -3,7 +3,7 @@ LegalMind AI - LLM Service
 Multi-Provider Support: HuggingFace, AWS Bedrock, etc.
 """
 
-from typing import Optional, Dict, List
+from typing import Callable, Optional, Dict, List
 from loguru import logger
 
 # Import provider factory
@@ -54,6 +54,7 @@ class LLMService:
         max_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
         system_prompt: Optional[str] = None,
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> str:
         """
         Generate text using configured LLM provider
@@ -83,12 +84,24 @@ class LLMService:
             logger.info(f"Generating with {self.provider.get_model_name()} (max_tokens={max_tokens}, temp={temperature})")
 
             # Use provider's generate method
-            response = self.provider.generate(
-                prompt=prompt,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                system_prompt=system_prompt
-            )
+            if on_token:
+                chunks = []
+                for chunk in self.provider.generate_stream(
+                    prompt=prompt,
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                    system_prompt=system_prompt,
+                ):
+                    chunks.append(chunk)
+                    on_token(chunk)
+                response = "".join(chunks)
+            else:
+                response = self.provider.generate(
+                    prompt=prompt,
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                    system_prompt=system_prompt
+                )
             if response.startswith("ERROR:"):
                 raise LLMProviderError(response.removeprefix("ERROR:").strip())
 
@@ -104,6 +117,7 @@ class LLMService:
         query: str,
         context: List[str],
         chat_history: Optional[List[Dict]] = None,
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> str:
         """
         Generate legal research response with AWS Claude
@@ -172,7 +186,8 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
                 prompt=prompt,
                 max_tokens=3000,  # Extended for comprehensive legal explanations
                 temperature=0.3,  # Low temperature for factual accuracy
-                system_prompt=system_prompt
+                system_prompt=system_prompt,
+                on_token=on_token,
             )
 
             return response
@@ -187,6 +202,7 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
         case_details: Dict,
         research_context: List[str],
         template: Optional[str] = None,
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> str:
         """
         Generate legal draft document using SAME approach as Research (which works perfectly!)
@@ -238,7 +254,8 @@ draft in a Markdown code fence."""
             prompt=prompt,
             system_prompt=system_prompt,
             max_tokens=1400,
-            temperature=0.1
+            temperature=0.1,
+            on_token=on_token,
         )
 
     def summarize_judgment(self, judgment_text: str, max_length: int = 500) -> Dict:

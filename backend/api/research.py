@@ -3,17 +3,20 @@ LegalMind AI - Research API Endpoints
 Handles legal research queries and chat interactions
 """
 
+import json
+from datetime import datetime
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict
-from datetime import datetime
 from loguru import logger
+from fastapi.responses import StreamingResponse
 
 import sys
 sys.path.insert(0, '.')
 
 from agents.research_agent import get_research_agent, ResearchResult
 from config.config import settings
+from utils.streaming import stream_sync_call
 
 
 # ============================================================================
@@ -150,6 +153,68 @@ async def research_chat(
             status_code=500,
             detail=f"Research failed: {str(e)}"
         )
+
+
+@router.post("/chat/stream")
+async def research_chat_stream(request: ResearchRequest):
+    """Stream generated research text as SSE, followed by sources and metadata."""
+    logger.info(f"Streaming research query: '{request.query[:60]}...'")
+    agent = get_research_agent()
+    if not agent.initialized:
+        agent.initialize()
+
+    chat_history = [
+        {
+            "role": msg.role,
+            "content": msg.content,
+            "sources": msg.sources,
+        }
+        for msg in request.chat_history or []
+    ] or None
+
+    async def event_stream():
+        try:
+            yield f"data: {json.dumps({'type': 'status', 'message': 'Researching your question...'})}\n\n"
+            result = None
+            async for event, value in stream_sync_call(
+                lambda on_token: agent.research(
+                    query=request.query,
+                    chat_history=chat_history,
+                    current_context=request.context,
+                    user_id=request.user_id,
+                    on_token=on_token,
+                )
+            ):
+                if event == "token":
+                    yield f"data: {json.dumps({'type': 'delta', 'content': value})}\n\n"
+                elif event == "error":
+                    raise value
+                else:
+                    result = value
+
+            if result.metadata.get("error"):
+                raise HTTPException(status_code=502, detail="Research generation failed")
+
+            response = ResearchResponse(
+                response=result.response,
+                sources=result.sources[:request.max_sources],
+                decision=result.decision.to_dict(),
+                confidence=result.confidence,
+                metadata=result.metadata,
+                query_id=f"q_{datetime.now().strftime('%Y%m%d%H%M%S%f')}",
+                timestamp=datetime.now().isoformat(),
+            )
+            yield f"data: {json.dumps({'type': 'complete', 'data': response.model_dump()})}\n\n"
+        except Exception as error:
+            logger.error(f"Streaming research failed: {error}")
+            detail = error.detail if isinstance(error, HTTPException) else "Research generation failed"
+            yield f"data: {json.dumps({'type': 'error', 'message': detail})}\n\n"
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 @router.get("/sessions", response_model=List[SessionResponse])

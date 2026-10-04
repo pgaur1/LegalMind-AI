@@ -3,7 +3,7 @@ LegalMind AI - Research Agent
 Orchestrates research by combining RAG, Graph, and LLM services
 """
 
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 from loguru import logger
 
 from agents.planner_agent import (
@@ -99,7 +99,8 @@ class ResearchAgent:
         query: str,
         chat_history: Optional[List[Dict]] = None,
         current_context: Optional[Dict] = None,
-        user_id: Optional[str] = None
+        user_id: Optional[str] = None,
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """
         Main research method - orchestrates entire research flow
@@ -126,23 +127,25 @@ class ResearchAgent:
 
             # Step 2: Execute based on decision
             if decision.action == ActionType.FULL_RESEARCH:
-                return self._execute_full_research(query, decision, chat_history)
+                return self._execute_full_research(query, decision, chat_history, on_token)
 
             elif decision.action == ActionType.FOCUSED_RESEARCH:
-                return self._execute_focused_research(query, decision, chat_history, current_context)
+                return self._execute_focused_research(
+                    query, decision, chat_history, current_context, on_token
+                )
 
             elif decision.action == ActionType.FORMAT_ONLY:
-                return self._execute_format_only(query, decision, current_context)
+                return self._execute_format_only(query, decision, current_context, on_token)
 
             elif decision.action == ActionType.PRECEDENT_SEARCH:
-                return self._execute_precedent_search(query, decision)
+                return self._execute_precedent_search(query, decision, on_token)
 
             elif decision.action == ActionType.CLARIFY:
-                return self._execute_clarification(query, decision, chat_history)
+                return self._execute_clarification(query, decision, chat_history, on_token)
 
             else:
                 # Fallback to full research
-                return self._execute_full_research(query, decision, chat_history)
+                return self._execute_full_research(query, decision, chat_history, on_token)
 
         except Exception as e:
             logger.error(f"Research failed: {e}")
@@ -158,7 +161,8 @@ class ResearchAgent:
         self,
         query: str,
         decision: PlannerDecision,
-        chat_history: Optional[List[Dict]]
+        chat_history: Optional[List[Dict]],
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """Execute comprehensive research across all sources"""
         logger.info("Executing full research...")
@@ -193,14 +197,16 @@ class ResearchAgent:
             response = self.llm_service.generate_legal_response(
                 query=query,
                 context=context_texts[:8],  # Top 8 sources (RAG + Graph + Web)
-                chat_history=chat_history
+                chat_history=chat_history,
+                on_token=on_token,
             )
         else:
             # No sources found, use LLM general knowledge
             logger.warning("No sources found, using LLM general knowledge")
             response = self.llm_service.generate(
                 f"Please answer this legal question based on general legal principles: {query}",
-                max_tokens=800
+                max_tokens=800,
+                on_token=on_token,
             )
             response = "Note: This answer is based on general legal knowledge as specific documents were not found.\n\n" + response
 
@@ -222,7 +228,8 @@ class ResearchAgent:
         query: str,
         decision: PlannerDecision,
         chat_history: Optional[List[Dict]],
-        current_context: Optional[Dict]
+        current_context: Optional[Dict],
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """Execute focused research in existing context"""
         logger.info("Executing focused research...")
@@ -246,7 +253,8 @@ class ResearchAgent:
         response = self.llm_service.generate_legal_response(
             query=query,
             context=context_texts,
-            chat_history=chat_history
+            chat_history=chat_history,
+            on_token=on_token,
         )
 
         return ResearchResult(
@@ -261,7 +269,8 @@ class ResearchAgent:
         self,
         query: str,
         decision: PlannerDecision,
-        current_context: Optional[Dict]
+        current_context: Optional[Dict],
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """Use existing context without new research"""
         logger.info("Executing format-only (using existing context)...")
@@ -280,12 +289,14 @@ class ResearchAgent:
             response = self.llm_service.generate_legal_response(
                 query=query,
                 context=context_texts,
-                chat_history=None
+                chat_history=None,
+                on_token=on_token,
             )
         else:
             response = self.llm_service.generate(
                 f"Based on our previous discussion: {query}",
-                max_tokens=600
+                max_tokens=600,
+                on_token=on_token,
             )
 
         return ResearchResult(
@@ -299,7 +310,8 @@ class ResearchAgent:
     def _execute_precedent_search(
         self,
         query: str,
-        decision: PlannerDecision
+        decision: PlannerDecision,
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """Execute precedent/case law search"""
         logger.info("Executing precedent search...")
@@ -324,7 +336,8 @@ class ResearchAgent:
             context_texts = [self._format_case_summary(s) for s in sources[:5]]
             response = self.llm_service.generate(
                 f"Summarize these legal precedents relevant to: {query}\n\n" + "\n\n".join(context_texts),
-                max_tokens=1000
+                max_tokens=1000,
+                on_token=on_token,
             )
         else:
             response = f"No specific precedents found for '{query}'. Please provide more details or try rephrasing your query."
@@ -341,7 +354,8 @@ class ResearchAgent:
         self,
         query: str,
         decision: PlannerDecision,
-        chat_history: Optional[List[Dict]]
+        chat_history: Optional[List[Dict]],
+        on_token: Optional[Callable[[str], None]] = None,
     ) -> ResearchResult:
         """Handle clarification requests"""
         logger.info("Executing clarification...")
@@ -361,7 +375,7 @@ User's clarification request: {query}
 
 Please provide a clearer explanation addressing their specific confusion."""
 
-        response = self.llm_service.generate(prompt, max_tokens=600)
+        response = self.llm_service.generate(prompt, max_tokens=600, on_token=on_token)
 
         return ResearchResult(
             response=response,

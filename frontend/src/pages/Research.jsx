@@ -285,6 +285,7 @@ export default function Research() {
   const navigate = useNavigate()
   const { chatMessages, isResearching, addChatMessage, setResearching, clearChat, saveResearch, user } = useAppStore()
   const [input, setInput] = useState('')
+  const [streamingText, setStreamingText] = useState('')
   const [sourceModal, setSourceModal] = useState(null)
   const [allSourcesModal, setAllSourcesModal] = useState(null)
   const scrollRef = useRef(null)
@@ -306,7 +307,13 @@ export default function Research() {
 
     try {
       // Call the REAL backend API
-      const result = await researchAPI.chat(query, [], user?.id || 'user_001')
+      setStreamingText('')
+      const result = await researchAPI.streamChat(
+        query,
+        [],
+        user?.id || 'user_001',
+        { onToken: (chunk) => setStreamingText(current => current + chunk) },
+      )
 
       // Calculate processing time
       const processingTime = ((Date.now() - startTime) / 1000).toFixed(1) + 's'
@@ -405,8 +412,10 @@ export default function Research() {
           processingTime: processingTime,
           query,
         })
+        setStreamingText('')
       } else {
         // Error handling
+        setStreamingText('')
         addChatMessage({
           role: 'assistant',
           text: `⚠️ **Error:** Unable to connect to the backend API.\n\n${result.error || 'Please check if the backend server is running and the /api proxy is available.'}\n\nTry refreshing the page or contact support if the issue persists.`,
@@ -418,6 +427,7 @@ export default function Research() {
       }
     } catch (error) {
       console.error('Research error:', error)
+      setStreamingText('')
       addChatMessage({
         role: 'assistant',
         text: `⚠️ **Error:** ${error.message}\n\nPlease check if the backend server is running and the /api proxy is available.`,
@@ -588,7 +598,9 @@ export default function Research() {
                 </div>
                 <div className="flex-1 max-w-[85%]">
                   <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm p-4">
-                    <AIResearchProgress />
+                    {streamingText
+                      ? <MarkdownContent content={streamingText} className="text-slate-700" />
+                      : <AIResearchProgress />}
                   </div>
                 </div>
               </div>

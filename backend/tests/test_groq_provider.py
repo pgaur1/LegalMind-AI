@@ -46,6 +46,26 @@ def test_generate_sends_groq_completion_request(monkeypatch):
     }
 
 
+def test_generate_stream_yields_groq_content_deltas(monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    provider = GroqProvider()
+    response = Mock()
+    response.ok = True
+    response.iter_lines.return_value = [
+        b'data: {"choices":[{"delta":{"content":"Hello"}}]}',
+        b'data: {"choices":[{"delta":{"content":" world"}}]}',
+        b'data: [DONE]',
+    ]
+    post = Mock(return_value=response)
+    monkeypatch.setattr("llm.groq_provider.requests.post", post)
+
+    chunks = list(provider.generate_stream("Say hello"))
+
+    assert chunks == ["Hello", " world"]
+    assert response.close.called
+    assert post.call_args.kwargs["json"]["stream"] is True
+
+
 def test_generate_requires_api_key(monkeypatch):
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
     monkeypatch.setattr("llm.groq_provider.settings.GROQ_API_KEY", "")

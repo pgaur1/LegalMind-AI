@@ -31,6 +31,21 @@ def test_generate_returns_successful_provider_response():
     assert service.generate("Test prompt") == "Generated answer"
 
 
+def test_generate_stream_forwards_tokens_and_returns_combined_text():
+    service = LLMService()
+    service.model_loaded = True
+    service.provider = Mock()
+    service.provider.get_model_name.return_value = "test-model"
+    service.provider.generate_stream.return_value = iter(["Hello", " world"])
+    received = []
+
+    result = service.generate("Test prompt", on_token=received.append)
+
+    assert result == "Hello world"
+    assert received == ["Hello", " world"]
+    service.provider.generate.assert_not_called()
+
+
 def test_legal_draft_uses_moderate_length_and_relevant_context():
     service = LLMService()
     service.generate = Mock(return_value="Generated legal draft")
@@ -100,6 +115,37 @@ def test_research_chat_returns_upstream_failure(monkeypatch):
     assert error.value.status_code == 502
 
 
+def test_research_chat_stream_forwards_tokens_and_final_sources(monkeypatch):
+    decision = SimpleNamespace(to_dict=lambda: {"action": "full_research"})
+
+    def research_call(**kwargs):
+        kwargs["on_token"]("Streamed ")
+        kwargs["on_token"]("answer")
+        return SimpleNamespace(
+            response="Streamed answer",
+            sources=[{"source_type": "graph", "name": "RERA"}],
+            decision=decision,
+            confidence=0.9,
+            metadata={},
+        )
+
+    agent = Mock(initialized=True, research=Mock(side_effect=research_call))
+    monkeypatch.setattr(research, "get_research_agent", lambda: agent)
+
+    async def read_stream():
+        response = await research.research_chat_stream(
+            research.ResearchRequest(query="Explain RERA"),
+        )
+        return "".join([chunk async for chunk in response.body_iterator])
+
+    body = asyncio.run(read_stream())
+
+    assert '"type": "delta", "content": "Streamed "' in body
+    assert '"type": "delta", "content": "answer"' in body
+    assert '"type": "complete"' in body
+    assert '"source_type": "graph"' in body
+
+
 def test_rebuild_index_enqueues_task_without_running_it():
     background_tasks = BackgroundTasks()
 
@@ -135,3 +181,41 @@ def test_draft_generation_returns_upstream_failure(monkeypatch):
         )
 
     assert error.value.status_code == 502
+
+
+def test_draft_generation_stream_sends_tokens_and_completed_draft(monkeypatch):
+    llm_service = Mock(model_loaded=True)
+
+    def generate_draft(**kwargs):
+        kwargs["on_token"]("Draft ")
+        kwargs["on_token"]("text")
+        return "Draft text"
+
+    llm_service.generate_legal_draft.side_effect = generate_draft
+    monkeypatch.setattr(drafts, "llm_service", llm_service)
+    monkeypatch.setattr(drafts, "rag_service", SimpleNamespace(initialized=True))
+    monkeypatch.setattr(drafts, "graph_service", SimpleNamespace(initialized=True))
+    monkeypatch.setattr(drafts, "web_service", SimpleNamespace(initialized=True))
+
+    async def no_context(*args, **kwargs):
+        return [], []
+
+    monkeypatch.setattr(drafts, "fetch_draft_context", no_context)
+
+    async def read_stream():
+        response = await drafts.generate_draft_stream(
+            drafts.DraftRequest(
+                draft_type="legal_notice",
+                client_name="Client",
+                opponent_name="Builder",
+                case_description="Delayed possession",
+            )
+        )
+        return "".join([chunk async for chunk in response.body_iterator])
+
+    body = asyncio.run(read_stream())
+
+    assert '"type": "delta", "content": "Draft "' in body
+    assert '"type": "delta", "content": "text"' in body
+    assert '"type": "complete"' in body
+    assert '"content": "Draft text"' in body

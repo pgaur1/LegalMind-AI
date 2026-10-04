@@ -3,6 +3,7 @@ Draft Generation API
 Legal document drafting with AI assistance
 Enhanced with RAG + Graph + Web retrieval for context
 """
+import json
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List, Dict
@@ -10,12 +11,14 @@ from datetime import datetime
 from loguru import logger
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from fastapi.responses import StreamingResponse
 
 from services.llm_service import LLMService
 from services.rag_service import get_rag_service
 from services.graph_service import get_graph_service
 from services.web_service import get_web_service
 from llm.exceptions import LLMProviderError
+from utils.streaming import stream_sync_call
 
 # Create router
 router = APIRouter(
@@ -369,6 +372,81 @@ async def generate_draft(request: DraftRequest):
     logger.success(f"⏱️ TOTAL TIME: {total_time:.2f}s")
 
     return DraftResponse(**draft)
+
+
+@router.post("/generate/stream")
+async def generate_draft_stream(request: DraftRequest):
+    """Stream draft text as SSE, then send the completed draft and its sources."""
+    logger.info(f"Streaming draft generation request: {request.draft_type} for {request.client_name}")
+
+    if not llm_service.model_loaded:
+        llm_service.load_model()
+    if not rag_service.initialized:
+        rag_service.initialize()
+    if not graph_service.initialized:
+        graph_service.initialize()
+    if not web_service.initialized:
+        web_service.initialize()
+
+    research_context, sources = await fetch_draft_context(
+        request.case_description,
+        request.draft_type,
+    )
+    if request.legal_context:
+        research_context.insert(0, f"[User Context]: {request.legal_context}")
+
+    case_details = {
+        "client_name": request.client_name,
+        "opponent_name": request.opponent_name,
+        "type": request.draft_type,
+        "description": request.case_description,
+    }
+
+    async def event_stream():
+        try:
+            yield f"data: {json.dumps({'type': 'status', 'message': 'Research complete. Generating your draft...'})}\n\n"
+            draft_content = None
+            async for event, value in stream_sync_call(
+                lambda on_token: llm_service.generate_legal_draft(
+                    draft_type=request.draft_type,
+                    case_details=case_details,
+                    research_context=research_context,
+                    on_token=on_token,
+                )
+            ):
+                if event == "token":
+                    yield f"data: {json.dumps({'type': 'delta', 'content': value})}\n\n"
+                elif event == "error":
+                    raise value
+                else:
+                    draft_content = value
+
+            draft_id = f"draft_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            draft = {
+                "draft_id": draft_id,
+                "draft_type": request.draft_type,
+                "content": draft_content,
+                "created_at": datetime.now().isoformat(),
+                "word_count": len(draft_content.split()),
+                "client_name": request.client_name,
+                "opponent_name": request.opponent_name,
+                "sources": sources,
+            }
+            drafts_db[draft_id] = draft
+            yield f"data: {json.dumps({'type': 'complete', 'data': DraftResponse(**draft).model_dump()})}\n\n"
+        except LLMProviderError as error:
+            logger.error(f"Streaming draft generation failed: {error}")
+            yield f"data: {json.dumps({'type': 'error', 'message': 'Draft generation failed'})}\n\n"
+        except Exception as error:
+            logger.error(f"Streaming draft generation failed: {error}")
+            yield f"data: {json.dumps({'type': 'error', 'message': 'Draft generation failed'})}\n\n"
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
 
 @router.get("/{draft_id}")
 async def get_draft(draft_id: str):

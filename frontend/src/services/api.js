@@ -6,6 +6,63 @@
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') || '';
 
+async function readEventStream(response, onEvent) {
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `API Error: ${response.status} ${response.statusText}`);
+  }
+  if (!response.body) throw new Error('Streaming response body is unavailable.');
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  const dispatchEvents = () => {
+    const blocks = buffer.split(/\r?\n\r?\n/);
+    buffer = blocks.pop() || '';
+    for (const block of blocks) {
+      const data = block
+        .split(/\r?\n/)
+        .filter(line => line.startsWith('data:'))
+        .map(line => line.slice(5).trim())
+        .join('\n');
+      if (data) onEvent(JSON.parse(data));
+    }
+  };
+
+  while (true) {
+    const { value, done } = await reader.read();
+    buffer += decoder.decode(value || new Uint8Array(), { stream: !done });
+    dispatchEvents();
+    if (done) break;
+  }
+
+  if (buffer.trim()) {
+    const data = buffer.split(/\r?\n/).find(line => line.startsWith('data:'))?.slice(5).trim();
+    if (data) onEvent(JSON.parse(data));
+  }
+}
+
+async function postEventStream(path, params, { signal, onToken, onStatus } = {}) {
+  let result;
+  await readEventStream(
+    await fetch(`${API_BASE_URL}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+      signal,
+    }),
+    event => {
+      if (event.type === 'delta') onToken?.(event.content);
+      else if (event.type === 'status') onStatus?.(event.message);
+      else if (event.type === 'complete') result = event.data;
+      else if (event.type === 'error') throw new Error(event.message || 'Generation failed.');
+    },
+  );
+  if (!result) throw new Error('Generation ended before a completed response was received.');
+  return result;
+}
+
 /**
  * Research API - Legal Research with RAG
  */
@@ -45,6 +102,20 @@ export const researchAPI = {
         success: false,
         error: error.message,
       };
+    }
+  },
+
+  async streamChat(query, chatHistory = [], userId = 'user_001', options = {}) {
+    try {
+      const data = await postEventStream('/api/v1/research/chat/stream', {
+        query,
+        chat_history: chatHistory,
+        user_id: userId,
+      }, options);
+      return { success: true, data };
+    } catch (error) {
+      console.error('Research streaming API Error:', error);
+      return { success: false, error: error.message };
     }
   },
 };
@@ -88,6 +159,16 @@ export const draftsAPI = {
         success: false,
         error: error.message,
       };
+    }
+  },
+
+  async generateStream(params, options = {}) {
+    try {
+      const data = await postEventStream('/api/v1/drafts/generate/stream', params, options);
+      return { success: true, data };
+    } catch (error) {
+      console.error('Draft streaming API Error:', error);
+      return { success: false, error: error.message };
     }
   },
 

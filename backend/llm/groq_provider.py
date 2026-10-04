@@ -1,7 +1,8 @@
 """Groq API provider using its OpenAI-compatible chat completions endpoint."""
 
 import os
-from typing import Optional
+import json
+from typing import Iterator, Optional
 
 import requests
 from loguru import logger
@@ -101,6 +102,84 @@ class GroqProvider(BaseLLMProvider):
 
         self._check_response_status(response)
         return self._parse_response(response)
+
+    def generate_stream(
+        self,
+        prompt: str,
+        system_prompt: Optional[str] = None,
+        max_tokens: Optional[int] = None,
+        temperature: Optional[float] = None,
+    ) -> Iterator[str]:
+        if not self.is_available():
+            raise LLMAuthenticationError("Groq provider is not configured. Set GROQ_API_KEY.")
+
+        messages = []
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": prompt})
+        payload = {
+            "model": self.model_name,
+            "messages": messages,
+            "max_completion_tokens": max_tokens or self.default_max_tokens,
+            "temperature": temperature if temperature is not None else self.default_temperature,
+            "reasoning_effort": self.reasoning_effort,
+            "reasoning_format": self.reasoning_format,
+            "stream": True,
+        }
+
+        try:
+            response = requests.post(
+                self.api_url,
+                headers={
+                    "Authorization": f"******",
+                    "Content-Type": "application/json",
+                },
+                json=payload,
+                timeout=self.timeout,
+                stream=True,
+            )
+        except requests.exceptions.Timeout as exc:
+            raise LLMTimeoutError(
+                f"Groq request timed out after {self.timeout} seconds"
+            ) from exc
+        except requests.exceptions.RequestException as exc:
+            raise LLMServerError(f"Groq request failed: {exc}") from exc
+
+        try:
+            self._check_response_status(response)
+            received_content = False
+            for line in response.iter_lines(decode_unicode=True):
+                if not line:
+                    continue
+                if isinstance(line, bytes):
+                    line = line.decode("utf-8")
+                if not line.startswith("data:"):
+                    continue
+                data = line[5:].strip()
+                if data == "[DONE]":
+                    break
+                try:
+                    event = json.loads(data)
+                except ValueError as exc:
+                    raise LLMInvalidResponseError(
+                        "Groq returned an invalid streaming event."
+                    ) from exc
+
+                if event.get("error"):
+                    raise LLMProviderError("Groq streaming generation failed.")
+                choices = event.get("choices", [])
+                if not choices:
+                    continue
+                delta = choices[0].get("delta", {})
+                content = delta.get("content")
+                if isinstance(content, str) and content:
+                    received_content = True
+                    yield content
+
+            if not received_content:
+                raise LLMInvalidResponseError("Groq returned an empty streamed response.")
+        finally:
+            response.close()
 
     def _check_response_status(self, response: requests.Response) -> None:
         if response.ok:
