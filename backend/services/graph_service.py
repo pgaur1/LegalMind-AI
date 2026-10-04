@@ -53,7 +53,7 @@ class GraphService:
             self.graph = nx.DiGraph()
 
             # Try to load existing graph data
-            entities_dir = settings.PROCESSED_DIR / "entities"
+            entities_dir = settings.GRAPH_DB_DIR
             if entities_dir.exists():
                 self.load_entities_from_files(entities_dir)
             else:
@@ -350,9 +350,15 @@ class GraphService:
             # Search in various fields
             searchable_text = " ".join([
                 str(node_data.get('name', '')),
+                str(node_data.get('full_name', '')),
+                " ".join(node_data.get('aliases', [])),
                 str(node_data.get('case_name', '')),
                 str(node_data.get('section_number', '')),
                 str(node_data.get('title', '')),
+                str(node_data.get('description', '')),
+                str(node_data.get('key_provisions', '')),
+                str(node_data.get('summary', '')),
+                str(node_data.get('key_holding', '')),
             ]).lower()
 
             if query_lower in searchable_text:

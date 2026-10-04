@@ -198,7 +198,7 @@ appropriate. Do not wrap the answer in a Markdown code fence."""
         facts = case_details.get("description", "")[:1000]
 
         legal_context = "\n".join(
-            f"- {context[:500]}" for context in research_context[:2]
+            f"- {context[:500]}" for context in research_context[:7]
         ) or "No additional legal research context was available."
 
         prompt = f"""Prepare a concise but complete {draft_type.replace('_', ' ')} from {client} to {opponent}.

@@ -42,13 +42,19 @@ def test_legal_draft_uses_moderate_length_and_relevant_context():
             "opponent_name": "Builder",
             "description": "The builder missed the agreed possession date.",
         },
-        research_context=["RERA Section 18 provides a remedy for delayed possession."],
+        research_context=[
+            "[RAG Source]: RERA Section 18 provides a remedy for delayed possession.",
+            "[Graph SECTION]: Section 18 covers delayed possession.",
+            "[Web Case Law]: A court considered delayed possession relief.",
+        ],
     )
 
     assert result == "Generated legal draft"
     prompt = service.generate.call_args.kwargs["prompt"]
     assert "300–400 words" in prompt
     assert "RERA Section 18" in prompt
+    assert "Graph SECTION" in prompt
+    assert "Web Case Law" in prompt
     assert "do not make up section numbers or case citations" in prompt
     assert service.generate.call_args.kwargs["max_tokens"] == 1000
 
