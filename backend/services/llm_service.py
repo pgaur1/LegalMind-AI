@@ -230,7 +230,8 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
 
         prompt = f"""Prepare a concise but complete {draft_type.replace('_', ' ')} from {client} to {opponent}.
 
-Aim for approximately 400–500 words. Include enough detail for the document to be useful, but do not pad it or exceed the supplied facts.
+Aim for approximately 500–650 words. Add useful factual and legal detail where
+supported, but do not pad the draft or exceed the supplied facts.
 
 Case: {facts}
 Relevant legal context:
@@ -250,7 +251,7 @@ draft in a Markdown code fence."""
         return self.generate(
             prompt=prompt,
             system_prompt=system_prompt,
-            max_tokens=1400,
+            max_tokens=1800,
             temperature=0.1,
         )
 
