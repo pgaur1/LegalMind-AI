@@ -31,6 +31,28 @@ def test_generate_returns_successful_provider_response():
     assert service.generate("Test prompt") == "Generated answer"
 
 
+def test_legal_draft_uses_moderate_length_and_relevant_context():
+    service = LLMService()
+    service.generate = Mock(return_value="Generated legal draft")
+
+    result = service.generate_legal_draft(
+        draft_type="legal_notice",
+        case_details={
+            "client_name": "Client",
+            "opponent_name": "Builder",
+            "description": "The builder missed the agreed possession date.",
+        },
+        research_context=["RERA Section 18 provides a remedy for delayed possession."],
+    )
+
+    assert result == "Generated legal draft"
+    prompt = service.generate.call_args.kwargs["prompt"]
+    assert "300–400 words" in prompt
+    assert "RERA Section 18" in prompt
+    assert "do not make up section numbers or case citations" in prompt
+    assert service.generate.call_args.kwargs["max_tokens"] == 1000
+
+
 def test_research_chat_returns_upstream_failure(monkeypatch):
     agent = Mock()
     agent.initialized = True

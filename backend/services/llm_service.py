@@ -184,55 +184,43 @@ Cite specific sections, acts, or case names when relevant."""
         Returns:
             Generated legal draft
         """
-        # BRIEF system prompt
-        system_prompt = "You are a legal drafter. Write SHORT, complete legal documents. MAXIMUM 200 words."
+        system_prompt = (
+            "You are a legal drafter specializing in Indian law. Write a concise, "
+            "complete, professional draft using only the supplied facts and legal "
+            "context. Do not invent facts, authorities, or case citations."
+        )
 
         # Extract case details
         client = case_details.get("client_name", "Client")
         opponent = case_details.get("opponent_name", "Respondent")
-        facts = case_details.get("description", "")[:200]  # Limit to 200 chars
+        facts = case_details.get("description", "")[:1000]
 
-        # Get minimal legal references - just top 1, 150 chars
-        legal_ref = research_context[0][:150] if research_context else "RERA Act 2016"
+        legal_context = "\n".join(
+            f"- {context[:500]}" for context in research_context[:2]
+        ) or "No additional legal research context was available."
 
-        # EXTREME BREVITY PROMPT with word count limit
-        prompt = f"""Write SHORT {draft_type.replace('_', ' ')} from {client} to {opponent}.
+        prompt = f"""Prepare a concise but complete {draft_type.replace('_', ' ')} from {client} to {opponent}.
 
-MAXIMUM 200 WORDS. Use bullet points.
+Aim for approximately 300–400 words. Include enough detail for the document to be useful, but do not pad it or exceed the supplied facts.
 
 Case: {facts}
-Legal: {legal_ref}
+Relevant legal context:
+{legal_context}
 
-Format:
-LEGAL NOTICE
-Date: [today]
-To: {opponent}
-From: {client}
+Use a professional format appropriate for this document type. Include:
+- A clear title and the parties' names.
+- A short, factual background with the important dates, amounts, and events supplied.
+- Relevant legal grounds, relying only on the legal context above; do not make up section numbers or case citations.
+- Clear, specific relief or action requested, with a reasonable response deadline where appropriate.
+- A suitable closing and the client's name.
 
-FACTS:
-• [fact 1 - one line]
-• [fact 2 - one line]
+Write a complete draft, not an outline. Use paragraphs and bullets only where they improve readability."""
 
-LEGAL BASIS:
-• RERA Section 18 - [one line]
-• [Case citation - one line]
-
-DEMANDS:
-1. [demand 1]
-2. [demand 2]
-3. [demand 3]
-
-Comply in 30 days.
-{client}
-
-Write EXACTLY this format. Keep EVERY point to ONE line. MAXIMUM 200 words total."""
-
-        # VERY SMALL max_tokens for speed and completion
         return self.generate(
             prompt=prompt,
             system_prompt=system_prompt,
-            max_tokens=500,    # Even smaller - forces completion (~125 words)
-            temperature=0.0    # Zero - maximum determinism and speed
+            max_tokens=1000,
+            temperature=0.1
         )
 
     def summarize_judgment(self, judgment_text: str, max_length: int = 500) -> Dict:
