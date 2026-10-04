@@ -54,7 +54,7 @@ LegalMind-AI/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── backend/              # FastAPI + Python 3.11
+├── backend/              # FastAPI + Python 3.12
 │   ├── api/             # API endpoints (5 routers)
 │   ├── services/        # Core services (LLM, RAG, Graph, Web)
 │   ├── agents/          # AI agents (Research, Planner)
@@ -79,10 +79,10 @@ LegalMind-AI/
 │   ├── cases.json        # 64 case precedents
 │   └── relationships.json
 │
-├── deployment/           # Deployment configs
-│   ├── render.yaml       # Render.com configuration
+├── deployment/           # Container deployment files
 │   ├── Dockerfile        # Docker container
 │   └── startup.sh        # Startup script
+├── render.yaml           # Render Blueprint (development-test branch)
 │
 ├── docs/                 # Documentation
 │
@@ -97,7 +97,7 @@ LegalMind-AI/
 ### Prerequisites
 
 **Backend:**
-- Python 3.11+
+- Python 3.12+
 - pip
 
 **Frontend:**
@@ -147,6 +147,20 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload --timeout-keep-alive 120
 
 Backend will be available at: `http://localhost:8000`
 API docs at: `http://localhost:8000/docs`
+
+With the backend running, verify endpoint health and route registration from the
+repository root:
+
+```bash
+python test_all_endpoints.py
+```
+
+This smoke test checks the root, health, readiness (including the FAISS index
+and metadata count), Hugging Face configuration, OpenAPI route registration,
+and ten health-request timings. To test a different server URL, set
+`API_BASE_URL`. Hugging Face text generation also requires available account
+credits and model access; run `python test_hf_llm.py` from the `backend`
+directory for its inference checks.
 
 #### 3. Frontend Setup
 
@@ -256,7 +270,7 @@ Requires:
 ### Backend
 - **Framework:** FastAPI
 - **Server:** Uvicorn
-- **Language:** Python 3.11
+- **Language:** Python 3.12
 - **LLM:**
   - HuggingFace Inference API (Free)
   - AWS Bedrock Claude Sonnet 4.5 (Optional)

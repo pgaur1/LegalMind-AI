@@ -1,9 +1,9 @@
 # ✅ DEPLOYMENT READY - LegalMind AI
 
-**Status:** Successfully migrated and pushed to GitHub!  
+**Status:** Deployment configuration prepared on `development-test` (local changes not yet pushed)
 **Date:** October 3, 2026  
 **Repository:** https://github.com/pgaur1/LegalMind-AI  
-**Branch:** development
+**Demo branch:** `development-test`
 
 ---
 
@@ -47,7 +47,8 @@ LegalMind-AI/
 ├── backend/          # FastAPI app (ready for web service)
 ├── vector_store/     # FAISS (11 MB, 4,986 documents)
 ├── knowledge_graph/  # NetworkX (143 entities)
-├── deployment/       # Render configs, Dockerfile
+├── deployment/       # Dockerfile and startup script
+├── render.yaml       # Render Blueprint
 └── docs/            # Complete documentation
 ```
 
@@ -125,50 +126,17 @@ LegalMind-AI/
 
 ---
 
-### **Step 2: Deploy Backend**
+### **Step 2: Deploy from the Render Blueprint**
 
-1. Go to: https://dashboard.render.com
-2. Click **New +** → **Web Service**
-3. Connect repository: `pgaur1/LegalMind-AI`
-4. Branch: **development**
+1. Push the `development-test` branch to GitHub.
+2. In Render, choose **New + → Blueprint** and connect
+   `pgaur1/LegalMind-AI`.
+3. Select the `development-test` branch and the repository-root `render.yaml`.
+4. Set the `HF_TOKEN` secret when Render prompts you, then apply the Blueprint.
 
-**Configure:**
-- Name: `legalmind-backend`
-- Build: `pip install -r backend/requirements.txt`
-- Start: `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 120`
-
-**Environment Variables:**
-```
-LLM_PROVIDER = huggingface
-HF_TOKEN = your_huggingface_token_here (secret!)
-HF_MODEL = Qwen/Qwen2.5-7B-Instruct
-PORT = 8000
-DEBUG = false
-LOG_LEVEL = INFO
-```
-
-**Deploy!** (Takes ~10-15 minutes)
-
----
-
-### **Step 3: Deploy Frontend**
-
-1. Click **New +** → **Static Site**
-2. Repository: `pgaur1/LegalMind-AI`
-3. Branch: **development**
-
-**Configure:**
-- Name: `legalmind-frontend`
-- Build: `cd frontend && npm install && npm run build`
-- Publish: `frontend/dist`
-
-**Environment Variables:**
-```
-VITE_API_BASE_URL = https://legalmind-backend.onrender.com
-```
-(Use YOUR backend URL from Step 2)
-
-**Deploy!** (Takes ~5-10 minutes)
+The Blueprint creates both services and enables auto-deploys from
+`development-test`. See [docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md)
+for verification and troubleshooting.
 
 ---
 
@@ -234,7 +202,7 @@ Total:               62+ files
 
 ### **Tech Stack:**
 - **Frontend:** React 18, Vite, Tailwind
-- **Backend:** FastAPI, Python 3.11
+- **Backend:** FastAPI, Python 3.12
 - **LLM:** HuggingFace (Qwen 2.5-7B) / AWS Bedrock
 - **RAG:** FAISS, Sentence Transformers
 - **Graph:** NetworkX
@@ -310,7 +278,7 @@ All documentation is in the repository:
 - 750 hours/month runtime
 
 ### **Auto-Deploy:**
-- Render watches `development` branch
+- Render watches the `development-test` branch after the Blueprint is connected
 - Every push triggers auto-deploy
 - Check deploy logs for errors
 

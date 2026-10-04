@@ -29,13 +29,14 @@ class Settings(BaseSettings):
     # ========================================================================
     # CORS SETTINGS
     # ========================================================================
-    CORS_ORIGINS: list = [
+    CORS_ORIGINS: list[str] = [
         "http://localhost:5173",  # Vite dev server
         "http://localhost:5174",  # Vite dev server (alternate port)
         "http://localhost:3000",  # Alternative frontend
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
         "http://127.0.0.1:3000",
+        "https://legalmind-frontend.onrender.com",
     ]
     CORS_CREDENTIALS: bool = True
     CORS_METHODS: list = ["*"]
@@ -245,22 +246,24 @@ def get_model_info():
 
 def validate_settings():
     """Validate critical settings"""
-    issues = []
+    results = []
 
-    # Check model file
-    if not Path(settings.LLM_MODEL_PATH).exists():
-        issues.append(f"ERROR: LLM model not found: {settings.LLM_MODEL_PATH}")
+    if settings.HF_TOKEN:
+        results.append("SUCCESS: Hugging Face API token configured")
     else:
-        issues.append(f"SUCCESS: LLM model found: {settings.LLM_MODEL_PATH}")
+        results.append("WARNING: HF_TOKEN is not configured; LLM features will be unavailable")
 
-    # Check directories
-    ensure_directories()
+    if settings.FAISS_INDEX_PATH.is_file() and settings.FAISS_METADATA_PATH.is_file():
+        results.append("SUCCESS: FAISS index and metadata found")
+    else:
+        results.append("WARNING: FAISS index or metadata is missing; document retrieval will be unavailable")
 
-    # Check database
-    if settings.DATABASE_URL:
-        issues.append(f"SUCCESS: Database configured: {settings.DATABASE_URL}")
+    if settings.GRAPH_DB_DIR.is_dir():
+        results.append(f"SUCCESS: Knowledge graph directory found: {settings.GRAPH_DB_DIR}")
+    else:
+        results.append(f"WARNING: Knowledge graph directory not found: {settings.GRAPH_DB_DIR}")
 
-    return issues
+    return results
 
 
 if __name__ == "__main__":

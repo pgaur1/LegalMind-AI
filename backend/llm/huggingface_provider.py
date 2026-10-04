@@ -289,10 +289,10 @@ class HuggingFaceProvider(BaseLLMProvider):
         message = first_choice.get('message', {})
 
         # Get content
-        content = message.get('content', '').strip()
+        content = (message.get('content') or '').strip()
 
         # GLM models may include reasoning
-        reasoning = message.get('reasoning', '').strip()
+        reasoning = (message.get('reasoning') or '').strip()
 
         if content:
             return content

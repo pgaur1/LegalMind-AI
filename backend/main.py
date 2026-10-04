@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import time
+import json
 from loguru import logger
 
 from config.config import settings, ensure_directories, validate_settings
@@ -162,6 +163,52 @@ async def health_check():
     }
 
 
+@app.get("/readiness")
+async def readiness_check():
+    """Check that the persisted vector index and metadata are usable."""
+    try:
+        import faiss
+    except ImportError as exc:
+        logger.error(f"Readiness check unavailable: FAISS could not be imported: {exc}")
+        return JSONResponse(
+            status_code=503,
+            content={"status": "not_ready", "detail": "FAISS is not available"},
+        )
+
+    if not settings.FAISS_INDEX_PATH.is_file() or not settings.FAISS_METADATA_PATH.is_file():
+        return JSONResponse(
+            status_code=503,
+            content={"status": "not_ready", "detail": "Vector index or metadata file is missing"},
+        )
+
+    try:
+        index = faiss.read_index(str(settings.FAISS_INDEX_PATH))
+        with settings.FAISS_METADATA_PATH.open(encoding="utf-8") as metadata_file:
+            metadata = json.load(metadata_file)
+    except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
+        logger.error(f"Readiness check failed to load vector data: {exc}")
+        return JSONResponse(
+            status_code=503,
+            content={"status": "not_ready", "detail": "Vector index or metadata could not be loaded"},
+        )
+
+    if not isinstance(metadata, list) or index.ntotal != len(metadata):
+        return JSONResponse(
+            status_code=503,
+            content={
+                "status": "not_ready",
+                "detail": "Vector index and metadata counts do not match",
+                "index_vectors": index.ntotal,
+                "metadata_vectors": len(metadata) if isinstance(metadata, list) else None,
+            },
+        )
+
+    return {
+        "status": "ready",
+        "vector_count": index.ntotal,
+    }
+
+
 @app.get("/api/v1/status")
 async def api_status():
     """API status with detailed information"""
@@ -204,43 +251,15 @@ async def api_status():
 # API ROUTERS
 # ============================================================================
 
-# Import and register ALL routers
+# Import and register all routers. Import failures should prevent the service
+# from starting instead of leaving a partially available API.
 logger.info("Loading API routers...")
 
-try:
-    from api import research
-    app.include_router(research.router, prefix="/api/v1")
-    logger.success("✓ Research API router registered")
-except Exception as e:
-    logger.error(f"✗ Research API failed: {e}")
+from api import dashboard, drafts, orders, precedents, research
 
-try:
-    from api import drafts
-    app.include_router(drafts.router, prefix="/api/v1")
-    logger.success("✓ Drafts API router registered")
-except Exception as e:
-    logger.error(f"✗ Drafts API failed: {e}")
-
-try:
-    from api import precedents
-    app.include_router(precedents.router, prefix="/api/v1")
-    logger.success("✓ Precedents API router registered")
-except Exception as e:
-    logger.error(f"✗ Precedents API failed: {e}")
-
-try:
-    from api import orders
-    app.include_router(orders.router, prefix="/api/v1")
-    logger.success("✓ Orders API router registered")
-except Exception as e:
-    logger.error(f"✗ Orders API failed: {e}")
-
-try:
-    from api import dashboard
-    app.include_router(dashboard.router, prefix="/api/v1")
-    logger.success("✓ Dashboard API router registered")
-except Exception as e:
-    logger.error(f"✗ Dashboard API failed: {e}")
+for router_module in (research, drafts, precedents, orders, dashboard):
+    app.include_router(router_module.router, prefix="/api/v1")
+    logger.success(f"✓ {router_module.__name__.rsplit('.', maxsplit=1)[-1].title()} API router registered")
 
 logger.success("=" * 70)
 logger.success("ALL 5 API ROUTERS LOADED!")
