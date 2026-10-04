@@ -21,8 +21,8 @@ const generationStages = [
   { label: '🔗 Graph Service: Found 2 Acts/Sections', duration: 900 },
   { label: '🌐 Web Service: Searching Indian Kanoon for precedents...', duration: 1200 },
   { label: '🌐 Web Service: Found Kumar vs Builder (SC 2023)', duration: 800 },
-  { label: '🤖 AWS Bedrock: Initializing Claude Sonnet 4.5...', duration: 1500 },
-  { label: '🤖 AWS Bedrock: Generating professional draft...', duration: 3500 },
+  { label: '🤖 Initializing AI draft generation...', duration: 1500 },
+  { label: '🤖 Generating professional draft with AI...', duration: 3500 },
   { label: '✨ Adding citations and formatting...', duration: 1500 },
   { label: '✨ Finalizing document...', duration: 1200 },
 ]

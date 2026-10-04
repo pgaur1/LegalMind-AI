@@ -347,7 +347,7 @@ export default function DraftWorkspace() {
                     </div>
                     <div className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                      <p className="text-xs text-slate-600">🤖 Draft: Generated with AWS Claude</p>
+                      <p className="text-xs text-slate-600">🤖 Draft: Generated with AI</p>
                     </div>
                   </div>
                 </div>

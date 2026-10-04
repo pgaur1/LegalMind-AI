@@ -3,6 +3,7 @@ LegalMind AI - LLM Service
 Multi-Provider Support: HuggingFace, AWS Bedrock, etc.
 """
 
+import re
 from typing import Optional, Dict, List
 from loguru import logger
 
@@ -175,6 +176,13 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
                 system_prompt=system_prompt,
             )
 
+            response = re.sub(
+                r"^\s*(?:#{1,6}\s*)?(?:\*\*)?(?i:short answer)(?:\*\*)?"
+                r"(?:\s*[:：—-]\s*|\s*\r?\n+\s*|\s+(?=[A-Z])|(?=[A-Z])|$)",
+                "",
+                response,
+                count=1,
+            ).lstrip()
             return response
 
         except Exception as e:

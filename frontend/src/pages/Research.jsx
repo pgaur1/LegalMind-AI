@@ -48,7 +48,7 @@ function AIResearchProgress({ onFinalStage }) {
     { label: 'Searching 4,986 legal documents (RAG)...', duration: 2000, icon: '📚' },
     { label: 'Retrieving from Knowledge Graph (143 entities)...', duration: 2000, icon: '🔗' },
     { label: 'Fetching web sources...', duration: 1500, icon: '🌐' },
-    { label: 'Processing with AWS Claude AI...', duration: 3000, icon: '🤖' },
+    { label: 'Generating response with AI...', duration: 3000, icon: '🤖' },
     { label: 'Generating comprehensive response...', duration: 2500, icon: '✨' },
     { label: 'Finalizing citations and sources...', duration: 1500, icon: '📎' },
   ]
@@ -160,7 +160,7 @@ function AIProcessSummary({ sources, processingTime }) {
     { label: 'Query analyzed and classified', icon: '🔍', time: '0.2s' },
     { label: `Searched ${sources?.length || 5} documents from 4,986 legal docs`, icon: '📚', time: '2.1s' },
     { label: 'Retrieved relevant precedents and acts', icon: '⚖️', time: '1.8s' },
-    { label: 'Generated response with AWS Claude Sonnet 4.5', icon: '🤖', time: processingTime || '8.3s' },
+    { label: 'Generated response with AI', icon: '🤖', time: processingTime || '8.3s' },
     { label: `Verified ${sources?.length || 5} citations and sources`, icon: '📎', time: '0.4s' },
   ]
 
