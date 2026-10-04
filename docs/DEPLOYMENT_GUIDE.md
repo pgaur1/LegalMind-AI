@@ -8,15 +8,15 @@ from the `development-test` branch.
 
 - The `development-test` branch has been pushed to `pgaur1/LegalMind-AI` on GitHub.
 - The GitHub account is connected to Render and can access that repository.
-- A Hugging Face access token with permission to call the selected model.
+- A Groq API key with access to the selected model.
 
 ## Create the Render services
 
 1. In Render, choose **New + → Blueprint** and connect `pgaur1/LegalMind-AI`.
 2. Select the `development-test` branch and the root `render.yaml` Blueprint.
 3. Review the two services and apply the Blueprint.
-4. When prompted, set `HF_TOKEN` on `legalmind-backend` to the Hugging Face
-   token. Keep it as a secret; do not add it to GitHub or a frontend variable.
+4. When prompted, set `GROQ_API_KEY` on `legalmind-backend` to the Groq API
+   key. Keep it as a secret; do not add it to GitHub or a frontend variable.
 5. Wait for the backend and frontend deploys to finish.
 
 The Blueprint sets `VITE_API_BASE_URL` to
@@ -43,9 +43,10 @@ repository root:
 API_BASE_URL=https://legalmind-backend.onrender.com python test_all_endpoints.py
 ```
 
-For a local Hugging Face generation check, set `HF_TOKEN` in the backend
-environment and run `python test_hf_llm.py` from `backend`. Hugging Face may
-reject inference when account billing/credits or model access are unavailable.
+For local Groq generation, set `GROQ_API_KEY` in the backend environment.
+Groq generation also requires available account usage and access to the
+configured model. To use Hugging Face instead, set `LLM_PROVIDER=huggingface`
+and configure `HF_TOKEN` and `HF_MODEL`.
 
 ## GitHub auto-deploy
 
@@ -66,7 +67,7 @@ complete the one-time Blueprint setup in Render.
 ## Troubleshooting
 
 - **Backend does not become healthy:** inspect the backend build/runtime logs and
-  confirm `HF_TOKEN` is set. The health endpoint does not require a token, but
+  confirm `GROQ_API_KEY` is set. The health endpoint does not require a token, but
   LLM-backed features do.
 - **Frontend reports a fetch/CORS error:** confirm `VITE_API_BASE_URL` points to
   the live backend and `CORS_ORIGINS` includes the exact frontend origin. Vite

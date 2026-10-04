@@ -4,6 +4,7 @@ import time
 import requests
 from typing import Optional, Dict, Any
 from loguru import logger
+from config.config import settings
 from .base_provider import BaseLLMProvider
 from .exceptions import (
     LLMAuthenticationError,
@@ -36,16 +37,27 @@ class HuggingFaceProvider(BaseLLMProvider):
 
     def __init__(self):
         # Load configuration from environment
-        self.api_token = os.getenv('HF_TOKEN')
-        self.model_name = os.getenv('HF_MODEL', 'zai-org/GLM-5.2')
+        self.api_token = os.getenv('HF_TOKEN') or settings.HF_TOKEN
+        self.model_name = os.getenv('HF_MODEL') or settings.HF_MODEL
         self.api_url = os.getenv(
             'HF_API_URL',
-            'https://router.huggingface.co/v1/chat/completions'
+            settings.HF_API_URL
         )
-        self.timeout = int(os.getenv('HF_REQUEST_TIMEOUT_SECONDS', '120'))
-        self.max_retries = int(os.getenv('HF_MAX_RETRIES', '3'))
-        self.default_max_tokens = int(os.getenv('HF_MAX_TOKENS', '1000'))
-        self.default_temperature = float(os.getenv('HF_TEMPERATURE', '0.1'))
+        self.timeout = int(
+            os.getenv(
+                'HF_REQUEST_TIMEOUT_SECONDS',
+                str(settings.HF_REQUEST_TIMEOUT_SECONDS)
+            )
+        )
+        self.max_retries = int(
+            os.getenv('HF_MAX_RETRIES', str(settings.HF_MAX_RETRIES))
+        )
+        self.default_max_tokens = int(
+            os.getenv('HF_MAX_TOKENS', str(settings.HF_MAX_TOKENS))
+        )
+        self.default_temperature = float(
+            os.getenv('HF_TEMPERATURE', str(settings.HF_TEMPERATURE))
+        )
 
         # Request headers
         self.headers = {

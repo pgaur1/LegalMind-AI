@@ -240,9 +240,13 @@ async def api_status():
         },
         "llm": {
             "provider": settings.LLM_PROVIDER,
-            "model": settings.HF_MODEL,
-            "max_tokens": settings.HF_MAX_TOKENS,
-            "temperature": settings.HF_TEMPERATURE,
+            "model": (
+                settings.GROQ_MODEL
+                if settings.LLM_PROVIDER == "groq"
+                else settings.HF_MODEL
+            ),
+            "max_tokens": settings.LLM_MAX_TOKENS,
+            "temperature": settings.LLM_TEMPERATURE,
         },
     }
 

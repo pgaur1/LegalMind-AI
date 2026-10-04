@@ -1,7 +1,9 @@
 """LLM Provider Factory"""
 import os
 from loguru import logger
+from config.config import settings
 from .base_provider import BaseLLMProvider
+from .groq_provider import GroqProvider
 from .huggingface_provider import HuggingFaceProvider
 
 
@@ -10,40 +12,38 @@ def get_llm_provider() -> BaseLLMProvider:
     Get LLM provider based on environment configuration
 
     Environment Variables:
-        LLM_PROVIDER: Must be 'huggingface' (default: 'huggingface')
+        LLM_PROVIDER: 'groq' (default) or 'huggingface'
+        GROQ_API_KEY: Groq API key (required for the Groq provider)
+        GROQ_MODEL: Groq model name (default: 'openai/gpt-oss-20b')
         HF_TOKEN: HuggingFace API token (required)
         HF_MODEL: Model name (default: 'zai-org/GLM-5.2')
-        HF_API_URL: API endpoint (default: router endpoint)
-        HF_REQUEST_TIMEOUT_SECONDS: Request timeout (default: 120)
-        HF_MAX_RETRIES: Max retry attempts (default: 3)
-        HF_MAX_TOKENS: Default max tokens (default: 1000)
-        HF_TEMPERATURE: Default temperature (default: 0.1)
 
     Returns:
-        Configured HuggingFace provider instance
+        Configured LLM provider instance
 
     Raises:
-        ValueError: If provider not configured or token missing
+        ValueError: If provider is unsupported or its credential is missing
     """
-    provider_name = os.getenv('LLM_PROVIDER', 'huggingface').lower()
+    provider_name = (os.getenv('LLM_PROVIDER') or settings.LLM_PROVIDER).lower()
 
-    if provider_name != 'huggingface':
-        logger.warning(
-            f"Unknown LLM_PROVIDER '{provider_name}'. "
-            "Only 'huggingface' is supported. Using HuggingFace."
+    providers = {
+        'groq': GroqProvider,
+        'huggingface': HuggingFaceProvider,
+    }
+    provider_type = providers.get(provider_name)
+    if provider_type is None:
+        raise ValueError(
+            f"Unsupported LLM_PROVIDER '{provider_name}'. "
+            f"Choose one of: {', '.join(providers)}."
         )
 
-    # Initialize HuggingFace provider
-    provider = HuggingFaceProvider()
-
+    provider = provider_type()
     if not provider.is_available():
-        error_msg = (
-            "HuggingFace provider not configured. "
-            "Please set HF_TOKEN environment variable with your HuggingFace API token. "
-            "Get one at: https://huggingface.co/settings/tokens"
+        credential = 'GROQ_API_KEY' if provider_name == 'groq' else 'HF_TOKEN'
+        raise ValueError(
+            f"{provider_name.title()} provider is not configured. "
+            f"Set the {credential} environment variable."
         )
-        logger.error(error_msg)
-        raise ValueError(error_msg)
 
-    logger.success(f"✅ LLM Provider: HuggingFace ({provider.get_model_name()})")
+    logger.success(f"LLM provider: {provider_name} ({provider.get_model_name()})")
     return provider

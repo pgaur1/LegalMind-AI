@@ -127,15 +127,15 @@ pip install -r requirements.txt
 
 # Configure environment
 cp .env.example .env
-# Edit .env and set your HF_TOKEN
+# Edit .env and set your GROQ_API_KEY
 ```
 
 **Environment Variables:**
 
 ```env
-LLM_PROVIDER=huggingface
-HF_TOKEN=your_huggingface_token_here
-HF_MODEL=Qwen/Qwen2.5-7B-Instruct
+LLM_PROVIDER=groq
+GROQ_API_KEY=your_groq_api_key_here
+GROQ_MODEL=openai/gpt-oss-20b
 PORT=8000
 ```
 
@@ -156,11 +156,11 @@ python test_all_endpoints.py
 ```
 
 This smoke test checks the root, health, readiness (including the FAISS index
-and metadata count), Hugging Face configuration, OpenAPI route registration,
+and metadata count), configured LLM provider, OpenAPI route registration,
 and ten health-request timings. To test a different server URL, set
-`API_BASE_URL`. Hugging Face text generation also requires available account
-credits and model access; run `python test_hf_llm.py` from the `backend`
-directory for its inference checks.
+`API_BASE_URL`. Groq text generation requires a valid `GROQ_API_KEY` and model
+access. Hugging Face remains available by setting `LLM_PROVIDER=huggingface`
+and configuring `HF_TOKEN` and `HF_MODEL`.
 
 #### 3. Frontend Setup
 
@@ -187,31 +187,24 @@ Frontend will be available at: `http://localhost:5173`
 
 ## 🤖 LLM Provider Configuration
 
-### HuggingFace (Free Tier - Default)
+### Groq (Default)
+
+```env
+LLM_PROVIDER=groq
+GROQ_API_KEY=your_groq_api_key_here
+GROQ_MODEL=openai/gpt-oss-20b
+```
+
+Keep the Groq key in the backend environment. Never put it in a frontend
+environment variable or commit it to the repository.
+
+Hugging Face is also supported:
 
 ```env
 LLM_PROVIDER=huggingface
-HF_TOKEN=your_token_here
-HF_MODEL=Qwen/Qwen2.5-7B-Instruct
+HF_TOKEN=your_huggingface_token_here
+HF_MODEL=zai-org/GLM-5.2
 ```
-
-**Get HF Token:**
-1. Create account at [huggingface.co](https://huggingface.co)
-2. Go to Settings → Access Tokens
-3. Create new token with "Read" access
-
-### AWS Bedrock (Optional - Production)
-
-```env
-LLM_PROVIDER=bedrock
-AWS_PROFILE=your-aws-profile
-AWS_REGION=eu-west-1
-```
-
-Requires:
-- AWS account with Bedrock access
-- Claude model enabled in AWS Bedrock
-- `aws_llm_wrapper.py` configured
 
 ---
 
@@ -239,9 +232,9 @@ Requires:
    - Build Command: `pip install -r backend/requirements.txt`
    - Start Command: `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 120`
    - Environment Variables:
-     - `LLM_PROVIDER`: `huggingface`
-     - `HF_TOKEN`: `your_token` (secret)
-     - `HF_MODEL`: `Qwen/Qwen2.5-7B-Instruct`
+     - `LLM_PROVIDER`: `groq`
+     - `GROQ_API_KEY`: set as a secret
+     - `GROQ_MODEL`: `openai/gpt-oss-20b`
 
    **Frontend (Static Site):**
    - Type: Static Site
@@ -272,8 +265,8 @@ Requires:
 - **Server:** Uvicorn
 - **Language:** Python 3.12
 - **LLM:**
-  - HuggingFace Inference API (Free)
-  - AWS Bedrock Claude Sonnet 4.5 (Optional)
+  - Groq chat completions (`openai/gpt-oss-20b`, default)
+  - Hugging Face Inference API (optional)
 - **RAG:** FAISS + Sentence Transformers
 - **Knowledge Graph:** NetworkX
 - **Web Scraping:** Scrapling
@@ -285,8 +278,8 @@ Requires:
 - **Graph Database:** NetworkX JSON (143 entities)
 - **Embeddings:** BGE (sentence-transformers)
 - **LLM Models:**
-  - Qwen/Qwen2.5-7B-Instruct (HuggingFace)
-  - Claude Sonnet 4.5 (AWS Bedrock)
+  - openai/gpt-oss-20b (Groq, default)
+  - zai-org/GLM-5.2 (Hugging Face, optional)
 
 ---
 
@@ -337,7 +330,7 @@ Requires:
 
 - **API Keys:** Store in environment variables, never commit
 - **CORS:** Configured for specific origins
-- **Secrets:** Use Render environment variables for HF_TOKEN
+- **Secrets:** Use Render environment variables for GROQ_API_KEY
 - **HTTPS:** Automatically enabled on Render
 
 ---

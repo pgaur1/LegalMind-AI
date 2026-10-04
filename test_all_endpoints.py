@@ -70,7 +70,8 @@ def test_readiness() -> None:
 def test_api_status() -> None:
     status, payload, elapsed = get_json("/api/v1/status")
     assert status == 200
-    assert payload.get("llm", {}).get("provider") == "huggingface"
+    assert payload.get("llm", {}).get("provider") == "groq"
+    assert payload.get("llm", {}).get("model") == "openai/gpt-oss-20b"
     assert payload.get("llm", {}).get("model")
     print(f"HTTP {status}, {elapsed:.2f} ms, model configured")
 
@@ -121,7 +122,7 @@ def main() -> int:
         ("Test 1: Root endpoint", test_root),
         ("Test 2: Health endpoint", test_health),
         ("Test 3: Readiness endpoint", test_readiness),
-        ("Test 4: API status and Hugging Face configuration", test_api_status),
+        ("Test 4: API status and Groq configuration", test_api_status),
         ("Test 5: OpenAPI and API route registration", test_openapi_and_routes),
         ("Test 6: Health response performance", test_health_performance),
     ]

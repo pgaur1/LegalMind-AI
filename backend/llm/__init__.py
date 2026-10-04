@@ -1,4 +1,4 @@
-"""LLM Provider Module - HuggingFace Inference API"""
+"""LLM provider module."""
 from .provider_factory import get_llm_provider
 from .exceptions import (
     LLMProviderError,

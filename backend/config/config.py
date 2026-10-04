@@ -63,10 +63,9 @@ class Settings(BaseSettings):
     DATABASE_ECHO: bool = True  # Set False in production
 
     # ========================================================================
-    # LLM SETTINGS (HuggingFace)
+    # LLM SETTINGS
     # ========================================================================
-    # Provider configuration (only 'huggingface' supported)
-    LLM_PROVIDER: str = os.getenv('LLM_PROVIDER', 'huggingface')
+    LLM_PROVIDER: str = os.getenv('LLM_PROVIDER', 'groq').lower()
 
     # HuggingFace Inference API settings
     HF_TOKEN: str = os.getenv('HF_TOKEN', '')  # Required!
@@ -84,9 +83,32 @@ class Settings(BaseSettings):
     HF_MAX_TOKENS: int = int(os.getenv('HF_MAX_TOKENS', '1000'))
     HF_TEMPERATURE: float = float(os.getenv('HF_TEMPERATURE', '0.1'))
 
-    # Legacy settings (for backward compatibility with existing code)
-    LLM_MAX_TOKENS: int = HF_MAX_TOKENS
-    LLM_TEMPERATURE: float = HF_TEMPERATURE
+    # Groq chat completions settings
+    GROQ_API_KEY: str = os.getenv('GROQ_API_KEY', '')
+    GROQ_MODEL: str = os.getenv('GROQ_MODEL', 'openai/gpt-oss-20b')
+    GROQ_API_URL: str = os.getenv(
+        'GROQ_API_URL',
+        'https://api.groq.com/openai/v1/chat/completions',
+    )
+    GROQ_REQUEST_TIMEOUT_SECONDS: int = int(
+        os.getenv('GROQ_REQUEST_TIMEOUT_SECONDS', '120')
+    )
+    GROQ_MAX_COMPLETION_TOKENS: int = int(
+        os.getenv('GROQ_MAX_COMPLETION_TOKENS', '6000')
+    )
+    GROQ_TEMPERATURE: float = float(os.getenv('GROQ_TEMPERATURE', '0.2'))
+    GROQ_REASONING_EFFORT: str = os.getenv('GROQ_REASONING_EFFORT', 'low')
+    GROQ_REASONING_FORMAT: str = os.getenv('GROQ_REASONING_FORMAT', 'hidden')
+
+    LLM_MODEL: str = GROQ_MODEL if LLM_PROVIDER == 'groq' else HF_MODEL
+    LLM_MAX_TOKENS: int = int(os.getenv(
+        'LLM_MAX_TOKENS',
+        str(GROQ_MAX_COMPLETION_TOKENS if LLM_PROVIDER == 'groq' else HF_MAX_TOKENS),
+    ))
+    LLM_TEMPERATURE: float = float(os.getenv(
+        'LLM_TEMPERATURE',
+        str(GROQ_TEMPERATURE if LLM_PROVIDER == 'groq' else HF_TEMPERATURE),
+    ))
 
     # ========================================================================
     # EMBEDDING SETTINGS
@@ -248,10 +270,15 @@ def validate_settings():
     """Validate critical settings"""
     results = []
 
-    if settings.HF_TOKEN:
+    if settings.LLM_PROVIDER == 'groq' and settings.GROQ_API_KEY:
+        results.append("SUCCESS: Groq API key configured")
+    elif settings.LLM_PROVIDER == 'huggingface' and settings.HF_TOKEN:
         results.append("SUCCESS: Hugging Face API token configured")
     else:
-        results.append("WARNING: HF_TOKEN is not configured; LLM features will be unavailable")
+        credential = 'GROQ_API_KEY' if settings.LLM_PROVIDER == 'groq' else 'HF_TOKEN'
+        results.append(
+            f"WARNING: {credential} is not configured; LLM features will be unavailable"
+        )
 
     if settings.FAISS_INDEX_PATH.is_file() and settings.FAISS_METADATA_PATH.is_file():
         results.append("SUCCESS: FAISS index and metadata found")

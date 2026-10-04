@@ -21,7 +21,8 @@ Your LegalMind AI application is now **deployment-ready** with all improvements 
 ```
 backend/llm/
 ├── base_provider.py           # Abstract interface
-├── huggingface_provider.py    # Free tier (HuggingFace API)
+├── groq_provider.py           # Groq chat completions API
+├── huggingface_provider.py    # Optional Hugging Face API
 ├── bedrock_provider.py        # Production (AWS Bedrock)
 └── provider_factory.py        # Auto-selection
 ```
@@ -29,11 +30,14 @@ backend/llm/
 **Switch providers via environment:**
 ```env
 # Free deployment (Render)
-LLM_PROVIDER=huggingface
-HF_TOKEN=your_token_here
+LLM_PROVIDER=groq
+GROQ_API_KEY=your_groq_api_key_here
+GROQ_MODEL=openai/gpt-oss-20b
 
-# Production (AWS)
-LLM_PROVIDER=bedrock
+# Alternative provider
+LLM_PROVIDER=huggingface
+HF_TOKEN=your_huggingface_api_token_here
+HF_MODEL=zai-org/GLM-5.2
 ```
 
 ---
@@ -118,11 +122,11 @@ LegalMind-AI/
 
 ## 🚀 Next Steps - Deploy to Render
 
-### **Step 1: Get HuggingFace Token**
+### **Step 1: Configure Groq**
 
-1. Go to: https://huggingface.co/settings/tokens
-2. Create new token with **Read** access
-3. Copy token (starts with `hf_...`)
+1. Create an API key in your Groq account.
+2. Add it as the `GROQ_API_KEY` secret in the backend environment.
+3. Keep the key private; do not commit it or place it in frontend settings.
 
 ---
 
@@ -132,7 +136,7 @@ LegalMind-AI/
 2. In Render, choose **New + → Blueprint** and connect
    `pgaur1/LegalMind-AI`.
 3. Select the `development-test` branch and the repository-root `render.yaml`.
-4. Set the `HF_TOKEN` secret when Render prompts you, then apply the Blueprint.
+4. Set the `GROQ_API_KEY` secret when Render prompts you, then apply the Blueprint.
 
 The Blueprint creates both services and enables auto-deploys from
 `development-test`. See [docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md)
@@ -203,7 +207,7 @@ Total:               62+ files
 ### **Tech Stack:**
 - **Frontend:** React 18, Vite, Tailwind
 - **Backend:** FastAPI, Python 3.12
-- **LLM:** HuggingFace (Qwen 2.5-7B) / AWS Bedrock
+- **LLM:** Groq (`openai/gpt-oss-20b`), with Hugging Face as an optional provider
 - **RAG:** FAISS, Sentence Transformers
 - **Graph:** NetworkX
 - **Deployment:** Render.com
@@ -262,8 +266,7 @@ All documentation is in the repository:
 
 ## 💡 Important Notes
 
-### **HuggingFace Token:**
-- Get from: https://huggingface.co/settings/tokens
+### **Groq API key:**
 - **Keep it secret!** Don't commit to git
 - Set as **secret** in Render environment variables
 
