@@ -64,6 +64,7 @@ def test_generate_stream_yields_groq_content_deltas(monkeypatch):
     assert chunks == ["Hello", " world"]
     assert response.close.called
     assert post.call_args.kwargs["json"]["stream"] is True
+    assert post.call_args.kwargs["headers"]["Authorization"] == "Bearer test-key"
 
 
 def test_generate_requires_api_key(monkeypatch):

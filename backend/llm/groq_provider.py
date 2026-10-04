@@ -131,7 +131,7 @@ class GroqProvider(BaseLLMProvider):
             response = requests.post(
                 self.api_url,
                 headers={
-                    "Authorization": f"******",
+                    "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json",
                 },
                 json=payload,
