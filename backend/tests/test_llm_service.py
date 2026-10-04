@@ -106,6 +106,33 @@ def test_legal_response_removes_only_a_leading_short_answer_label(generated, exp
     assert response == expected
 
 
+def test_legal_response_adds_query_heading_when_model_omits_one():
+    service = LLMService()
+    service.generate = Mock(return_value="A builder must pay statutory interest.")
+
+    response = service.generate_legal_response(
+        query="What are RERA penalties for delayed possession?",
+        context=["RERA Section 18"],
+    )
+
+    assert response == (
+        "## What are RERA penalties for delayed possession\n\n"
+        "A builder must pay statutory interest."
+    )
+
+
+def test_legal_response_keeps_model_topic_heading():
+    service = LLMService()
+    service.generate = Mock(return_value="## Delayed Possession Under RERA\n\nA buyer may claim interest.")
+
+    response = service.generate_legal_response(
+        query="What are RERA penalties for delayed possession?",
+        context=["RERA Section 18"],
+    )
+
+    assert response.startswith("## Delayed Possession Under RERA\n\n")
+
+
 def test_research_chat_returns_upstream_failure(monkeypatch):
     agent = Mock()
     agent.initialized = True

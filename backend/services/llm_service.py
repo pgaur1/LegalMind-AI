@@ -184,6 +184,11 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
                 response,
                 count=1,
             ).lstrip()
+            if not re.match(r"^#{1,6}\s+", response):
+                subject = re.sub(r"\s+", " ", query).strip().rstrip("?.!")
+                if subject:
+                    heading = subject[0].upper() + subject[1:]
+                    response = f"## {heading}\n\n{response}"
             return response
 
         except Exception as e:
