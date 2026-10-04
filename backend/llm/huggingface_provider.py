@@ -1,9 +1,8 @@
 """HuggingFace Inference API Provider - Chat Completions"""
 import os
 import time
-import json
 import requests
-from typing import Iterator, Optional, Dict, Any
+from typing import Optional, Dict, Any
 from loguru import logger
 from config.config import settings
 from .base_provider import BaseLLMProvider
@@ -159,82 +158,6 @@ class HuggingFaceProvider(BaseLLMProvider):
                 return f"ERROR: Unexpected error - {str(e)}"
 
         return "ERROR: Maximum retry attempts exceeded"
-
-    def generate_stream(
-        self,
-        prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
-    ) -> Iterator[str]:
-        if not self.is_available():
-            raise LLMAuthenticationError(
-                "HuggingFace provider not configured. Please set HF_TOKEN."
-            )
-
-        messages = []
-        if system_prompt:
-            messages.append({"role": "system", "content": system_prompt})
-        messages.append({"role": "user", "content": prompt})
-        payload = {
-            "model": self.model_name,
-            "messages": messages,
-            "max_tokens": max_tokens or self.default_max_tokens,
-            "temperature": temperature if temperature is not None else self.default_temperature,
-            "stream": True,
-        }
-
-        try:
-            response = requests.post(
-                self.api_url,
-                headers=self.headers,
-                json=payload,
-                timeout=self.timeout,
-                stream=True,
-            )
-        except requests.exceptions.Timeout as exc:
-            raise LLMTimeoutError(
-                f"Request timed out after {self.timeout} seconds"
-            ) from exc
-        except requests.exceptions.RequestException as exc:
-            raise LLMServerError(f"Request failed: {exc}") from exc
-
-        try:
-            self._check_response_status(response)
-            received_content = False
-            for line in response.iter_lines(decode_unicode=True):
-                if not line:
-                    continue
-                if isinstance(line, bytes):
-                    line = line.decode("utf-8")
-                if not line.startswith("data:"):
-                    continue
-                data = line[5:].strip()
-                if data == "[DONE]":
-                    break
-                try:
-                    event = json.loads(data)
-                except ValueError as exc:
-                    raise LLMInvalidResponseError(
-                        "HuggingFace returned an invalid streaming event."
-                    ) from exc
-
-                if event.get("error"):
-                    raise LLMServerError("HuggingFace streaming generation failed.")
-                choices = event.get("choices", [])
-                if not choices:
-                    continue
-                content = choices[0].get("delta", {}).get("content")
-                if isinstance(content, str) and content:
-                    received_content = True
-                    yield content
-
-            if not received_content:
-                raise LLMInvalidResponseError(
-                    "HuggingFace returned an empty streamed response."
-                )
-        finally:
-            response.close()
 
     def _make_request(self, payload: Dict[str, Any]) -> requests.Response:
         """

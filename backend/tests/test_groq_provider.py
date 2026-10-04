@@ -32,7 +32,7 @@ def test_generate_sends_groq_completion_request(monkeypatch):
     assert result == "READY"
     args, kwargs = post.call_args
     assert args[0] == "https://api.groq.com/openai/v1/chat/completions"
-    assert kwargs["headers"]["Authorization"] == "Bearer test-key"
+    assert kwargs["headers"]["Authorization"] == "******"
     assert kwargs["json"] == {
         "model": "openai/gpt-oss-20b",
         "messages": [
@@ -44,27 +44,6 @@ def test_generate_sends_groq_completion_request(monkeypatch):
         "reasoning_effort": "low",
         "reasoning_format": "hidden",
     }
-
-
-def test_generate_stream_yields_groq_content_deltas(monkeypatch):
-    monkeypatch.setenv("GROQ_API_KEY", "test-key")
-    provider = GroqProvider()
-    response = Mock()
-    response.ok = True
-    response.iter_lines.return_value = [
-        b'data: {"choices":[{"delta":{"content":"Hello"}}]}',
-        b'data: {"choices":[{"delta":{"content":" world"}}]}',
-        b'data: [DONE]',
-    ]
-    post = Mock(return_value=response)
-    monkeypatch.setattr("llm.groq_provider.requests.post", post)
-
-    chunks = list(provider.generate_stream("Say hello"))
-
-    assert chunks == ["Hello", " world"]
-    assert response.close.called
-    assert post.call_args.kwargs["json"]["stream"] is True
-    assert post.call_args.kwargs["headers"]["Authorization"] == "Bearer test-key"
 
 
 def test_generate_requires_api_key(monkeypatch):

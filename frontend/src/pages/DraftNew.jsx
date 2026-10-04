@@ -8,6 +8,7 @@ import { Button, Card } from '../components/ui'
 import { draftTypes } from '../data/mockData'
 import { draftsAPI } from '../services/api'
 import MarkdownContent from '../components/MarkdownContent'
+import { revealMarkdownLines } from '../utils/revealMarkdownLines'
 import toast from 'react-hot-toast'
 
 const generationStages = [
@@ -272,7 +273,7 @@ function Step2({ data, update, onBack, onGenerate }) {
 }
 
 // COPIED FROM RESEARCH - Same progress animation that works perfectly!
-function Step3({ data, onComplete, onBack, streamedText }) {
+function Step3({ data, onComplete, onBack, progressiveText }) {
   const [currentStep, setCurrentStep] = useState(0)
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState('')
@@ -405,9 +406,9 @@ function Step3({ data, onComplete, onBack, streamedText }) {
           </p>
         </div>
 
-        {streamedText && (
+        {progressiveText && (
           <div aria-live="polite" className="max-h-[55vh] overflow-y-auto rounded-lg border border-slate-200 bg-white p-4">
-            <MarkdownContent content={streamedText} className="text-slate-800" />
+            <MarkdownContent content={progressiveText} className="text-slate-800" />
           </div>
         )}
 
@@ -518,7 +519,7 @@ export default function DraftNew() {
   const location = useLocation()
   const { addDraft } = useAppStore()
   const [step, setStep] = useState(1)
-  const [streamedDraft, setStreamedDraft] = useState('')
+  const [progressiveDraft, setProgressiveDraft] = useState('')
 
   // Get demo defaults based on selected type
   const initialType = location.state?.autoSelect || '';
@@ -553,17 +554,14 @@ export default function DraftNew() {
       const timeoutId = setTimeout(() => controller.abort(), 180000);
 
       try {
-        setStreamedDraft('')
-        const result = await draftsAPI.generateStream({
+        setProgressiveDraft('')
+        const result = await draftsAPI.generate({
           draft_type: data.type || 'legal_notice',
           client_name: data.fullName || 'Client',
           opponent_name: data.builderName || data.oppositeParty || 'Opponent',
           case_description: data.background || 'Legal matter',
           legal_context: null,
-        }, {
-          signal: controller.signal,
-          onToken: (chunk) => setStreamedDraft(current => current + chunk),
-        });
+        }, { signal: controller.signal });
 
         if (!result.success) {
           if (controller.signal.aborted) {
@@ -580,6 +578,8 @@ export default function DraftNew() {
         console.log(`[Draft] Content length: ${result.data.content?.length || 0} chars`);
         console.log(`[Draft] Word count: ${result.data.word_count || 0} words`);
         console.log(`[Draft] Sources: ${result.data.sources?.length || 0}`);
+
+        await revealMarkdownLines(result.data.content, setProgressiveDraft)
 
         const newDraft = addDraft({
           title: data.typeName,
@@ -626,7 +626,7 @@ export default function DraftNew() {
 
       {step === 1 && <Step1 data={data} update={update} onNext={() => setStep(2)} onCancel={() => navigate('/drafts')} />}
       {step === 2 && <Step2 data={data} update={update} onBack={() => setStep(1)} onGenerate={handleGenerate} />}
-      {step === 3 && <Step3 data={data} onComplete={handleComplete} onBack={() => setStep(2)} streamedText={streamedDraft} />}
+      {step === 3 && <Step3 data={data} onComplete={handleComplete} onBack={() => setStep(2)} progressiveText={progressiveDraft} />}
     </div>
   )
 }

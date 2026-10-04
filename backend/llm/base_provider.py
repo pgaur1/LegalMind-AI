@@ -1,6 +1,6 @@
 """Base LLM Provider Interface"""
 from abc import ABC, abstractmethod
-from typing import Iterator, Optional
+from typing import Optional
 
 
 class BaseLLMProvider(ABC):
@@ -27,16 +27,6 @@ class BaseLLMProvider(ABC):
             Generated text
         """
         pass
-
-    def generate_stream(
-        self,
-        prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: int = 1000,
-        temperature: float = 0.7
-    ) -> Iterator[str]:
-        """Yield generated text chunks; providers may override with true streaming."""
-        yield self.generate(prompt, system_prompt, max_tokens, temperature)
 
     @abstractmethod
     def is_available(self) -> bool:

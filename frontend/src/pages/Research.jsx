@@ -10,6 +10,7 @@ import { researchSuggestions, researchTopics } from '../data/mockData'
 import toast from 'react-hot-toast'
 import { researchAPI } from '../services/api'
 import MarkdownContent from '../components/MarkdownContent'
+import { revealMarkdownLines } from '../utils/revealMarkdownLines'
 
 function SourceModal({ source, open, onClose }) {
   if (!source) return null
@@ -285,7 +286,7 @@ export default function Research() {
   const navigate = useNavigate()
   const { chatMessages, isResearching, addChatMessage, setResearching, clearChat, saveResearch, user } = useAppStore()
   const [input, setInput] = useState('')
-  const [streamingText, setStreamingText] = useState('')
+  const [progressiveText, setProgressiveText] = useState('')
   const [sourceModal, setSourceModal] = useState(null)
   const [allSourcesModal, setAllSourcesModal] = useState(null)
   const scrollRef = useRef(null)
@@ -307,13 +308,8 @@ export default function Research() {
 
     try {
       // Call the REAL backend API
-      setStreamingText('')
-      const result = await researchAPI.streamChat(
-        query,
-        [],
-        user?.id || 'user_001',
-        { onToken: (chunk) => setStreamingText(current => current + chunk) },
-      )
+      setProgressiveText('')
+      const result = await researchAPI.chat(query, [], user?.id || 'user_001')
 
       // Calculate processing time
       const processingTime = ((Date.now() - startTime) / 1000).toFixed(1) + 's'
@@ -392,6 +388,8 @@ export default function Research() {
           enhancedText = enhancedText.replace(pattern2, `($1 ${citationNumber} - ${src.match}%)`);
         });
 
+        await revealMarkdownLines(enhancedText, setProgressiveText)
+
         // Count sources by type
         const ragCount = sources.filter(s => s.source_type === 'rag').length;
         const graphCount = sources.filter(s => s.source_type === 'graph').length;
@@ -412,10 +410,10 @@ export default function Research() {
           processingTime: processingTime,
           query,
         })
-        setStreamingText('')
+        setProgressiveText('')
       } else {
         // Error handling
-        setStreamingText('')
+        setProgressiveText('')
         addChatMessage({
           role: 'assistant',
           text: `⚠️ **Error:** Unable to connect to the backend API.\n\n${result.error || 'Please check if the backend server is running and the /api proxy is available.'}\n\nTry refreshing the page or contact support if the issue persists.`,
@@ -427,7 +425,7 @@ export default function Research() {
       }
     } catch (error) {
       console.error('Research error:', error)
-      setStreamingText('')
+      setProgressiveText('')
       addChatMessage({
         role: 'assistant',
         text: `⚠️ **Error:** ${error.message}\n\nPlease check if the backend server is running and the /api proxy is available.`,
@@ -598,8 +596,8 @@ export default function Research() {
                 </div>
                 <div className="flex-1 max-w-[85%]">
                   <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm p-4">
-                    {streamingText
-                      ? <MarkdownContent content={streamingText} className="text-slate-700" />
+                    {progressiveText
+                      ? <MarkdownContent content={progressiveText} className="text-slate-700" />
                       : <AIResearchProgress />}
                   </div>
                 </div>
