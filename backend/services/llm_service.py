@@ -8,6 +8,7 @@ from loguru import logger
 
 # Import provider factory
 from llm import get_llm_provider
+from llm.exceptions import LLMProviderError
 
 from config.config import settings
 
@@ -65,11 +66,14 @@ class LLMService:
 
         Returns:
             Generated text
+
+        Raises:
+            LLMProviderError: If the provider cannot generate a response
         """
         if not self.model_loaded or not self.provider:
             logger.warning("Provider not loaded, attempting to load...")
             if not self.load_model():
-                return "ERROR: LLM provider not available"
+                raise LLMProviderError("LLM provider not available")
 
         try:
             # Use config defaults if not specified
@@ -85,13 +89,15 @@ class LLMService:
                 temperature=temperature,
                 system_prompt=system_prompt
             )
+            if response.startswith("ERROR:"):
+                raise LLMProviderError(response.removeprefix("ERROR:").strip())
 
             logger.info(f"Generated {len(response.split())} words")
             return response
 
         except Exception as e:
             logger.error(f"LLM generation failed: {e}")
-            return f"ERROR: Failed to generate response - {str(e)}"
+            raise
 
     def generate_legal_response(
         self,
@@ -109,6 +115,9 @@ class LLMService:
 
         Returns:
             Legal research response
+
+        Raises:
+            LLMProviderError: If the provider cannot generate a response
         """
         logger.info(f"Generating legal response with AWS Claude for: {query[:50]}...")
 
@@ -154,7 +163,7 @@ Cite specific sections, acts, or case names when relevant."""
 
         except Exception as e:
             logger.error(f"LLM generation failed: {e}")
-            return f"ERROR: Failed to generate legal response - {str(e)}"
+            raise
 
     def generate_legal_draft(
         self,

@@ -118,6 +118,8 @@ async def research_chat(
             current_context=request.context,
             user_id=request.user_id
         )
+        if result.metadata.get("error"):
+            raise HTTPException(status_code=502, detail="Research generation failed")
 
         # Generate unique query ID
         query_id = f"q_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
@@ -140,6 +142,8 @@ async def research_chat(
 
         return response
 
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Research failed: {e}")
         raise HTTPException(

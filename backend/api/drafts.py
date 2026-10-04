@@ -15,6 +15,7 @@ from services.llm_service import LLMService
 from services.rag_service import get_rag_service
 from services.graph_service import get_graph_service
 from services.web_service import get_web_service
+from llm.exceptions import LLMProviderError
 
 # Create router
 router = APIRouter(
@@ -340,6 +341,9 @@ async def generate_draft(request: DraftRequest):
         llm_time = time.time() - llm_start
         logger.success(f"Draft generated: {len(draft_content.split())} words")
         logger.info(f"⏱️ TIME: LLM generation took {llm_time:.2f}s")
+    except LLMProviderError as e:
+        logger.error(f"Draft generation failed: {e}")
+        raise HTTPException(status_code=502, detail="Draft generation failed") from e
     except Exception as e:
         logger.error(f"Draft generation failed: {e}")
         raise HTTPException(status_code=500, detail=f"Draft generation failed: {str(e)}")
