@@ -77,7 +77,8 @@ def test_legal_response_requests_renderable_markdown():
     assert "Markdown headings" in prompt
     assert "Do not wrap the answer in a Markdown code fence." in prompt
     assert "clear, conversational way" in full_prompt
-    assert 'without a label or heading such as "Short answer"' in full_prompt
+    assert "topic-specific" in full_prompt
+    assert 'do not use a generic heading such as "Short answer"' in full_prompt
     assert "Never create a table unless the user explicitly asks for one." in full_prompt
     assert "Prioritize the most relevant provisions" in full_prompt
     assert "do not impose a short word limit" in full_prompt

@@ -148,10 +148,11 @@ statutes, and court judgments. Always cite your sources and be precise."""
 Question: {query}
 
 Answer the user's question directly in a clear, conversational way, as if explaining
-the law to a person who is not a lawyer. Begin with a concise introductory paragraph
-without a label or heading such as "Short answer", then organize the explanation
-with a few meaningful Markdown headings, readable paragraphs, and only occasional
-bullets when they genuinely help.
+the law to a person who is not a lawyer. Start with a concise, topic-specific
+Markdown heading that describes the subject of the answer; do not use a generic
+heading such as "Short answer". Follow it with a concise introductory paragraph,
+then organize the explanation with a few meaningful Markdown headings, readable
+paragraphs, and only occasional bullets when they genuinely help.
 
 Be comprehensive about the issues the user actually asked about, with enough
 explanation and practical context; do not impose a short word limit or sacrifice
