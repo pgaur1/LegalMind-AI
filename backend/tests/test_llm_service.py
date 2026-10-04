@@ -51,12 +51,12 @@ def test_legal_draft_uses_moderate_length_and_relevant_context():
 
     assert result == "Generated legal draft"
     prompt = service.generate.call_args.kwargs["prompt"]
-    assert "300–400 words" in prompt
+    assert "400–500 words" in prompt
     assert "RERA Section 18" in prompt
     assert "Graph SECTION" in prompt
     assert "Web Case Law" in prompt
     assert "do not make up section numbers or case citations" in prompt
-    assert service.generate.call_args.kwargs["max_tokens"] == 1000
+    assert service.generate.call_args.kwargs["max_tokens"] == 1400
 
 
 def test_legal_response_requests_renderable_markdown():
