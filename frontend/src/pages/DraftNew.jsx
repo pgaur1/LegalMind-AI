@@ -6,6 +6,7 @@ import {
 import { useAppStore } from '../store/useAppStore'
 import { Button, Card } from '../components/ui'
 import { draftTypes } from '../data/mockData'
+import { draftsAPI } from '../services/api'
 import toast from 'react-hot-toast'
 
 const generationStages = [
@@ -270,9 +271,11 @@ function Step2({ data, update, onBack, onGenerate }) {
 }
 
 // COPIED FROM RESEARCH - Same progress animation that works perfectly!
-function Step3({ data, onComplete }) {
+function Step3({ data, onComplete, onBack }) {
   const [currentStep, setCurrentStep] = useState(0)
   const [progress, setProgress] = useState(0)
+  const [error, setError] = useState('')
+  const [isGenerating, setIsGenerating] = useState(true)
 
   // Progress steps matching actual generation time
   const steps = [
@@ -280,25 +283,27 @@ function Step3({ data, onComplete }) {
     { label: 'Searching 4,986 legal documents (RAG)...', duration: 2000, icon: '📚' },
     { label: 'Retrieving from Knowledge Graph (143 entities)...', duration: 2000, icon: '🔗' },
     { label: 'Fetching relevant case law...', duration: 1500, icon: '🌐' },
-    { label: 'Processing with AWS Claude AI...', duration: 3500, icon: '🤖' },
+    { label: 'Generating with the configured AI model...', duration: 3500, icon: '🤖' },
     { label: 'Generating professional draft...', duration: 3000, icon: '✨' },
     { label: 'Completing all sections...', duration: 2500, icon: '📎' },
   ]
 
   useEffect(() => {
     let isMounted = true
-
-    // Start API call immediately!
-    const generateDraft = async () => {
-      try {
-        await onComplete()
-      } catch (error) {
-        console.error('Draft generation error:', error)
+    onComplete().catch((generationError) => {
+      if (isMounted) {
+        setError(generationError.message)
+        setIsGenerating(false)
       }
+    })
+    return () => {
+      isMounted = false
     }
+  }, [])
 
-    generateDraft()
-
+  useEffect(() => {
+    if (error) return undefined
+    let isMounted = true
     // Same step progression as Research
     let stepIndex = 0
     let progressValue = 0
@@ -324,7 +329,7 @@ function Step3({ data, onComplete }) {
       clearInterval(stepInterval)
       clearInterval(progressInterval)
     }
-  }, [])
+  }, [error])
 
   return (
     <div className="max-w-2xl mx-auto py-12">
@@ -395,9 +400,29 @@ function Step3({ data, onComplete }) {
             />
           </div>
           <p className="text-xs text-slate-400 text-center">
-            Estimated time: {Math.max(1, Math.ceil((100 - progress) / 8))} seconds remaining
+            {isGenerating ? 'This can take a few minutes while the draft is generated.' : 'Generation stopped.'}
           </p>
         </div>
+
+        {error && (
+          <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            <p className="font-medium">Draft generation failed</p>
+            <p className="mt-1">{error}</p>
+            <div className="mt-4 flex gap-3">
+              <Button variant="primary" onClick={() => {
+                setError('')
+                setIsGenerating(true)
+                setProgress(0)
+                setCurrentStep(0)
+                onComplete().catch((generationError) => {
+                  setError(generationError.message)
+                  setIsGenerating(false)
+                })
+              }}>Try again</Button>
+              <Button variant="secondary" onClick={onBack}>Back to details</Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -516,58 +541,53 @@ export default function DraftNew() {
     try {
       console.log('[Draft] Starting API call...');
       const startTime = Date.now();
-
-      // Call backend API to generate draft with RAG + Graph + Web
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 120000); // 120 second timeout (2 minutes)
+      const timeoutId = setTimeout(() => controller.abort(), 180000);
 
-      const response = await fetch('http://localhost:8002/api/v1/drafts/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      try {
+        const result = await draftsAPI.generate({
           draft_type: data.type || 'legal_notice',
           client_name: data.fullName || 'Client',
           opponent_name: data.builderName || data.oppositeParty || 'Opponent',
           case_description: data.background || 'Legal matter',
           legal_context: null,
-        }),
-        signal: controller.signal,
-      });
+        }, { signal: controller.signal });
 
-      clearTimeout(timeoutId);
+        if (!result.success) {
+          if (controller.signal.aborted) {
+            const timeoutError = new Error('Request timed out after 3 minutes. Please try again.');
+            timeoutError.name = 'AbortError';
+            throw timeoutError;
+          }
+          throw new Error(result.error);
+        }
 
-      if (!response.ok) {
-        throw new Error(`Draft generation failed: ${response.status}`);
+        const endTime = Date.now();
+
+        console.log(`[Draft] API completed in ${(endTime - startTime) / 1000}s`);
+        console.log(`[Draft] Content length: ${result.data.content?.length || 0} chars`);
+        console.log(`[Draft] Word count: ${result.data.word_count || 0} words`);
+        console.log(`[Draft] Sources: ${result.data.sources?.length || 0}`);
+
+        const newDraft = addDraft({
+          title: data.typeName,
+          type: data.type,
+          typeName: data.typeName,
+          caseName: data.caseName || `${data.fullName || 'New Case'} vs ${data.builderName || data.oppositeParty || 'Party'}`,
+          background: data.background,
+          content: result.data.content,
+          sources: result.data.sources || [],
+        });
+
+        toast.success('Draft generated successfully!');
+        navigate(`/draft/${newDraft.id}`);
+      } finally {
+        clearTimeout(timeoutId);
       }
-
-      const result = await response.json();
-      const endTime = Date.now();
-
-      console.log(`[Draft] API completed in ${(endTime - startTime) / 1000}s`);
-      console.log(`[Draft] Content length: ${result.content?.length || 0} chars`);
-      console.log(`[Draft] Word count: ${result.word_count || 0} words`);
-      console.log(`[Draft] Sources: ${result.sources?.length || 0}`);
-
-      // Add draft to store with API-generated content and sources
-      const newDraft = addDraft({
-        title: data.typeName,
-        type: data.type,
-        typeName: data.typeName,
-        caseName: data.caseName || `${data.fullName || 'New Case'} vs ${data.builderName || data.oppositeParty || 'Party'}`,
-        background: data.background,
-        content: result.content, // Use API-generated content
-        sources: result.sources || [], // Use API-returned sources (RAG + Graph + Web)
-      });
-
-      toast.success('Draft generated successfully!');
-      navigate(`/draft/${newDraft.id}`);
     } catch (error) {
       console.error('Draft generation error:', error);
-      if (error.name === 'AbortError') {
-        toast.error('Request timeout - please try again.');
-      } else {
-        toast.error('Draft generation failed. Please try again.');
-      }
+      toast.error(error.message || 'Draft generation failed. Please try again.');
+      throw error;
     }
   }
 
@@ -594,7 +614,7 @@ export default function DraftNew() {
 
       {step === 1 && <Step1 data={data} update={update} onNext={() => setStep(2)} onCancel={() => navigate('/drafts')} />}
       {step === 2 && <Step2 data={data} update={update} onBack={() => setStep(1)} onGenerate={handleGenerate} />}
-      {step === 3 && <Step3 data={data} onComplete={handleComplete} />}
+      {step === 3 && <Step3 data={data} onComplete={handleComplete} onBack={() => setStep(2)} />}
     </div>
   )
 }

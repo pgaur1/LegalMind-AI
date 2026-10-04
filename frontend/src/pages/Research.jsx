@@ -409,7 +409,7 @@ export default function Research() {
         // Error handling
         addChatMessage({
           role: 'assistant',
-          text: `⚠️ **Error:** Unable to connect to the backend API.\n\n${result.error || 'Please check if the server is running on http://localhost:8002'}\n\nTry refreshing the page or contact support if the issue persists.`,
+          text: `⚠️ **Error:** Unable to connect to the backend API.\n\n${result.error || 'Please check if the backend server is running and the /api proxy is available.'}\n\nTry refreshing the page or contact support if the issue persists.`,
           timestamp: new Date().toISOString(),
           sources: [],
           query,
@@ -420,7 +420,7 @@ export default function Research() {
       console.error('Research error:', error)
       addChatMessage({
         role: 'assistant',
-        text: `⚠️ **Error:** ${error.message}\n\nPlease check if the backend server is running on http://localhost:8002`,
+        text: `⚠️ **Error:** ${error.message}\n\nPlease check if the backend server is running and the /api proxy is available.`,
         timestamp: new Date().toISOString(),
         sources: [],
         query,

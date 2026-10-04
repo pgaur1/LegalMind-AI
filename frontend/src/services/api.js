@@ -1,9 +1,10 @@
 /**
  * API Service - Connects React UI to FastAPI Backend
- * Backend: http://localhost:8000
+ * Set VITE_API_BASE_URL when the backend is on a different origin. Otherwise,
+ * requests use the current origin (and the Vite dev proxy in local development).
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') || '';
 
 /**
  * Research API - Legal Research with RAG
@@ -61,7 +62,7 @@ export const draftsAPI = {
    * @param {string} params.case_description - Case description
    * @param {string} params.legal_context - Legal context and provisions
    */
-  async generate(params) {
+  async generate(params, { signal } = {}) {
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/drafts/generate`, {
         method: 'POST',
@@ -69,6 +70,7 @@ export const draftsAPI = {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(params),
+        signal,
       });
 
       if (!response.ok) {
