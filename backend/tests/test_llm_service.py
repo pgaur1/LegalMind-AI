@@ -79,10 +79,12 @@ def test_legal_response_requests_renderable_markdown():
     assert "clear, conversational way" in full_prompt
     assert "topic-specific" in full_prompt
     assert 'do not use a generic heading such as "Short answer"' in full_prompt
+    assert "approximately 600–800 words" in full_prompt
+    assert "Keep simple questions concise." in full_prompt
     assert "Never create a table unless the user explicitly asks for one." in full_prompt
     assert "Prioritize the most relevant provisions" in full_prompt
-    assert "do not impose a short word limit" in full_prompt
     assert "Do not invent section numbers, penalties, citations, or case names." in full_prompt
+    assert generation_call["max_tokens"] == 3600
 
 
 @pytest.mark.parametrize(

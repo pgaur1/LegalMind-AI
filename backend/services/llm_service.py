@@ -154,13 +154,12 @@ heading such as "Short answer". Follow it with a concise introductory paragraph,
 then organize the explanation with a few meaningful Markdown headings, readable
 paragraphs, and only occasional bullets when they genuinely help.
 
-Be comprehensive about the issues the user actually asked about, with enough
-explanation and practical context; do not impose a short word limit or sacrifice
-useful detail. Prioritize the most relevant provisions instead of producing an
-exhaustive section-by-section catalogue. Never create a table unless the user
-explicitly asks for one. In particular, do not repeat a heading or description
-across many unrelated sections or infer that a provision has the same effect as
-another section.
+For substantive questions, aim for approximately 600–800 words, adding useful
+explanation, practical context, and relevant qualifications. Keep simple questions
+concise. Prioritize the most relevant provisions instead of producing an exhaustive
+section-by-section catalogue. Never create a table unless the user explicitly asks
+for one. In particular, do not repeat a heading or description across many
+unrelated sections or infer that a provision has the same effect as another section.
 
 Use only provisions, penalties, cases, and factual claims supported by the supplied
 legal context. Do not invent section numbers, penalties, citations, or case names.
@@ -172,7 +171,7 @@ Markdown bullets. Do not wrap the answer in a Markdown code fence."""
         try:
             response = self.generate(
                 prompt=prompt,
-                max_tokens=3000,  # Extended for comprehensive legal explanations
+                max_tokens=3600,  # Allow slightly more room for substantive explanations
                 temperature=0.3,  # Low temperature for factual accuracy
                 system_prompt=system_prompt,
             )
