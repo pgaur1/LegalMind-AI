@@ -113,6 +113,20 @@ git clone https://github.com/pgaur1/LegalMind-AI.git
 cd LegalMind-AI
 ```
 
+#### Start the Complete App (Codespaces/Linux)
+
+From the repository root, run:
+
+```bash
+./start-dev.sh
+```
+
+On first run, the script creates a backend virtual environment and installs
+backend/frontend dependencies if they are missing. Configure `GROQ_API_KEY` in
+the Codespace environment or in `backend/.env` first. The script prints the UI
+and API documentation URLs; keep the terminal open while using the app and
+press **Ctrl+C** to stop both servers.
+
 #### 2. Backend Setup
 
 ```bash
