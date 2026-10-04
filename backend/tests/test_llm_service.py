@@ -69,9 +69,18 @@ def test_legal_response_requests_renderable_markdown():
     )
 
     assert response.startswith("## Legal analysis")
-    prompt = service.generate.call_args.kwargs["prompt"]
+    generation_call = service.generate.call_args.kwargs
+    prompt = generation_call["prompt"]
+    full_prompt = " ".join(
+        f"{generation_call['system_prompt']}\n{prompt}".split()
+    )
     assert "Markdown headings" in prompt
     assert "Do not wrap the answer in a Markdown code fence." in prompt
+    assert "clear, conversational way" in full_prompt
+    assert "Never create a table unless the user explicitly asks for one." in full_prompt
+    assert "Prioritize the most relevant provisions" in full_prompt
+    assert "do not impose a short word limit" in full_prompt
+    assert "Do not invent section numbers, penalties, citations, or case names." in full_prompt
 
 
 def test_research_chat_returns_upstream_failure(monkeypatch):

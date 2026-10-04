@@ -147,10 +147,24 @@ statutes, and court judgments. Always cite your sources and be precise."""
 {f"Previous conversation:\n{history_text}\n" if history_text else ""}
 Question: {query}
 
-Please provide a comprehensive answer based on the legal context provided.
-Cite specific sections, acts, or case names when relevant. Format the answer using
-Markdown headings (## and ###), paragraphs, and numbered or bulleted lists where
-appropriate. Do not wrap the answer in a Markdown code fence."""
+Answer the user's question directly in a clear, conversational way, as if explaining
+the law to a person who is not a lawyer. Give a short introductory answer, then
+organize the explanation with a few meaningful Markdown headings, readable
+paragraphs, and only occasional bullets when they genuinely help.
+
+Be comprehensive about the issues the user actually asked about, with enough
+explanation and practical context; do not impose a short word limit or sacrifice
+useful detail. Prioritize the most relevant provisions instead of producing an
+exhaustive section-by-section catalogue. Never create a table unless the user
+explicitly asks for one. In particular, do not repeat a heading or description
+across many unrelated sections or infer that a provision has the same effect as
+another section.
+
+Use only provisions, penalties, cases, and factual claims supported by the supplied
+legal context. Do not invent section numbers, penalties, citations, or case names.
+If the sources do not substantiate a detail or disagree, say so clearly and qualify
+the answer. Cite the relevant source naturally in the prose or with concise
+Markdown bullets. Do not wrap the answer in a Markdown code fence."""
 
         # Use provider with legal-optimized parameters
         try:
