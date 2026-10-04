@@ -53,6 +53,21 @@ def test_legal_draft_uses_moderate_length_and_relevant_context():
     assert service.generate.call_args.kwargs["max_tokens"] == 1000
 
 
+def test_legal_response_requests_renderable_markdown():
+    service = LLMService()
+    service.generate = Mock(return_value="## Legal analysis\n\n- First point")
+
+    response = service.generate_legal_response(
+        query="What are my options?",
+        context=["Relevant legal context"],
+    )
+
+    assert response.startswith("## Legal analysis")
+    prompt = service.generate.call_args.kwargs["prompt"]
+    assert "Markdown headings" in prompt
+    assert "Do not wrap the answer in a Markdown code fence." in prompt
+
+
 def test_research_chat_returns_upstream_failure(monkeypatch):
     agent = Mock()
     agent.initialized = True

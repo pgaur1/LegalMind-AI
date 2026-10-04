@@ -9,7 +9,7 @@ import { Button, Modal, Badge, timeAgo } from '../components/ui'
 import { researchSuggestions, researchTopics } from '../data/mockData'
 import toast from 'react-hot-toast'
 import { researchAPI } from '../services/api'
-import ReactMarkdown from 'react-markdown'
+import MarkdownContent from '../components/MarkdownContent'
 
 function SourceModal({ source, open, onClose }) {
   if (!source) return null
@@ -516,29 +516,7 @@ export default function Research() {
                         <AIProcessSummary sources={msg.sources} processingTime={msg.processingTime} />
                       )}
 
-                      <div className="prose prose-sm max-w-none text-slate-700">
-                        <ReactMarkdown
-                          components={{
-                            h1: ({node, ...props}) => <h1 className="text-xl font-bold mt-4 mb-2 text-slate-900" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-lg font-bold mt-3 mb-2 text-slate-900" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-base font-semibold mt-2 mb-1 text-slate-900" {...props} />,
-                            p: ({node, ...props}) => <p className="mb-3 leading-relaxed" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc ml-5 mb-3 space-y-1" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal ml-5 mb-3 space-y-1" {...props} />,
-                            li: ({node, ...props}) => <li className="leading-relaxed" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-semibold text-slate-900" {...props} />,
-                            em: ({node, ...props}) => <em className="italic" {...props} />,
-                            code: ({node, inline, ...props}) =>
-                              inline ?
-                                <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800" {...props} /> :
-                                <code className="block bg-slate-100 p-3 rounded-lg text-xs font-mono text-slate-800 overflow-x-auto mb-3" {...props} />,
-                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-blue-500 pl-4 italic text-slate-600 my-3" {...props} />,
-                            a: ({node, ...props}) => <a className="text-blue-600 hover:underline" {...props} />,
-                          }}
-                        >
-                          {msg.text}
-                        </ReactMarkdown>
-                      </div>
+                      <MarkdownContent content={msg.text} className="text-slate-700" />
                       {msg.sources && msg.sources.length > 0 && (
                         <div className="mt-4 pt-4 border-t border-slate-100">
                           <p className="text-sm font-semibold text-slate-700 mb-2">📎 Sources ({msg.sources.length})</p>

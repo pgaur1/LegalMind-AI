@@ -148,7 +148,9 @@ statutes, and court judgments. Always cite your sources and be precise."""
 Question: {query}
 
 Please provide a comprehensive answer based on the legal context provided.
-Cite specific sections, acts, or case names when relevant."""
+Cite specific sections, acts, or case names when relevant. Format the answer using
+Markdown headings (## and ###), paragraphs, and numbered or bulleted lists where
+appropriate. Do not wrap the answer in a Markdown code fence."""
 
         # Use provider with legal-optimized parameters
         try:
@@ -214,7 +216,9 @@ Use a professional format appropriate for this document type. Include:
 - Clear, specific relief or action requested, with a reasonable response deadline where appropriate.
 - A suitable closing and the client's name.
 
-Write a complete draft, not an outline. Use paragraphs and bullets only where they improve readability."""
+Write a complete draft, not an outline. Use Markdown headings, paragraphs, and
+numbered or bulleted lists only where they improve readability. Do not wrap the
+draft in a Markdown code fence."""
 
         return self.generate(
             prompt=prompt,
