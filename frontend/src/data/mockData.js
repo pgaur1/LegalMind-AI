@@ -936,8 +936,8 @@ export const orderTypeOptions = [
 
 export const researchSuggestions = [
   'What are RERA penalties for delayed possession?',
-  'Find insurance claim rejection precedents',
-  'Latest Supreme Court data privacy judgments',
+  'IRDAI insurance regulations',
+  'Companies Act compliance',
 ]
 
 export const researchTopics = [
