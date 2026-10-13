@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {
   Search, Send, Bot, User as UserIcon, Sparkles, FileText, BookOpen,
   Share2, Bookmark, X, FileBadge, ArrowRight, ChevronDown, ChevronUp, Check, Clock,
+  Paperclip, Mic,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Modal, Badge, timeAgo } from '../components/ui'
@@ -668,6 +669,26 @@ export default function Research() {
               style={{ minHeight: '48px', maxHeight: '120px' }}
             />
             <Search size={16} className="absolute right-3 top-3.5 text-slate-400 pointer-events-none" />
+          </div>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              aria-label="Attach file"
+              title="Attach file (coming soon)"
+              onClick={() => toast('File attachments are coming soon')}
+              className="h-10 w-10 inline-flex items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+            >
+              <Paperclip size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Voice to text"
+              title="Voice to text (coming soon)"
+              onClick={() => toast('Voice-to-text is coming soon')}
+              className="h-10 w-10 inline-flex items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+            >
+              <Mic size={18} />
+            </button>
           </div>
           <Button
             variant="primary"

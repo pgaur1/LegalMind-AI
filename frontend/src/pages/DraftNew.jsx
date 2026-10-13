@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
-  ArrowRight, ArrowLeft, Check, Search, Sparkles, FileText,
+  ArrowRight, ArrowLeft, Check, Search, Sparkles, FileText, Upload,
 } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Card } from '../components/ui'
@@ -76,6 +76,11 @@ function Step1({ data, update, onNext, onCancel }) {
           <p className={`text-xs ${data.background.length < 50 ? 'text-orange-500' : 'text-slate-400'}`}>
             {data.background.length} characters (minimum 50, recommended 100-300)
           </p>
+        </div>
+        <div className="mt-4 rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-5 text-center">
+          <Upload size={20} className="mx-auto text-slate-500" />
+          <p className="mt-2 text-sm font-medium text-slate-700">Upload a reference file</p>
+          <p className="mt-1 text-xs text-slate-500">Attach a document to use as reference for your draft</p>
         </div>
         <div className="mt-4 p-3 bg-blue-50 rounded-lg">
           <p className="text-xs font-medium text-blue-800 mb-1.5">Tips for better results:</p>

@@ -214,7 +214,7 @@ class Settings(BaseSettings):
     DEMO_MODE: bool = True
     USE_MOCK_DATA: bool = True  # Use mock data initially
     DEMO_USER_ID: str = "user_001"
-    DEMO_USER_NAME: str = "John Doe"
+    DEMO_USER_NAME: str = "Prashant"
 
     class Config:
         env_file = ".env"

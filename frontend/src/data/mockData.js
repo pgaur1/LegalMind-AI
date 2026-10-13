@@ -1,6 +1,5 @@
 export const users = [
-  { id: 'u1', name: 'John Doe', role: 'Reviewer', email: 'john.doe@legalmind.ai', avatar: 'JD', color: '#2563eb' },
-  { id: 'u2', name: 'Sarah Smith', role: 'Legal Counsel', email: 'sarah.smith@legalmind.ai', avatar: 'SS', color: '#0d9488' },
+  { id: 'u1', name: 'Prashant', role: 'Reviewer', email: 'prashant@legalmind.ai', avatar: 'P', color: '#2563eb' },
   { id: 'u3', name: 'Mike Roberts', role: 'Manager', email: 'mike.roberts@legalmind.ai', avatar: 'MR', color: '#b45309' },
   { id: 'u4', name: 'Legal Head', role: 'Reviewer', email: 'legal.head@legalmind.ai', avatar: 'LH', color: '#7c3aed' },
   { id: 'u5', name: 'Operations Team', role: 'Operations', email: 'ops@legalmind.ai', avatar: 'OT', color: '#dc2626' },
